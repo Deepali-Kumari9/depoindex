@@ -1,0 +1,501 @@
+[
+  {
+    "chunk_id": 1,
+    "start_ref": "7:11",
+    "end_ref": "8:25",
+    "topics": [
+      {
+        "topic": "Deposition ground rules and witness instructions",
+        "start_ref": "7:11",
+        "end_ref": "8:23",
+        "evidence_refs": [
+          "7:11",
+          "7:18",
+          "7:20",
+          "7:24",
+          "8:1",
+          "8:8",
+          "8:18",
+          "8:21",
+          "8:23"
+        ]
+      },
+      {
+        "topic": "Retention as an expert witness",
+        "start_ref": "8:24",
+        "end_ref": "8:25",
+        "evidence_refs": [
+          "8:24",
+          "8:25"
+        ]
+      }
+    ]
+  },
+  {
+    "chunk_id": 2,
+    "start_ref": "9:1",
+    "end_ref": "10:15",
+    "topics": [
+      {
+        "topic": "Scope of expert testimony",
+        "start_ref": "9:2",
+        "end_ref": "9:18",
+        "evidence_refs": [
+          "9:2",
+          "9:3",
+          "9:4",
+          "9:5",
+          "9:6",
+          "9:7",
+          "9:8",
+          "9:9",
+          "9:10",
+          "9:11",
+          "9:12",
+          "9:13",
+          "9:14",
+          "9:15",
+          "9:16",
+          "9:17",
+          "9:18"
+        ]
+      },
+      {
+        "topic": "Marking Expert Report as Exhibit 1 and deposition speaking instructions",
+        "start_ref": "10:2",
+        "end_ref": "10:15",
+        "evidence_refs": [
+          "10:2",
+          "10:3",
+          "10:4",
+          "10:5",
+          "10:6",
+          "10:7",
+          "10:8",
+          "10:9",
+          "10:10",
+          "10:11",
+          "10:12",
+          "10:13",
+          "10:14",
+          "10:15"
+        ]
+      }
+    ]
+  },
+  {
+    "chunk_id": 3,
+    "start_ref": "10:16",
+    "end_ref": "12:6",
+    "topics": [
+      {
+        "topic": "Deposition ground rules regarding speaking speed",
+        "start_ref": "10:16",
+        "end_ref": "10:22",
+        "evidence_refs": [
+          "10:16",
+          "10:17",
+          "10:18",
+          "10:19",
+          "10:20",
+          "10:21",
+          "10:22"
+        ]
+      },
+      {
+        "topic": "Witness background and role at Student Borrower Protection Center",
+        "start_ref": "11:2",
+        "end_ref": "12:6",
+        "evidence_refs": [
+          "11:2",
+          "11:3",
+          "11:18",
+          "11:19",
+          "11:20",
+          "11:22",
+          "11:23",
+          "11:24",
+          "11:25",
+          "12:4",
+          "12:5",
+          "12:6"
+        ]
+      }
+    ]
+  },
+  {
+    "chunk_id": 4,
+    "start_ref": "12:7",
+    "end_ref": "13:21",
+    "topics": [
+      {
+        "topic": "Organization's advocacy issues and areas of work",
+        "start_ref": "12:7",
+        "end_ref": "12:23",
+        "evidence_refs": [
+          "12:7",
+          "12:8",
+          "12:12",
+          "12:17",
+          "12:23"
+        ]
+      },
+      {
+        "topic": "Campaign to cancel student loan debt",
+        "start_ref": "12:24",
+        "end_ref": "13:11",
+        "evidence_refs": [
+          "12:24",
+          "12:25",
+          "13:1",
+          "13:3",
+          "13:4",
+          "13:8",
+          "13:11"
+        ]
+      },
+      {
+        "topic": "Initiatives to develop and implement student loan protections",
+        "start_ref": "13:12",
+        "end_ref": "13:21",
+        "evidence_refs": [
+          "13:12",
+          "13:13",
+          "13:14",
+          "13:15",
+          "13:18",
+          "13:21"
+        ]
+      }
+    ]
+  },
+  {
+    "chunk_id": 5,
+    "start_ref": "13:22",
+    "end_ref": "15:11",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 59.404566093s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 6,
+    "start_ref": "15:12",
+    "end_ref": "17:1",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 52.12694928s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 7,
+    "start_ref": "17:2",
+    "end_ref": "18:16",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 44.877448704s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 8,
+    "start_ref": "18:17",
+    "end_ref": "20:6",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 37.676235778s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 9,
+    "start_ref": "20:7",
+    "end_ref": "21:21",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 30.792148633s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 10,
+    "start_ref": "21:22",
+    "end_ref": "23:11",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 23.800328168s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 11,
+    "start_ref": "23:12",
+    "end_ref": "25:1",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 16.693038228s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 12,
+    "start_ref": "25:2",
+    "end_ref": "26:16",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 7.68253878s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 13,
+    "start_ref": "26:17",
+    "end_ref": "28:6",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 10.946642ms.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 14,
+    "start_ref": "28:7",
+    "end_ref": "29:21",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 52.74811264s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 15,
+    "start_ref": "29:22",
+    "end_ref": "31:11",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 45.449243496s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 16,
+    "start_ref": "31:12",
+    "end_ref": "33:1",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 38.344507096s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 17,
+    "start_ref": "33:2",
+    "end_ref": "34:16",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 31.303667351s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 18,
+    "start_ref": "34:17",
+    "end_ref": "36:6",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 23.914925975s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 19,
+    "start_ref": "36:7",
+    "end_ref": "37:21",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 17.030516567s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 20,
+    "start_ref": "37:22",
+    "end_ref": "39:11",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 9.936303832s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 21,
+    "start_ref": "39:12",
+    "end_ref": "41:1",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 2.634855037s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 22,
+    "start_ref": "41:2",
+    "end_ref": "42:16",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 55.613296366s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 23,
+    "start_ref": "42:17",
+    "end_ref": "44:6",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 49.086419223s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 24,
+    "start_ref": "44:7",
+    "end_ref": "45:21",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 42.178211377s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 25,
+    "start_ref": "45:22",
+    "end_ref": "47:11",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 35.106139734s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 26,
+    "start_ref": "47:12",
+    "end_ref": "49:1",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 28.001970832s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 27,
+    "start_ref": "49:2",
+    "end_ref": "50:16",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 20.977092776s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 28,
+    "start_ref": "50:17",
+    "end_ref": "52:6",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 13.566167385s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 29,
+    "start_ref": "52:7",
+    "end_ref": "53:21",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 6.65528603s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 30,
+    "start_ref": "53:22",
+    "end_ref": "55:11",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 33.32434ms.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 31,
+    "start_ref": "55:12",
+    "end_ref": "57:1",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 52.697645823s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 32,
+    "start_ref": "57:2",
+    "end_ref": "58:16",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 45.907640633s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 33,
+    "start_ref": "58:17",
+    "end_ref": "60:6",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 39.097814718s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 34,
+    "start_ref": "60:7",
+    "end_ref": "61:21",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 32.604842451s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 35,
+    "start_ref": "61:22",
+    "end_ref": "63:11",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 25.790739844s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 36,
+    "start_ref": "63:12",
+    "end_ref": "65:1",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 19.005682182s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 37,
+    "start_ref": "65:2",
+    "end_ref": "66:16",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 12.281841576s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 38,
+    "start_ref": "66:17",
+    "end_ref": "68:6",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 5.084576838s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 39,
+    "start_ref": "68:7",
+    "end_ref": "69:21",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 58.353494833s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 40,
+    "start_ref": "69:22",
+    "end_ref": "71:11",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 51.031347132s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 41,
+    "start_ref": "71:12",
+    "end_ref": "73:1",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 44.221166213s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 42,
+    "start_ref": "73:2",
+    "end_ref": "74:16",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 37.298218533s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 43,
+    "start_ref": "74:17",
+    "end_ref": "76:6",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 30.306500432s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 44,
+    "start_ref": "76:7",
+    "end_ref": "77:21",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 23.181032863s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 45,
+    "start_ref": "77:22",
+    "end_ref": "79:11",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 16.484713148s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 46,
+    "start_ref": "79:12",
+    "end_ref": "81:1",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 9.568434126s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 47,
+    "start_ref": "81:2",
+    "end_ref": "82:16",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 2.180743784s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 48,
+    "start_ref": "82:17",
+    "end_ref": "84:6",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 54.812842809s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 49,
+    "start_ref": "84:7",
+    "end_ref": "85:21",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 48.126782485s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 50,
+    "start_ref": "85:22",
+    "end_ref": "87:11",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 41.388026849s.', 'code': 'too_many_requests'}}"
+  },
+  {
+    "chunk_id": 51,
+    "start_ref": "87:12",
+    "end_ref": "88:13",
+    "topics": [],
+    "error": "Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 34.472858405s.', 'code': 'too_many_requests'}}"
+  }
+]

@@ -1,0 +1,28 @@
+{
+  "topics": [
+    {
+      "topic": "Deposition ground rules and witness admonitions",
+      "start_ref": "7:11",
+      "end_ref": "8:23",
+      "evidence_refs": [
+        "7:15",
+        "7:18",
+        "7:24",
+        "8:1",
+        "8:8",
+        "8:18",
+        "8:21",
+        "8:23"
+      ]
+    },
+    {
+      "topic": "Retention as an expert witness",
+      "start_ref": "8:24",
+      "end_ref": "8:25",
+      "evidence_refs": [
+        "8:24",
+        "8:25"
+      ]
+    }
+  ]
+}
