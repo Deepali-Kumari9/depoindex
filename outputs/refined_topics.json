@@ -1,181 +1,968 @@
 {
   "metadata": {
-    "input": "outputs/baseline_topics.json",
-    "successful_chunks": 4,
-    "failed_chunks": 47,
-    "baseline_topic_count": 9,
-    "refined_topic_count": 9,
-    "max_gap": 3,
-    "similarity_threshold": 0.4
+    "input": "outputs/batched_topics.json",
+    "batches_processed": 11,
+    "raw_topic_count": 57,
+    "refined_topic_count": 57,
+    "refinement": "Deterministic normalization of batched LLM topics. Topic boundaries and provenance are preserved. Source chunk IDs are derived from actual transcript references."
   },
   "topics": [
     {
-      "topic": "Deposition ground rules and witness instructions",
-      "start_ref": "7:11",
+      "topic_id": 1,
+      "topic": "Deposition ground rules and admonitions",
+      "start_ref": "7:15",
       "end_ref": "8:23",
       "evidence_refs": [
-        "7:11",
-        "7:18",
-        "7:20",
+        "7:15",
         "7:24",
-        "8:1",
         "8:8",
         "8:18",
-        "8:21",
-        "8:23"
+        "8:22"
       ],
+      "related_to": [],
       "source_chunk_ids": [
         1
       ]
     },
     {
-      "topic": "Retention as an expert witness",
+      "topic_id": 2,
+      "topic": "Scope of expert retention and opinions",
       "start_ref": "8:24",
-      "end_ref": "8:25",
-      "evidence_refs": [
-        "8:24",
-        "8:25"
-      ],
-      "source_chunk_ids": [
-        1
-      ]
-    },
-    {
-      "topic": "Scope of expert testimony",
-      "start_ref": "9:2",
       "end_ref": "9:18",
       "evidence_refs": [
-        "9:2",
-        "9:3",
-        "9:4",
+        "8:24",
         "9:5",
-        "9:6",
-        "9:7",
-        "9:8",
         "9:9",
-        "9:10",
-        "9:11",
-        "9:12",
-        "9:13",
-        "9:14",
-        "9:15",
-        "9:16",
-        "9:17",
-        "9:18"
+        "9:14"
       ],
+      "related_to": [],
       "source_chunk_ids": [
+        1,
         2
       ]
     },
     {
-      "topic": "Marking Expert Report as Exhibit 1 and deposition speaking instructions",
-      "start_ref": "10:2",
-      "end_ref": "10:15",
+      "topic_id": 3,
+      "topic": "Marking Exhibit 1 and instructions regarding speaking speed",
+      "start_ref": "9:19",
+      "end_ref": "10:24",
       "evidence_refs": [
-        "10:2",
+        "9:22",
         "10:3",
-        "10:4",
         "10:5",
-        "10:6",
-        "10:7",
-        "10:8",
         "10:9",
-        "10:10",
-        "10:11",
-        "10:12",
-        "10:13",
-        "10:14",
-        "10:15"
+        "10:23"
       ],
+      "related_to": [],
       "source_chunk_ids": [
-        2
-      ]
-    },
-    {
-      "topic": "Deposition ground rules regarding speaking speed",
-      "start_ref": "10:16",
-      "end_ref": "10:22",
-      "evidence_refs": [
-        "10:16",
-        "10:17",
-        "10:18",
-        "10:19",
-        "10:20",
-        "10:21",
-        "10:22"
-      ],
-      "source_chunk_ids": [
+        2,
         3
       ]
     },
     {
+      "topic_id": 4,
       "topic": "Witness background and role at Student Borrower Protection Center",
-      "start_ref": "11:2",
+      "start_ref": "11:1",
       "end_ref": "12:6",
       "evidence_refs": [
         "11:2",
-        "11:3",
+        "11:5",
         "11:18",
-        "11:19",
-        "11:20",
         "11:22",
-        "11:23",
-        "11:24",
-        "11:25",
-        "12:4",
-        "12:5",
-        "12:6"
+        "12:5"
       ],
+      "related_to": [],
       "source_chunk_ids": [
         3
       ]
     },
     {
-      "topic": "Organization's advocacy issues and areas of work",
+      "topic_id": 5,
+      "topic": "Policy agenda and student loan cancellation campaign of Student Borrower Protection Center",
       "start_ref": "12:7",
-      "end_ref": "12:23",
-      "evidence_refs": [
-        "12:7",
-        "12:8",
-        "12:12",
-        "12:17",
-        "12:23"
-      ],
-      "source_chunk_ids": [
-        4
-      ]
-    },
-    {
-      "topic": "Campaign to cancel student loan debt",
-      "start_ref": "12:24",
       "end_ref": "13:11",
       "evidence_refs": [
+        "12:7",
+        "12:12",
+        "12:17",
         "12:24",
-        "12:25",
-        "13:1",
-        "13:3",
-        "13:4",
-        "13:8",
-        "13:11"
+        "13:4"
       ],
+      "related_to": [],
       "source_chunk_ids": [
         4
       ]
     },
     {
-      "topic": "Initiatives to develop and implement student loan protections",
+      "topic_id": 6,
+      "topic": "Regulatory policy initiatives and successes of Student Borrower Protection Center",
       "start_ref": "13:12",
-      "end_ref": "13:21",
+      "end_ref": "15:11",
       "evidence_refs": [
         "13:12",
-        "13:13",
-        "13:14",
-        "13:15",
         "13:18",
-        "13:21"
+        "14:5",
+        "14:18",
+        "15:2"
       ],
+      "related_to": [],
       "source_chunk_ids": [
-        4
+        4,
+        5
+      ]
+    },
+    {
+      "topic_id": 7,
+      "topic": "Witness background in student loan advocacy and rulemaking",
+      "start_ref": "15:13",
+      "end_ref": "16:14",
+      "evidence_refs": [
+        "15:13",
+        "16:11",
+        "16:14"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        6
+      ]
+    },
+    {
+      "topic_id": 8,
+      "topic": "Comments and feedback on Department of Education student loan servicing contracts",
+      "start_ref": "16:16",
+      "end_ref": "18:3",
+      "evidence_refs": [
+        "16:16",
+        "17:12",
+        "18:3"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        6,
+        7
+      ]
+    },
+    {
+      "topic_id": 9,
+      "topic": "Witness employment and educational background regarding loan servicing",
+      "start_ref": "18:4",
+      "end_ref": "18:13",
+      "evidence_refs": [
+        "18:4",
+        "18:10",
+        "18:13"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        7
+      ]
+    },
+    {
+      "topic_id": 10,
+      "topic": "NCLC work and Congressional testimony on student loan servicing",
+      "start_ref": "18:14",
+      "end_ref": "19:14",
+      "evidence_refs": [
+        "18:14",
+        "18:22",
+        "19:2",
+        "19:14"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        7,
+        8
+      ]
+    },
+    {
+      "topic_id": 11,
+      "topic": "Student loan portfolio transfers between servicers",
+      "start_ref": "19:15",
+      "end_ref": "21:8",
+      "evidence_refs": [
+        "19:15",
+        "19:23",
+        "20:7",
+        "21:8"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        8,
+        9
+      ]
+    },
+    {
+      "topic_id": 12,
+      "topic": "Data transfer processes and risks to borrowers during servicer transfers",
+      "start_ref": "21:10",
+      "end_ref": "22:17",
+      "evidence_refs": [
+        "21:10",
+        "21:16",
+        "22:8",
+        "22:17"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        9,
+        10
+      ]
+    },
+    {
+      "topic_id": 13,
+      "topic": "Servicing continuity during servicer portfolio exits",
+      "start_ref": "22:18",
+      "end_ref": "23:6",
+      "evidence_refs": [
+        "22:18",
+        "22:24",
+        "23:5"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        10
+      ]
+    },
+    {
+      "topic_id": 14,
+      "topic": "Regulations governing student loan servicing data transfers",
+      "start_ref": "23:7",
+      "end_ref": "23:11",
+      "evidence_refs": [
+        "23:7",
+        "23:10"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        10
+      ]
+    },
+    {
+      "topic_id": 15,
+      "topic": "Regulations and state laws regarding PEAKS loan data transfer from Access Group to Vervent",
+      "start_ref": "23:12",
+      "end_ref": "24:13",
+      "evidence_refs": [
+        "23:12",
+        "23:14",
+        "23:23",
+        "24:6",
+        "24:9"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        11
+      ]
+    },
+    {
+      "topic_id": 16,
+      "topic": "Witness's work experience related to criminal law",
+      "start_ref": "24:14",
+      "end_ref": "25:7",
+      "evidence_refs": [
+        "24:14",
+        "24:16",
+        "24:20",
+        "24:24",
+        "25:5",
+        "25:7"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        11,
+        12
+      ]
+    },
+    {
+      "topic_id": 17,
+      "topic": "Familiarity with RICO statute and expert report findings regarding RICO enterprise",
+      "start_ref": "25:8",
+      "end_ref": "26:14",
+      "evidence_refs": [
+        "25:8",
+        "25:13",
+        "25:18",
+        "26:7",
+        "26:9",
+        "26:13"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        12
+      ]
+    },
+    {
+      "topic_id": 18,
+      "topic": "Structure and paragraph numbering of expert report",
+      "start_ref": "26:15",
+      "end_ref": "27:1",
+      "evidence_refs": [
+        "26:16",
+        "26:19",
+        "26:25",
+        "27:1"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        12,
+        13
+      ]
+    },
+    {
+      "topic_id": 19,
+      "topic": "General background and legality of for-profit colleges",
+      "start_ref": "27:2",
+      "end_ref": "27:12",
+      "evidence_refs": [
+        "27:2",
+        "27:7",
+        "27:10"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        13
+      ]
+    },
+    {
+      "topic_id": 20,
+      "topic": "Witness's analysis of ITT education quality, student debt, and economic outcomes",
+      "start_ref": "27:13",
+      "end_ref": "30:4",
+      "evidence_refs": [
+        "27:13",
+        "27:22",
+        "28:10",
+        "28:21",
+        "29:8",
+        "30:1"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        13,
+        14,
+        15
+      ]
+    },
+    {
+      "topic_id": 21,
+      "topic": "ITT student retention statistics and Senate HELP Committee report",
+      "start_ref": "30:5",
+      "end_ref": "31:11",
+      "evidence_refs": [
+        "30:5",
+        "30:11",
+        "30:16",
+        "30:21",
+        "31:3",
+        "31:11"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        15
+      ]
+    },
+    {
+      "topic_id": 22,
+      "topic": "Evaluation of ITT Degree Value and Outlier Student Outcomes",
+      "start_ref": "31:12",
+      "end_ref": "35:10",
+      "evidence_refs": [
+        "31:17",
+        "32:17",
+        "33:9",
+        "34:12",
+        "35:1"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        16,
+        17,
+        18
+      ]
+    },
+    {
+      "topic_id": 23,
+      "topic": "Vervent's Awareness of ITT Misrepresentations and Supporting Reports",
+      "start_ref": "35:11",
+      "end_ref": "37:1",
+      "evidence_refs": [
+        "35:22",
+        "36:12",
+        "36:17",
+        "36:24"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        18,
+        19
+      ]
+    },
+    {
+      "topic_id": 24,
+      "topic": "Outlier ITT Student Outcomes and Post-Graduation Earnings",
+      "start_ref": "37:19",
+      "end_ref": "39:11",
+      "evidence_refs": [
+        "37:23",
+        "38:11",
+        "38:18",
+        "38:21"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        19,
+        20
+      ]
+    },
+    {
+      "topic_id": 25,
+      "topic": "Hypothetical regarding ITT graduate pre- and post-graduation earnings and outlier status",
+      "start_ref": "39:12",
+      "end_ref": "42:4",
+      "evidence_refs": [
+        "39:16",
+        "40:10",
+        "40:24",
+        "41:7",
+        "42:1"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        21,
+        22
+      ]
+    },
+    {
+      "topic_id": 26,
+      "topic": "Vervent defendants' non-involvement in PEAKS loan origination",
+      "start_ref": "42:5",
+      "end_ref": "43:7",
+      "evidence_refs": [
+        "42:7",
+        "42:11",
+        "42:17",
+        "43:4"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        22,
+        23
+      ]
+    },
+    {
+      "topic_id": 27,
+      "topic": "Vervent defendants' role regarding student recruiting for ITT",
+      "start_ref": "43:8",
+      "end_ref": "44:12",
+      "evidence_refs": [
+        "43:8",
+        "43:13",
+        "44:8",
+        "44:11"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        23,
+        24
+      ]
+    },
+    {
+      "topic_id": 28,
+      "topic": "Witness qualifications to offer opinions on PEAKS loans",
+      "start_ref": "44:13",
+      "end_ref": "44:21",
+      "evidence_refs": [
+        "44:13",
+        "44:18",
+        "44:20"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        24
+      ]
+    },
+    {
+      "topic_id": 29,
+      "topic": "Legal enforceability of PEAKS loans, CFPB settlement, and bankruptcy collection orders",
+      "start_ref": "44:22",
+      "end_ref": "47:11",
+      "evidence_refs": [
+        "44:22",
+        "45:10",
+        "45:16",
+        "46:9",
+        "46:15",
+        "47:9"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        24,
+        25
+      ]
+    },
+    {
+      "topic_id": 30,
+      "topic": "Scope of report on PEAKS loan document defects and enforceability",
+      "start_ref": "47:14",
+      "end_ref": "50:11",
+      "evidence_refs": [
+        "47:14",
+        "47:22",
+        "48:18",
+        "49:9",
+        "50:4",
+        "50:11"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        26,
+        27
+      ]
+    },
+    {
+      "topic_id": 31,
+      "topic": "Missing PEAKS loan origination documents under Truth in Lending Act",
+      "start_ref": "50:12",
+      "end_ref": "51:2",
+      "evidence_refs": [
+        "50:14",
+        "50:19",
+        "51:1"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        27,
+        28
+      ]
+    },
+    {
+      "topic_id": 32,
+      "topic": "Scope of expert review regarding disclosures held by Access Group and Vervent",
+      "start_ref": "51:3",
+      "end_ref": "51:15",
+      "evidence_refs": [
+        "51:3",
+        "51:6",
+        "51:11",
+        "51:14"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        28
+      ]
+    },
+    {
+      "topic_id": 33,
+      "topic": "California Student Loan Servicing Law compliance and report scope",
+      "start_ref": "51:16",
+      "end_ref": "53:12",
+      "evidence_refs": [
+        "51:16",
+        "51:22",
+        "52:21",
+        "53:4",
+        "53:9"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        28,
+        29
+      ]
+    },
+    {
+      "topic_id": 34,
+      "topic": "Proof of enforceability and Vervent's access to underlying loan documents versus imported interest rate data",
+      "start_ref": "53:13",
+      "end_ref": "55:11",
+      "evidence_refs": [
+        "53:21",
+        "54:5",
+        "54:18",
+        "55:4",
+        "55:10"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        29,
+        30
+      ]
+    },
+    {
+      "topic_id": 35,
+      "topic": "Witness opinion on provision of final disclosures to PEAKS borrowers",
+      "start_ref": "55:14",
+      "end_ref": "56:11",
+      "evidence_refs": [
+        "55:14",
+        "55:17",
+        "56:9"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        31
+      ]
+    },
+    {
+      "topic_id": 36,
+      "topic": "Right to cancel loan and mechanics of cancellation for failure to provide disclosures",
+      "start_ref": "56:12",
+      "end_ref": "58:22",
+      "evidence_refs": [
+        "56:12",
+        "56:22",
+        "57:16",
+        "58:14"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        31,
+        32,
+        33
+      ]
+    },
+    {
+      "topic_id": 37,
+      "topic": "Cancellation rights for disbursed loans and disclosure grace periods",
+      "start_ref": "58:23",
+      "end_ref": "60:1",
+      "evidence_refs": [
+        "58:23",
+        "59:11",
+        "59:16"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        33
+      ]
+    },
+    {
+      "topic_id": 38,
+      "topic": "Post-origination events and factors affecting loan enforceability",
+      "start_ref": "60:2",
+      "end_ref": "61:23",
+      "evidence_refs": [
+        "60:2",
+        "60:14",
+        "61:9",
+        "61:20"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        33,
+        34,
+        35
+      ]
+    },
+    {
+      "topic_id": 39,
+      "topic": "CFPB settlement scope regarding Vervent defendants",
+      "start_ref": "61:24",
+      "end_ref": "62:7",
+      "evidence_refs": [
+        "61:25",
+        "62:2",
+        "62:5"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        35
+      ]
+    },
+    {
+      "topic_id": 40,
+      "topic": "Historical ITT recruiting practices and Department of Education Title IV participation",
+      "start_ref": "62:8",
+      "end_ref": "63:11",
+      "evidence_refs": [
+        "62:8",
+        "62:17",
+        "63:3",
+        "63:9"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        35
+      ]
+    },
+    {
+      "topic_id": 41,
+      "topic": "Department of Education loans and industry perception of ITT's practices",
+      "start_ref": "63:12",
+      "end_ref": "66:20",
+      "evidence_refs": [
+        "63:18",
+        "64:12",
+        "65:13",
+        "66:15"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        36,
+        37,
+        38
+      ]
+    },
+    {
+      "topic_id": 42,
+      "topic": "CFPB investigation of PEAKS program and findings regarding Vervent defendants",
+      "start_ref": "66:22",
+      "end_ref": "68:25",
+      "evidence_refs": [
+        "67:2",
+        "67:17",
+        "68:13",
+        "68:22"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        38,
+        39
+      ]
+    },
+    {
+      "topic_id": 43,
+      "topic": "SEC investigation into PEAKS loans and payments on behalf of borrowers",
+      "start_ref": "69:1",
+      "end_ref": "71:11",
+      "evidence_refs": [
+        "69:1",
+        "69:15",
+        "70:23"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        39,
+        40
+      ]
+    },
+    {
+      "topic_id": 44,
+      "topic": "CFPB lawsuit against ITT and Vervent's role as loan servicer",
+      "start_ref": "71:15",
+      "end_ref": "73:25",
+      "evidence_refs": [
+        "71:15",
+        "72:23",
+        "73:7",
+        "73:22"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        41,
+        42
+      ]
+    },
+    {
+      "topic_id": 45,
+      "topic": "State Attorneys General investigations into ITT",
+      "start_ref": "74:1",
+      "end_ref": "75:4",
+      "evidence_refs": [
+        "74:1",
+        "74:10",
+        "74:24",
+        "75:1"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        42,
+        43
+      ]
+    },
+    {
+      "topic_id": 46,
+      "topic": "U.S. Department of Education findings and loan servicer oversight",
+      "start_ref": "75:5",
+      "end_ref": "75:23",
+      "evidence_refs": [
+        "75:5",
+        "75:9",
+        "75:13",
+        "75:20"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        43
+      ]
+    },
+    {
+      "topic_id": 47,
+      "topic": "Deponent's professional experience conducting investigations",
+      "start_ref": "76:11",
+      "end_ref": "77:19",
+      "evidence_refs": [
+        "76:14",
+        "76:19",
+        "77:6",
+        "77:15"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        44
+      ]
+    },
+    {
+      "topic_id": 48,
+      "topic": "Significance of ITT/PEAKS investigations and impact on Vervent servicing",
+      "start_ref": "77:20",
+      "end_ref": "79:11",
+      "evidence_refs": [
+        "77:21",
+        "78:4",
+        "78:18",
+        "79:2"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        44,
+        45
+      ]
+    },
+    {
+      "topic_id": 49,
+      "topic": "Vervent's decision to continue servicing and collecting on PEAKS loans during investigations",
+      "start_ref": "79:12",
+      "end_ref": "80:3",
+      "evidence_refs": [
+        "79:12",
+        "79:17",
+        "80:1"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        46
+      ]
+    },
+    {
+      "topic_id": 50,
+      "topic": "Functions and scope of loan servicing versus loan collection",
+      "start_ref": "80:4",
+      "end_ref": "81:9",
+      "evidence_refs": [
+        "80:7",
+        "80:10",
+        "80:24",
+        "81:3",
+        "81:7"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        46,
+        47
+      ]
+    },
+    {
+      "topic_id": 51,
+      "topic": "Legal standards and statutes regarding servicing unenforceable loans or loans under investigation",
+      "start_ref": "81:10",
+      "end_ref": "82:6",
+      "evidence_refs": [
+        "81:10",
+        "81:16",
+        "81:24",
+        "82:3"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        47
+      ]
+    },
+    {
+      "topic_id": 52,
+      "topic": "Fall 2020 CFPB settlement and post-settlement servicing conduct",
+      "start_ref": "82:7",
+      "end_ref": "82:25",
+      "evidence_refs": [
+        "82:7",
+        "82:13",
+        "82:18",
+        "82:24"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        47,
+        48
+      ]
+    },
+    {
+      "topic_id": 53,
+      "topic": "Absence of pre-2020 judicial or governmental determinations of loan unenforceability",
+      "start_ref": "83:1",
+      "end_ref": "85:14",
+      "evidence_refs": [
+        "83:1",
+        "83:10",
+        "84:13",
+        "85:1",
+        "85:5",
+        "85:12"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        48,
+        49
+      ]
+    },
+    {
+      "topic_id": 54,
+      "topic": "Expert opinion on PEAKS loan unenforceability at origination versus post-origination events",
+      "start_ref": "85:15",
+      "end_ref": "87:3",
+      "evidence_refs": [
+        "85:16",
+        "85:22",
+        "86:11",
+        "86:23"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        49,
+        50
+      ]
+    },
+    {
+      "topic_id": 55,
+      "topic": "Hypothetical impact of Vervent refusing to service PEAKS loans",
+      "start_ref": "87:4",
+      "end_ref": "87:10",
+      "evidence_refs": [
+        "87:5",
+        "87:8"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        50
+      ]
+    },
+    {
+      "topic_id": 56,
+      "topic": "Witness's knowledge of issues with Vervent's servicing of PEAKS loans in reviewed investigations",
+      "start_ref": "87:12",
+      "end_ref": "88:3",
+      "evidence_refs": [
+        "87:12",
+        "87:24",
+        "88:2"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        51
+      ]
+    },
+    {
+      "topic_id": 57,
+      "topic": "Conclusion of deposition",
+      "start_ref": "88:4",
+      "end_ref": "88:13",
+      "evidence_refs": [
+        "88:4",
+        "88:6",
+        "88:11",
+        "88:13"
+      ],
+      "related_to": [],
+      "source_chunk_ids": [
+        51
       ]
     }
   ]

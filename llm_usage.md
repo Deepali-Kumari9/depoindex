@@ -83,3 +83,42 @@ Validation included:
 - inspecting successful LLM outputs manually,
 - verifying that API failures were recorded rather than silently ignored,
 - comparing repeated baseline outputs to observe model variability.
+
+## Batched LLM Experiment
+
+After the baseline experiment reached the free-tier daily request limit, the LLM pipeline was redesigned to reduce the number of API requests.
+
+Instead of sending one Gemini request for each of the 51 transcript chunks, the new experiment combines 5 consecutive provenance-preserving chunks into one Gemini request.
+
+This reduced the number of Gemini requests from 51 to 11.
+
+The batched pipeline:
+- preserved the original `page:line` references,
+- allowed topics to span multiple original chunks,
+- instructed Gemini to avoid duplicate topics caused by chunk boundaries,
+- required structured JSON output,
+- saved results incrementally after each batch.
+
+The batched experiment successfully processed all 11 requests and produced 57 raw topic entries.
+
+The output was then passed through deterministic refinement and provenance validation. The validation checked that:
+- every `start_ref` exists in the canonical transcript,
+- every `end_ref` exists in the canonical transcript,
+- every `evidence_ref` exists in the canonical transcript,
+- topic boundaries are correctly ordered,
+- evidence references fall within the topic boundaries.
+
+The validation completed with 57 topics checked and 0 provenance errors.
+
+### What changed from the baseline
+
+| Change | Reason |
+|---|---|
+| Combine 5 transcript chunks per LLM request | Reduce API request count and work within the free-tier quota |
+| Preserve individual chunk IDs in the input | Maintain traceability even when multiple chunks are processed together |
+| Allow topics to cross chunk boundaries | Avoid artificial topic boundaries caused by chunking |
+| Deterministically assign global topic IDs after extraction | Avoid unreliable batch-local topic numbering |
+| Derive source chunk IDs from actual page:line references | Preserve accurate provenance |
+| Clear untrusted `related_to` values from the raw LLM output | Some model-generated relationship indices were inconsistent across batches; relationships will be established only after global topic evaluation |
+
+The batching approach was accepted as an engineering improvement because it reduced API usage while preserving provenance and enabling the complete transcript to be processed.
