@@ -17,8 +17,14 @@ client = genai.Client(
     http_options={"timeout": 60000}
 )
 
-INPUT_PATH = "outputs/transcript_chunks.json"
-OUTPUT_PATH = "outputs/batched_topics.json"
+INPUT_PATH = os.getenv(
+    "DEPOINDEX_INPUT_PATH",
+    "outputs/transcript_chunks.json"
+)
+OUTPUT_PATH = os.getenv(
+    "DEPOINDEX_OUTPUT_PATH",
+    "outputs/batched_topics.json"
+)
 
 # 5 original chunks per Gemini request
 BATCH_SIZE = 5
@@ -127,12 +133,34 @@ def clean_json_response(result):
 def extract_batch(chunks):
     prompt = build_prompt(chunks)
 
-    interaction = client.interactions.create(
-        model="gemini-3.6-flash",
-        input=prompt
-    )
+    max_retries = 3
+    retry_delays = [20, 40, 60]
 
-    return clean_json_response(interaction.output_text)
+    for attempt in range(max_retries):
+        try:
+            interaction = client.interactions.create(
+                model="gemini-3.5-flash-lite",
+                input=prompt
+            )
+
+            return clean_json_response(interaction.output_text)
+
+        except Exception as error:
+            if attempt == max_retries - 1:
+                raise
+
+            print(
+                f"Request failed (attempt {attempt + 1}/{max_retries}): "
+                f"{error}",
+                flush=True
+            )
+
+            print(
+                f"Waiting {retry_delays[attempt]} seconds before retry...",
+                flush=True
+            )
+
+            time.sleep(retry_delays[attempt])
 
 
 def main():

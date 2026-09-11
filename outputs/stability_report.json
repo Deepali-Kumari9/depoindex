@@ -1,0 +1,23 @@
+{
+  "experiment": {
+    "input": "outputs/stability_chunks_19_34.json",
+    "pages": "19-34",
+    "records": 400,
+    "runs": 3
+  },
+  "topic_counts": {
+    "run_1": 8,
+    "run_2": 9,
+    "run_3": 7
+  },
+  "topic_count_stability": "VARIED",
+  "identical_label_and_boundary_matches": {
+    "all_three_runs": 0,
+    "pairwise": {
+      "run_1_vs_run_2": 0,
+      "run_1_vs_run_3": 0,
+      "run_2_vs_run_3": 0
+    }
+  },
+  "provenance_structure": "VALID"
+}
