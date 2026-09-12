@@ -357,6 +357,9 @@ cf67e30 docs: document segmentation failure cases
 ead75a0 docs: complete reproducibility and AI usage documentation
 26b631c docs: update segmentation failure analysis
 d889052 test: update complete-deposition stability evaluation
+172a887 docs: document re-entry and digression limitations
+fe8649a docs: refine methodology and validation criteria
+93f5992 docs: clarify stability evaluation methodology
 
 
 The history records meaningful implementation, testing, failure analysis, interface development, reproducibility fixes, and complete-deposition stability evaluation.
