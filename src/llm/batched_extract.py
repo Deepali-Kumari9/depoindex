@@ -21,6 +21,7 @@ INPUT_PATH = os.getenv(
     "DEPOINDEX_INPUT_PATH",
     "outputs/transcript_chunks.json"
 )
+
 OUTPUT_PATH = os.getenv(
     "DEPOINDEX_OUTPUT_PATH",
     "outputs/batched_topics.json"
@@ -35,9 +36,96 @@ def load_chunks(path):
         return json.load(file)
 
 
+def build_provenance_index(chunks):
+    """
+    Build a mapping of each printed page to its last valid
+    transcript line.
+
+    This is used to deterministically repair page:0 references
+    produced by the LLM at page boundaries.
+    """
+    last_line_by_page = {}
+
+    for chunk in chunks:
+        for record in chunk["records"]:
+            page = record["printed_page"]
+            line = record["line"]
+
+            if page not in last_line_by_page:
+                last_line_by_page[page] = line
+            else:
+                last_line_by_page[page] = max(
+                    last_line_by_page[page],
+                    line
+                )
+
+    return last_line_by_page
+
+
+def normalize_ref(ref, last_line_by_page):
+    """
+    Normalize invalid page:0 references.
+
+    Example:
+        69:0 -> 68:<last valid line on page 68>
+
+    Other references are left unchanged.
+    """
+    if not ref or ":" not in ref:
+        return ref
+
+    page_str, line_str = ref.split(":", 1)
+
+    try:
+        page = int(page_str)
+        line = int(line_str)
+    except ValueError:
+        return ref
+
+    # Gemini can sometimes represent a page transition as
+    # "next_page:0". This is not a real transcript reference.
+    # Convert it to the final valid line of the previous page.
+    if line == 0 and page > 1:
+        previous_page = page - 1
+
+        if previous_page in last_line_by_page:
+            return f"{previous_page}:{last_line_by_page[previous_page]}"
+
+    return ref
+
+
+def normalize_topics(result, last_line_by_page):
+    """
+    Apply deterministic provenance normalization to all
+    topic boundary and evidence references.
+    """
+    for topic in result.get("topics", []):
+        topic["start_ref"] = normalize_ref(
+            topic.get("start_ref"),
+            last_line_by_page
+        )
+
+        topic["end_ref"] = normalize_ref(
+            topic.get("end_ref"),
+            last_line_by_page
+        )
+
+        topic["evidence_refs"] = [
+            normalize_ref(ref, last_line_by_page)
+            for ref in topic.get("evidence_refs", [])
+        ]
+
+    return result
+
+
 def save_results(results, path):
     with open(path, "w", encoding="utf-8") as file:
-        json.dump(results, file, indent=2, ensure_ascii=False)
+        json.dump(
+            results,
+            file,
+            indent=2,
+            ensure_ascii=False
+        )
 
 
 def build_prompt(chunks):
@@ -81,6 +169,8 @@ IMPORTANT PROVENANCE RULES:
 8. Do not create duplicate topics merely because a chunk boundary occurs.
 9. Topics may begin in one chunk and end in another.
 10. Use the page:line references to determine boundaries, not chunk numbers.
+11. Do not use page:0 references. If a topic ends at a page transition,
+    use the final valid transcript line on the preceding page.
 
 Return ONLY valid JSON.
 
@@ -130,7 +220,7 @@ def clean_json_response(result):
     return json.loads(result)
 
 
-def extract_batch(chunks):
+def extract_batch(chunks, last_line_by_page):
     prompt = build_prompt(chunks)
 
     max_retries = 3
@@ -143,7 +233,17 @@ def extract_batch(chunks):
                 input=prompt
             )
 
-            return clean_json_response(interaction.output_text)
+            result = clean_json_response(
+                interaction.output_text
+            )
+
+            # Deterministic post-processing of LLM provenance.
+            result = normalize_topics(
+                result,
+                last_line_by_page
+            )
+
+            return result
 
         except Exception as error:
             if attempt == max_retries - 1:
@@ -166,9 +266,15 @@ def extract_batch(chunks):
 def main():
     chunks = load_chunks(INPUT_PATH)
 
+    # Build provenance information from the actual transcript chunks.
+    # This ensures normalization uses real transcript boundaries.
+    last_line_by_page = build_provenance_index(chunks)
+
     all_results = []
 
-    total_batches = (len(chunks) + BATCH_SIZE - 1) // BATCH_SIZE
+    total_batches = (
+        len(chunks) + BATCH_SIZE - 1
+    ) // BATCH_SIZE
 
     print(f"Total chunks: {len(chunks)}")
     print(f"Batch size: {BATCH_SIZE}")
@@ -186,11 +292,17 @@ def main():
         )
 
         try:
-            result = extract_batch(batch)
+            result = extract_batch(
+                batch,
+                last_line_by_page
+            )
 
             batch_result = {
                 "batch_id": batch_number,
-                "chunk_ids": [chunk["chunk_id"] for chunk in batch],
+                "chunk_ids": [
+                    chunk["chunk_id"]
+                    for chunk in batch
+                ],
                 "start_ref": batch[0]["start_ref"],
                 "end_ref": batch[-1]["end_ref"],
                 "topics": result.get("topics", [])
@@ -198,7 +310,10 @@ def main():
 
             all_results.append(batch_result)
 
-            save_results(all_results, OUTPUT_PATH)
+            save_results(
+                all_results,
+                OUTPUT_PATH
+            )
 
             print(
                 f"Completed batch {batch_number}: "
@@ -213,7 +328,10 @@ def main():
 
             error_result = {
                 "batch_id": batch_number,
-                "chunk_ids": [chunk["chunk_id"] for chunk in batch],
+                "chunk_ids": [
+                    chunk["chunk_id"]
+                    for chunk in batch
+                ],
                 "start_ref": batch[0]["start_ref"],
                 "end_ref": batch[-1]["end_ref"],
                 "topics": [],
@@ -222,7 +340,10 @@ def main():
 
             all_results.append(error_result)
 
-            save_results(all_results, OUTPUT_PATH)
+            save_results(
+                all_results,
+                OUTPUT_PATH
+            )
 
         # Small delay between requests
         time.sleep(2)

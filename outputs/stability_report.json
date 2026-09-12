@@ -1,23 +1,55 @@
 {
   "experiment": {
-    "input": "outputs/stability_chunks_19_34.json",
-    "pages": "19-34",
-    "records": 400,
+    "input": "outputs/transcript_chunks.json",
+    "canonical_transcript": "outputs/canonical_transcript.json",
+    "scope": "complete deposition",
+    "printed_pages": "7-88",
+    "records": 2027,
+    "chunks": 51,
+    "batch_size": 5,
     "runs": 3
   },
   "topic_counts": {
-    "run_1": 8,
-    "run_2": 9,
-    "run_3": 7
+    "run_1": 43,
+    "run_2": 42,
+    "run_3": 45
   },
   "topic_count_stability": "VARIED",
   "identical_label_and_boundary_matches": {
-    "all_three_runs": 0,
+    "all_three_runs": 1,
     "pairwise": {
-      "run_1_vs_run_2": 0,
-      "run_1_vs_run_3": 0,
-      "run_2_vs_run_3": 0
+      "run_1_vs_run_2": 8,
+      "run_1_vs_run_3": 3,
+      "run_2_vs_run_3": 4
     }
   },
-  "provenance_structure": "VALID"
+  "provenance_validation": {
+    "canonical_reference_count": 2027,
+    "overall_status": "VALID",
+    "runs": [
+      {
+        "run": 1,
+        "invalid_boundary_refs": [],
+        "invalid_evidence_refs": [],
+        "status": "VALID"
+      },
+      {
+        "run": 2,
+        "invalid_boundary_refs": [],
+        "invalid_evidence_refs": [],
+        "status": "VALID"
+      },
+      {
+        "run": 3,
+        "invalid_boundary_refs": [],
+        "invalid_evidence_refs": [],
+        "status": "VALID"
+      }
+    ]
+  },
+  "interpretation": {
+    "topic_count": "The topic count varied across runs, indicating some LLM segmentation variability.",
+    "provenance": "All topic boundaries and evidence references were checked against the canonical transcript.",
+    "reproducibility": "The complete deposition was processed three times using the same extraction, chunking, prompting, and post-processing pipeline."
+  }
 }
