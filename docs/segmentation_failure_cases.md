@@ -1,166 +1,233 @@
-# Segmentation Failure Cases
+# Segmentation Failure Analysis
 
-This document analyzes difficult cases observed during the three-run stability experiment on the same deposition transcript subset (printed pages 19-34).
+## Overview
 
-The same 400 transcript records were processed three times using the same pipeline and model. The runs produced 8, 9, and 7 topics respectively. The main instability was not invalid provenance, but differences in semantic topic boundaries and decisions to split or merge closely related discussions.
+The DepoIndex pipeline was run three times on the complete deposition using the
+same input transcript, chunking configuration, batch size, and extraction
+pipeline.
 
-## Case 1: Student loan transfer discussion
+The three runs produced:
 
-### What the runs produced
+| Run | Topic count | Provenance |
+|---|---:|---|
+| Run 1 | 43 | Valid |
+| Run 2 | 42 | Valid |
+| Run 3 | 45 | Valid |
 
-The discussion about student loan portfolio transfers and related data processes was segmented differently:
+The topic counts varied across runs, while all reported start, end, and
+evidence references remained valid against the canonical transcript.
 
-| Run | Segmentation |
-|---|---|
-| Run 1 | `20:16 -> 23:18` as one topic |
-| Run 2 | `20:16 -> 22:5` and `22:6 -> 23:20` as two topics |
-| Run 3 | `20:21 -> 23:18` as one topic |
+This indicates that the main source of instability is not source addressing,
+but the LLM's interpretation of topic granularity and topic boundaries.
 
-Run 1 treated the transfer mechanics, risks, and regulatory discussion as one continuous topic.
-
-Run 2 separated the discussion into transfer mechanics/data processes and risks/regulations.
-
-Run 3 again treated most of the discussion as one topic, while also choosing a slightly different starting boundary.
-
-### What should happen
-
-The segmentation should consistently recognize the meaningful transition between:
-
-1. the mechanics and processes involved in transferring student loan portfolios/data, and
-2. the risks and regulatory considerations associated with those transfers.
-
-However, closely connected material should not be split merely because the discussion moves from one aspect of the same subject to another.
-
-### Why the LLM varied
-
-The sections are semantically related and occur consecutively. The model can therefore reasonably interpret them either as:
-
-- one broader topic about student loan transfers, or
-- separate topics for transfer mechanics and transfer risks/regulations.
-
-The model also has to decide whether a change in emphasis represents a meaningful topic transition or simply a continuation of the current topic.
-
-### Possible improvement
-
-Use a more explicit segmentation criterion in the extraction prompt. For example, require a new topic only when the testimony changes to a substantively different question or subject, rather than when the discussion changes from one aspect of the same subject to another.
-
-A deterministic post-processing stage could also flag very closely related adjacent topics for review before final indexing.
+The following cases represent three meaningful types of segmentation
+instability observed across the runs.
 
 ---
 
-## Case 2: PEAKS transfer, criminal law, RICO, and report structure
+## Case 1 — Student-loan portfolio transfers: merged vs. split topics
 
 ### What the runs produced
 
-This section showed a stronger difference in topic boundaries:
+**Run 1**
 
-| Run | Segmentation |
-|---|---|
-| Run 1 | `23:20 -> 24:13` PEAKS transfer; `24:14 -> 26:14` criminal law/RICO; `26:15 -> 26:25` report structure |
-| Run 2 | `23:20 -> 25:7` PEAKS transfer/criminal law; `25:8 -> 26:25` RICO/report formatting |
-| Run 3 | `23:19 -> 25:7` PEAKS transfer/criminal law; `25:8 -> 26:25` RICO/report formatting |
+- Experience with student loan portfolio transfers between servicers
+- **19:15 → 23:6**
 
-Run 1 identified three separate topic transitions.
+**Run 2**
 
-Runs 2 and 3 grouped some adjacent discussions together.
+- Experience with student loan portfolio transfers between servicers
+- **19:15 → 23:6**
 
-### What should happen
+**Run 3**
 
-The final index should distinguish meaningful changes in subject matter. In particular, the transition from the PEAKS loan transfer discussion to the witness's criminal-law experience and the later RICO/report discussion should be evaluated based on the actual substance of the testimony.
+- Experience with student loan portfolio transfers between servicers
+- **19:15 → 21:8**
+- Mechanics, data transfer processes, and risks of servicer transitions
+- **21:9 → 23:6**
 
-The goal is not simply to maximize the number of topics, but to create boundaries where the testimony meaningfully changes subject.
+### What should have been produced
 
-### Why the LLM varied
+A useful attorney-facing segmentation is the Run 3 structure:
 
-These discussions are adjacent and relatively short. The model has to determine whether each transition is significant enough to justify a new index entry.
+1. Experience with student loan portfolio transfers
+2. Mechanics, data-transfer processes, and risks of servicer transitions
 
-Short sections are especially sensitive to segmentation decisions because there is less surrounding context for determining whether they represent an independent topic or a continuation of the previous discussion.
+The second topic represents a meaningful shift from the witness's prior
+experience to the operational process and risks involved in a servicer
+transition.
 
-The runs demonstrate that the model can choose different boundary points even when processing the same transcript content.
+### Why the model failed
 
-### Possible improvement
+The two discussions are closely related and occur as a continuous line of
+questioning. There is no strong structural break between them. As a result,
+the model sometimes treated the entire discussion as one broad topic and
+sometimes recognized the shift in topic focus.
 
-The prompt can require the model to consider the examiner's question and the witness's response together when deciding whether a new topic begins.
+### Improvement
 
-A stronger pipeline could also use a two-stage approach:
+A future segmentation stage should explicitly score candidate boundaries using:
 
-1. identify candidate transitions, and
-2. classify each candidate transition as a meaningful topic change or continuation.
+- change in question intent,
+- semantic change between adjacent transcript windows,
+- introduction of a new subtopic,
+- and sustained change rather than a short-lived digression.
 
-This would make the boundary decision more explicit rather than asking the model to perform both tasks implicitly.
+A hierarchical representation could also retain the broader portfolio-transfer
+topic while representing the mechanics and risks as a related subtopic.
 
 ---
 
-## Case 3: ITT student outcomes and Senate HELP Committee discussion
+## Case 2 — Vervent involvement with PEAKS loans: broad vs. granular segmentation
 
 ### What the runs produced
 
-The discussion from pages 27-34 was segmented differently:
+**Run 1**
 
-| Run | Segmentation |
-|---|---|
-| Run 1 | `27:1 -> 28:9`, `28:10 -> 31:20`, `31:21 -> 34:25` |
-| Run 2 | `27:1 -> 28:15`, `28:16 -> 30:4`, `30:5 -> 31:20`, `31:21 -> 34:25` |
-| Run 3 | `27:1 -> 28:14`, `28:16 -> 31:20`, `31:21 -> 34:25` |
+- Vervent defendants' involvement with PEAKS loans and origination timeline
+- **42:5 → 44:12**
 
-The main difference is that Run 2 separated the retention, graduation, and default-rate discussion into its own topic, while Runs 1 and 3 incorporated it into the broader ITT analysis.
+**Run 2**
 
-### What should happen
+- Vervent defendants' involvement with PEAKS loans and origination
+- **42:5 → 43:7**
+- Vervent defendants' role regarding student recruitment
+- **43:8 → 44:12**
 
-The segmentation should consistently distinguish a genuinely new analytical subject from supporting evidence within the broader ITT discussion.
+**Run 3**
 
-The Senate HELP Committee statistics should either:
+- Vervent defendants' involvement and role with the PEAKS loan portfolio
+- **42:5 → 44:11**
 
-- remain part of the broader ITT educational and economic outcomes topic if they function primarily as supporting evidence, or
-- become a separate topic if the testimony treats the statistics as a distinct subject of examination.
+### What should have been produced
 
-The decision should be based on the substantive transition rather than simply the presence of a new report or set of statistics.
+The Run 2 segmentation is more useful for navigation because the questioning
+moves from Vervent's involvement/origination to a distinct discussion of
+student recruitment around **43:8**.
 
-### Why the LLM varied
+The two topics are still related under the broader subject of Vervent's
+involvement with PEAKS loans.
 
-The discussion contains several closely related concepts:
+### Why the model failed
 
-- ITT educational quality,
-- student debt,
-- economic outcomes,
-- retention,
-- graduation,
-- default rates, and
-- aggregate versus individual student outcomes.
+The discussion has a strong overall semantic connection. The model can
+therefore reasonably interpret the recruitment discussion as either:
 
-Because these concepts are strongly related, the model can reasonably produce either broader or narrower topic boundaries.
+- part of the broader Vervent/PEAKS involvement topic, or
+- a separate attorney-relevant subtopic.
 
-### Possible improvement
+This produces different levels of granularity across runs.
 
-The extraction prompt should define a consistent granularity policy. For example, closely related evidence and statistics should remain within the parent topic unless the examiner changes the substantive question or the testimony clearly develops a separate issue.
+### Improvement
 
-A later deterministic or review-based stage can then flag unusually broad or unusually narrow topics for inspection.
+A hierarchical segmentation strategy would reduce this ambiguity:
+
+**Parent topic:** Vervent's involvement with PEAKS loans
+
+Possible child topics:
+
+- involvement/origination
+- student recruitment role
+
+This preserves the relationship while allowing attorneys to navigate directly
+to the more specific discussion.
 
 ---
 
-## Overall Findings
+## Case 3 — PEAKS cancellation rights and loan enforceability: boundary drift
 
-The three-run experiment demonstrates meaningful semantic segmentation instability:
+### What the runs produced
 
-- Run 1 produced 8 topics.
-- Run 2 produced 9 topics.
-- Run 3 produced 7 topics.
-- No topic had an identical label and identical start/end boundary across all three runs.
+**Run 1**
 
-The instability primarily occurred where adjacent testimony contained closely related concepts. The model sometimes merged these sections into broader topics and sometimes split them into narrower topics.
+- PEAKS borrowers final disclosures and right to cancel loans
+- **55:14 → 60:1**
 
-Importantly, the instability was not caused by broken source references. The provenance validation confirmed that the generated page:line references existed in the canonical transcript and that topic boundaries and evidence references were structurally valid.
+**Run 2**
 
-## Engineering Improvements
+- PEAKS borrowers final disclosures and right to cancel loans
+- **55:14 → 58:22**
+- Continuation of loan cancellation rights and disclosure receipt
+- **58:23 → 60:1**
 
-The following improvements can reduce segmentation instability:
+**Run 3**
 
-1. Define an explicit topic-granularity policy in the extraction prompt.
-2. Require meaningful substantive transitions rather than changes in emphasis alone.
-3. Use examiner questions and witness responses together when identifying boundaries.
-4. Separate candidate-transition detection from the final boundary decision.
-5. Use deterministic validation to detect invalid references and inconsistent boundaries.
-6. Use human review for ambiguous short sections and unusually broad or narrow topics.
-7. Preserve the original page:line references throughout all processing stages so that every segmentation decision remains auditable.
+- PEAKS borrowers final disclosures and right to cancel loans
+- **55:14 → 58:16**
+- Enforceability of loans and cancellation rights without disclosures
+- **58:17 → 60:5**
 
-The experiment shows why repeated runs and failure analysis are important for an LLM-based legal-document indexing system. A single successful run is not sufficient evidence of reliable segmentation.
+### What should have been produced
+
+The testimony is better represented by separating the discussion when it
+moves from disclosure/cancellation procedures toward the legal effect of
+missing disclosures on loan enforceability.
+
+Run 3 provides the clearest conceptual distinction, with a transition around
+**58:17**, although the exact boundary remains a candidate for manual review.
+
+### Why the model failed
+
+The concepts of cancellation rights, disclosures, and enforceability are
+closely connected. The testimony also transitions gradually rather than
+through a sharp conversational break.
+
+Consequently, the model produced different boundaries across runs:
+
+- one broad topic,
+- two closely related topics,
+- or a split at a different point.
+
+### Improvement
+
+Boundary detection should consider more than semantic similarity. A stronger
+boundary scorer should combine:
+
+- semantic change,
+- question/answer intent,
+- legal concept changes,
+- and whether the new segment represents a distinct attorney-relevant issue.
+
+---
+
+## Additional observed issue — overlapping CFPB topics
+
+Run 1 also produced an overlap:
+
+- CFPB investigation and Civil Investigative Demand regarding PEAKS program
+  **66:22 → 68:25**
+- CFPB findings regarding Vervent defendants
+  **68:7 → 68:25**
+
+The second topic overlaps the first from **68:7 → 68:25**.
+
+Runs 2 and 3 instead represented this region as a single CFPB investigation
+topic spanning approximately **66:22 → 69:1**.
+
+This demonstrates that valid provenance alone does not guarantee ideal
+segmentation. A reference can be completely valid while the topic itself is
+redundant or overlapping.
+
+A future refinement should therefore include a deterministic overlap check
+after LLM extraction and flag or merge overlapping topics when they represent
+the same underlying discussion.
+
+---
+
+## Summary of failure modes
+
+The three main cases demonstrate different types of instability:
+
+| Case | Failure mode | Main issue |
+|---|---|---|
+| 1 | Merge vs. split | Related discussion can be represented as one broad topic or two subtopics |
+| 2 | Granularity variation | Broad parent topic vs. more specific child topic |
+| 3 | Boundary drift | Gradual conceptual transition produces different start/end boundaries |
+
+The complete three-run experiment shows that the pipeline's provenance layer
+is stable even when LLM segmentation varies. All three runs produced valid
+page/line references.
+
+The main remaining improvement area is therefore **segmentation consistency**,
+particularly around closely related topics, gradual transitions, and
+topic/subtopic boundaries.
