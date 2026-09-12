@@ -182,8 +182,12 @@ Observed results were:
 - Redundancy: 19/20 (95%)
 - Overall manual review: 20/20 (100%)
 
-The complete deposition was also processed three times using the same
-transcript, chunking configuration, batch size, and extraction pipeline.
+The 57-topic validated index described above is the main generated index.
+The following three runs are independent executions used specifically to
+measure segmentation stability and are not replacements for the main index.
+
+The complete deposition was processed three times using the same transcript,
+chunking configuration, batch size, and extraction pipeline.
 
 The three runs produced 43, 42, and 45 topics respectively. All three runs
 passed deterministic provenance validation with zero invalid boundary
