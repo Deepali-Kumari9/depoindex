@@ -271,6 +271,18 @@ GEMINI_API_KEY=your_api_key_here
 
 The API key is kept outside version control.
 
+### Validate the included topic index
+
+Run:
+
+```powershell
+python src\validation\validate_provenance.py
+```
+
+
+This validates the included topic index against the canonical transcript and checks
+that all topic boundaries and evidence references resolve correctly.
+
 ## Reproducibility
 
 A fresh-clone reproducibility test was performed from the GitHub repository.
