@@ -214,6 +214,49 @@ the same underlying discussion.
 
 ---
 
+## Additional limitation — topic re-entry and brief digressions
+
+### Topic re-entry
+
+The current pipeline does not include a robust global topic re-entry detector.
+
+When a subject meaningfully reappears after intervening topics, the desired
+behavior is to create a new chronological topic entry and link it to the
+earlier topic using `related_to`, rather than incorrectly extending the
+original topic boundary across unrelated testimony.
+
+The current implementation supports related-topic references in the topic
+schema, but it does not reliably detect and link every global re-entry across
+the complete deposition. As a result, some repeated subjects may appear as
+separate topics without an explicit relationship, or may be represented at
+different levels of granularity across runs.
+
+This is a limitation rather than a provenance failure: the reported page/line
+references remain addressable, but the semantic relationship between repeated
+topics is not guaranteed to be complete.
+
+### Brief digressions
+
+The pipeline does not use a dedicated deterministic digression detector.
+
+Short interruptions or temporary subtopics can therefore affect topic
+boundaries when they occur inside an otherwise continuous discussion. The
+current refinement stage relies primarily on semantic topic continuity and
+boundary reasoning rather than explicitly classifying every temporary
+digression.
+
+For professional use, a stronger future version should distinguish between:
+
+- a short-lived digression that should remain inside the surrounding topic,
+- a sustained topic transition that should create a new entry,
+- and a meaningful return to an earlier topic that should create a new
+  chronological entry linked to the earlier topic.
+
+These limitations are reflected in the three-run stability results and manual
+boundary evaluation. The current system therefore prioritizes valid
+provenance and useful chronological segmentation while treating global
+re-entry and fine-grained digression handling as areas for future refinement.
+
 ## Summary of failure modes
 
 The three main cases demonstrate different types of instability:
