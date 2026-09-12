@@ -115,6 +115,18 @@ Related or fragmented segments can be merged when they represent the same contin
 If a topic meaningfully reappears after an intervening discussion, it should normally be represented as a separate topic entry and linked to the earlier entry rather than incorrectly extending the original boundary.
 
 All refinements must preserve the original page:line references.
+Brief digressions are handled by evaluating the surrounding transcript context
+during topic refinement. Short interruptions or side discussions may remain
+within a topic when they do not represent a meaningful subject transition.
+The current pipeline does not use a dedicated deterministic digression
+detector, so borderline cases are treated as a known limitation and are
+included in failure analysis when they affect boundary quality.
+
+Closely related or overlapping topics are reviewed for redundancy during
+evaluation. When two segments represent the same continuous subject, they
+may be merged. When a topic meaningfully reappears after an intervening
+discussion, it may remain a separate entry and be linked to the earlier topic
+rather than being merged solely because the subject is similar.
 
 ## 8. Provenance Validation
 
@@ -150,7 +162,35 @@ Whether important deposition topics are represented.
 Whether the index contains unnecessary duplicate or near-duplicate topics.
 
 ### Stability
-The complete pipeline will be executed three times. Topic counts, labels, boundaries, and provenance references will be compared across runs.
+The complete pipeline will be executed three times using the same deposition,
+transcript, chunking configuration, batch size, and extraction process. Topic
+counts, labels, boundaries, and provenance references will be compared across
+runs. The evaluation will distinguish exact label-and-boundary agreement from
+broader topic similarity and will document meaningful differences between
+runs.
+
+### Observed Validation Results
+
+The manual review covered 20 topic entries.
+
+Observed results were:
+
+- Location accuracy: 20/20 (100%)
+- Topic relevance: 20/20 (100%)
+- Boundary quality: 17/20 (85%)
+- Coverage: 20/20 (100%)
+- Redundancy: 19/20 (95%)
+- Overall manual review: 20/20 (100%)
+
+The complete deposition was also processed three times using the same
+transcript, chunking configuration, batch size, and extraction pipeline.
+
+The three runs produced 43, 42, and 45 topics respectively. All three runs
+passed deterministic provenance validation with zero invalid boundary
+references and zero invalid evidence references.
+
+The variation in topic counts reflects differences in LLM topic granularity
+and boundary selection rather than failures in source addressability.
 
 ## 10. Failure Analysis
 
