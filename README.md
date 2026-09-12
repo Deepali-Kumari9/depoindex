@@ -34,6 +34,7 @@ PDF
 → Three-Run Stability Evaluation
 → Streamlit Interface
 
+
 ## Architecture
 
 ### 1. Transcript Extraction
@@ -62,7 +63,7 @@ Google Gemini is used to identify meaningful topics from groups of transcript ch
 
 The implementation processes five consecutive chunks per request to reduce API usage while still allowing topics to span chunk boundaries.
 
-The complete transcript produced **57 raw topic candidates**.
+The complete transcript produced **57 raw topic candidates** in the main extraction run.
 
 ### 4. Boundary Refinement
 
@@ -86,11 +87,11 @@ Current validation result:
 
 - Topics checked: 57
 - Errors found: 0
-- Validation: PASSED
+- Validation: **PASSED**
 
 ## Output
 
-The validated topic index contains 57 topics.
+The validated topic index contains **57 topics**.
 
 Each topic includes:
 
@@ -135,25 +136,46 @@ The main boundary observations involved reporter interruptions, topic transition
 
 ### Three-Run Stability Evaluation
 
-The same 16-page transcript subset was processed three times to evaluate LLM segmentation stability.
+The complete deposition was processed three times using the same transcript, chunking configuration, batch size, and extraction pipeline.
+
+Each run processed:
+
+- 2,027 canonical transcript records
+- Printed pages 7–88
+- 51 transcript chunks
+- Batch size of 5 chunks per LLM request
 
 Results:
 
-| Run | Topics |
-|---|---|
-| Run 1 | 8 |
-| Run 2 | 9 |
-| Run 3 | 7 |
+| Run | Topics | Provenance |
+|---|---|---|
+| Run 1 | 43 | Valid |
+| Run 2 | 42 | Valid |
+| Run 3 | 45 | Valid |
 
-Topic counts varied across runs.
+Topic counts varied across runs, showing that LLM-based segmentation is not fully deterministic.
 
-No topic had an identical label and boundary across all three runs under the strict comparison used by the evaluation.
+Under a strict comparison of topic label, start reference, and end reference, one topic was identical across all three runs.
 
-This demonstrates that LLM-based segmentation is not fully deterministic and motivates explicit boundary refinement and validation.
+Pairwise exact matches were:
 
-The project documents observed segmentation instability and failure cases in:
+- Run 1 vs Run 2: 8
+- Run 1 vs Run 3: 3
+- Run 2 vs Run 3: 4
 
+Despite segmentation variation, all three runs had valid provenance:
+
+- Run 1: 0 invalid boundary references, 0 invalid evidence references
+- Run 2: 0 invalid boundary references, 0 invalid evidence references
+- Run 3: 0 invalid boundary references, 0 invalid evidence references
+
+The observed instability is primarily in topic granularity and boundary selection rather than source addressing.
+
+Detailed failure analysis is documented in:
 `docs/segmentation_failure_cases.md`
+
+The complete three-run stability report is stored in:
+`outputs/stability_report.json`
 
 ## Streamlit Interface
 
@@ -171,8 +193,9 @@ The interface provides:
 
 Run locally with:
 
+```bash
 streamlit run app.py
-
+```
 
 Then open:
 
@@ -183,8 +206,6 @@ http://localhost:8501
 
 depoindex/
 ├── app.py
-├── data/
-│ └── Persis_Yu_Deposition_Problem_statement.pdf
 ├── docs/
 │ └── segmentation_failure_cases.md
 ├── evaluation/
@@ -227,18 +248,21 @@ depoindex/
 
 Create and activate a virtual environment:
 
+```bash
 python -m venv .venv
-
+```
 
 Windows PowerShell:
 
+```powershell
 .venv\Scripts\Activate.ps1
-
+```
 
 Install dependencies:
 
+```bash
 pip install -r requirements.txt
-
+```
 
 Create a `.env` file:
 
@@ -249,21 +273,37 @@ The API key is kept outside version control.
 
 ## Reproducibility
 
-A fresh-clone test was performed using the validated repository state.
+A fresh-clone reproducibility test was performed from the GitHub repository.
 
 The test verified:
 
 - Repository cloning
 - Fresh virtual environment creation
 - Dependency installation
-- Provenance validation
-- Topic index generation
+- Dependency consistency using `pip check`
+- Provenance validation against the canonical transcript
 - Streamlit application startup
 
-The reproducibility test also identified a missing Streamlit dependency in `requirements.txt`. This was fixed in commit:
+The fresh-clone environment successfully installed all dependencies declared in `requirements.txt`.
 
-3e61f80
-fix: declare streamlit dependency for reproducible setup
+`pip check` reported:
+
+No broken requirements found.
+
+
+Provenance validation in the fresh clone reported:
+
+- Canonical transcript records: 2,027
+- Batches checked: 11
+- Topics checked: 57
+- Errors found: 0
+
+The Streamlit application also started successfully at:
+`http://localhost:8501`
+
+The reproducibility test previously identified a missing Streamlit dependency in `requirements.txt`. This was fixed in:
+
+3e61f80 fix: declare streamlit dependency for reproducible setup
 
 
 After the fix, the declared dependencies successfully supported the Streamlit application.
@@ -271,7 +311,6 @@ After the fix, the declared dependencies successfully supported the Streamlit ap
 ## AI Usage
 
 AI-assisted development is documented in:
-
 `llm_usage.md`
 
 The document records:
@@ -290,10 +329,19 @@ No fabricated successful results were used from failed API experiments.
 ## Methodology
 
 The overall technical methodology is documented in:
-
 `methodology.md`
 
-This covers transcript extraction, provenance preservation, chunking, topic segmentation, refinement, validation, evaluation, and stability testing.
+This covers:
+
+- Transcript extraction
+- Provenance preservation
+- Chunking
+- Topic segmentation
+- Boundary refinement
+- Provenance validation
+- Manual evaluation
+- Stability testing
+- Failure analysis
 
 ## Git Engineering History
 
@@ -306,19 +354,26 @@ Important milestones include:
 cf67e30 docs: document segmentation failure cases
 77d3770 feat: add attorney-facing topic index interface
 3e61f80 fix: declare streamlit dependency for reproducible setup
+ead75a0 docs: complete reproducibility and AI usage documentation
+26b631c docs: update segmentation failure analysis
+d889052 test: update complete-deposition stability evaluation
 
 
-The history records meaningful implementation, testing, failure analysis, interface development, and reproducibility fixes.
+The history records meaningful implementation, testing, failure analysis, interface development, reproducibility fixes, and complete-deposition stability evaluation.
 
 ### Meaningful Earlier Commit
 
 Earlier validation milestone:
 
-9e4f7a5
-test: measure three-run pipeline stability
+9e4f7a5 test: measure three-run pipeline stability
 
 
-This commit is meaningful because it established that LLM topic segmentation varied across repeated runs and provided evidence for treating LLM output as non-deterministic rather than assuming identical results.
+This commit is meaningful because it established an initial empirical finding that LLM topic segmentation varied across repeated runs and motivated treating LLM output as non-deterministic rather than assuming identical results.
+
+The stability experiment was subsequently expanded and corrected to cover the complete deposition, with the final complete-deposition evaluation captured in commit:
+
+d889052 test: update complete-deposition stability evaluation
+
 
 ### Final Submission Commit
 
@@ -333,6 +388,7 @@ FINAL_SUBMISSION_SHA
 - Topic boundaries may occasionally be broader or narrower than ideal.
 - Manual evaluation was performed on a 20-topic sample rather than the complete 57-topic index.
 - The current system focuses on a single deposition.
+- Topic re-entry and closely related topics may require further refinement.
 - The application is intended as a working technical prototype rather than a production legal system.
 
 ## Future Improvements
@@ -341,6 +397,7 @@ Potential improvements include:
 
 - More systematic topic-boundary scoring
 - Better detection of topic re-entry
+- Hierarchical parent/child topic relationships
 - Semantic relationships between related topics
 - Larger-scale evaluation across depositions
 - More advanced source navigation
