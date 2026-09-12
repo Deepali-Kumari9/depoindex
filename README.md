@@ -634,8 +634,6 @@ depoindex/
 │ ├── refined_topics.json
 │ ├── validated_topic_index.json
 │ ├── deposition_topic_index.md
-│ ├── stability_subset_19_34.json
-│ ├── stability_chunks_19_34.json
 │ ├── stability_run_1.json
 │ ├── stability_run_2.json
 │ ├── stability_run_3.json
