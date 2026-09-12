@@ -225,10 +225,9 @@ behavior is to create a new chronological topic entry and link it to the
 earlier topic using `related_to`, rather than incorrectly extending the
 original topic boundary across unrelated testimony.
 
-The current implementation supports related-topic references in the topic
-schema, but it does not reliably detect and link every global re-entry across
-the complete deposition. As a result, some repeated subjects may appear as
-separate topics without an explicit relationship, or may be represented at
+The current implementation preserves valid batch-local related-topic
+references and maps them to global topic IDs, but it does not reliably detect
+and link every global re-entry across the complete deposition. As a result, some repeated subjects may appear as separate topics without an explicit relationship, or may be represented at
 different levels of granularity across runs.
 
 This is a limitation rather than a provenance failure: the reported page/line
