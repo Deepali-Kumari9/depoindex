@@ -44,16 +44,46 @@ def flatten_topics(batched_results):
 
 
 def refine_topics(batched_results, reference_to_chunk):
-    topics = flatten_topics(batched_results)
+    topics = []
+
+    # Convert batch-local related_to references into
+    # temporary references before global sorting.
+    #
+    # Each related_to value refers to a topic within the
+    # same LLM batch. We store the batch ID and local topic
+    # index so the relationship can be mapped to the final
+    # global topic ID after chronological sorting.
+
+    for batch in batched_results:
+        batch_id = batch["batch_id"]
+
+        for local_index, topic in enumerate(
+            batch.get("topics", []),
+            start=1
+        ):
+            topic_copy = dict(topic)
+
+            topic_copy["_batch_id"] = batch_id
+            topic_copy["_local_index"] = local_index
+
+            topics.append(topic_copy)
 
     # Keep topics in actual transcript order.
     topics.sort(
         key=lambda topic: parse_ref(topic["start_ref"])
     )
 
+    # Map each batch-local topic reference to its final global topic ID.
+    batch_local_to_global = {}
+
+    for global_index, topic in enumerate(topics, start=1):
+        batch_local_to_global[
+            (topic["_batch_id"], topic["_local_index"])
+        ] = global_index
+
     refined_topics = []
 
-    for index, topic in enumerate(topics, start=1):
+    for global_index, topic in enumerate(topics, start=1):
 
         all_refs = [
             topic["start_ref"],
@@ -69,20 +99,33 @@ def refine_topics(batched_results, reference_to_chunk):
             }
         )
 
+        global_related_to = []
+
+        for local_related_id in topic.get("related_to", []):
+            # Ignore invalid local topic IDs such as 0.
+            if local_related_id < 1:
+                continue
+
+            related_global_id = batch_local_to_global.get(
+                (topic["_batch_id"], local_related_id)
+            )
+
+            if related_global_id is not None:
+                global_related_to.append(related_global_id)
+
         refined_topic = {
-            "topic_id": index,
+            "topic_id": global_index,
             "topic": topic["topic"],
             "start_ref": topic["start_ref"],
             "end_ref": topic["end_ref"],
             "evidence_refs": topic.get("evidence_refs", []),
-            "related_to": [],
+            "related_to": sorted(set(global_related_to)),
             "source_chunk_ids": source_chunk_ids,
         }
 
         refined_topics.append(refined_topic)
 
     return refined_topics
-
 
 def main():
     batched_results = load_json(INPUT_PATH)

@@ -168,7 +168,9 @@
         "19:2",
         "19:14"
       ],
-      "related_to": [],
+      "related_to": [
+        7
+      ],
       "source_chunk_ids": [
         7,
         8
@@ -202,7 +204,9 @@
         "22:8",
         "22:17"
       ],
-      "related_to": [],
+      "related_to": [
+        11
+      ],
       "source_chunk_ids": [
         9,
         10
@@ -218,7 +222,9 @@
         "22:24",
         "23:5"
       ],
-      "related_to": [],
+      "related_to": [
+        11
+      ],
       "source_chunk_ids": [
         10
       ]
@@ -232,7 +238,9 @@
         "23:7",
         "23:10"
       ],
-      "related_to": [],
+      "related_to": [
+        12
+      ],
       "source_chunk_ids": [
         10
       ]
@@ -630,7 +638,9 @@
         "59:11",
         "59:16"
       ],
-      "related_to": [],
+      "related_to": [
+        35
+      ],
       "source_chunk_ids": [
         33
       ]
@@ -663,7 +673,9 @@
         "62:2",
         "62:5"
       ],
-      "related_to": [],
+      "related_to": [
+        37
+      ],
       "source_chunk_ids": [
         35
       ]
@@ -780,7 +792,9 @@
         "75:13",
         "75:20"
       ],
-      "related_to": [],
+      "related_to": [
+        44
+      ],
       "source_chunk_ids": [
         43
       ]
@@ -812,7 +826,11 @@
         "78:18",
         "79:2"
       ],
-      "related_to": [],
+      "related_to": [
+        44,
+        45,
+        46
+      ],
       "source_chunk_ids": [
         44,
         45
