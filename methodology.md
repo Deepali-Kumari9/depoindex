@@ -22,7 +22,7 @@ The current pipeline is:
 4. Divide the canonical transcript into processing chunks.
 5. Use an LLM to identify meaningful topics within transcript chunks.
 6. Validate generated references against the canonical transcript.
-7. Refine topic boundaries and merge related segments.
+7. Refine topic boundaries and preserve meaningful relationships between related segments.
 8. Generate a structured Topic Index.
 9. Generate a human-readable Topic Index.
 10. Evaluate accuracy, coverage, redundancy, and stability.
@@ -51,15 +51,15 @@ Example:
 
 This reference is preserved throughout the downstream pipeline.
 
-The canonical extraction currently contains 2,027 transcript records and ends at page 88, line 13, where the deposition testimony concludes.
+The canonical extraction contains 2,027 transcript records and ends at page 88, line 13, where the deposition testimony concludes.
 
 ## 4. Transcript Chunking
 
 The canonical transcript is divided into sequential chunks to make LLM processing manageable.
 
-The current baseline uses chunks of 40 transcript records.
+The current pipeline uses chunks of 40 transcript records.
 
-This produced 51 chunks.
+This produces 51 chunks.
 
 Each chunk retains:
 - chunk ID,
@@ -82,19 +82,17 @@ It is instructed to return structured JSON containing:
 - end_ref
 - evidence_refs
 
-The baseline experiment demonstrated that the LLM can identify meaningful deposition topics while preserving exact page:line references.
+The baseline experiments demonstrated that the LLM can identify meaningful deposition topics while preserving exact page:line references.
 
-However, processing each chunk independently requires too many API requests.
+The initial one-request-per-chunk approach was inefficient under the available API request quota, which motivated the batched extraction approach.
 
 ## 6. Baseline Findings
 
-The baseline attempted all 51 chunks.
+The initial baseline attempted all 51 chunks.
 
 Four chunks were successfully processed before the available API request quota was reached.
 
-The successful chunks produced nine topic entries.
-
-The baseline revealed several areas for improvement:
+The baseline findings showed that:
 
 - independent chunks can fragment a topic across chunk boundaries;
 - some topic labels can be verbose or closely related;
@@ -102,35 +100,47 @@ The baseline revealed several areas for improvement:
 - repeated LLM calls can produce small differences in labels or evidence selection;
 - one-request-per-chunk processing is inefficient for the available API quota.
 
-These findings motivate the refinement stage.
+These findings motivated the batched extraction and refinement stages.
 
 ## 7. Refinement Strategy
 
-The improved pipeline will reduce dependence on independent chunk-level decisions.
+The current pipeline processes transcript chunks in batches while preserving the original source references.
 
-Candidate topic segments will be refined using the surrounding transcript context.
+The LLM is instructed to identify meaningful topic boundaries using the supplied transcript context. Topics may cross chunk boundaries when the transcript supports a continuous subject.
 
-Related or fragmented segments can be merged when they represent the same continuous subject.
+The refinement stage:
+
+- preserves chronological topic order;
+- validates source references against the canonical transcript;
+- records the source chunks associated with each topic;
+- preserves valid batch-local `related_to` relationships by mapping them to global topic IDs;
+- avoids extending a topic into unrelated discussion solely because a subject is mentioned again.
 
 If a topic meaningfully reappears after an intervening discussion, it should normally be represented as a separate topic entry and linked to the earlier entry rather than incorrectly extending the original boundary.
 
-All refinements must preserve the original page:line references.
-Brief digressions are handled by evaluating the surrounding transcript context
-during topic refinement. Short interruptions or side discussions may remain
-within a topic when they do not represent a meaningful subject transition.
-The current pipeline does not use a dedicated deterministic digression
-detector, so borderline cases are treated as a known limitation and are
-included in failure analysis when they affect boundary quality.
+All refinements preserve the original page:line references.
 
-Closely related or overlapping topics are reviewed for redundancy during
-evaluation. When two segments represent the same continuous subject, they
-may be merged. When a topic meaningfully reappears after an intervening
-discussion, it may remain a separate entry and be linked to the earlier topic
-rather than being merged solely because the subject is similar.
+### Brief Digressions
+
+Brief digressions are handled through the LLM's segmentation instructions and contextual boundary review.
+
+Short interruptions or side discussions may remain within a topic when they do not represent a meaningful subject transition.
+
+The current pipeline does not use a dedicated deterministic digression detector. Borderline cases are therefore treated as a known limitation and are included in failure analysis when they affect boundary quality.
+
+### Related and Overlapping Topics
+
+Closely related or overlapping topics are reviewed for redundancy during evaluation.
+
+When two segments represent the same continuous subject, they may be merged when supported by the transcript context.
+
+When a topic meaningfully reappears after an intervening discussion, it may remain a separate entry and be linked to the earlier topic rather than being merged solely because the subject is similar.
+
+The current `related_to` implementation preserves relationships identified within the same LLM batch. Robust global re-entry detection across independently processed batches remains a limitation.
 
 ## 8. Provenance Validation
 
-Provenance validation will be deterministic.
+Provenance validation is deterministic.
 
 For every generated topic:
 
@@ -138,38 +148,51 @@ For every generated topic:
 - `end_ref` must exist in the canonical transcript;
 - every `evidence_ref` must exist;
 - references must belong to the supplied transcript;
-- the start reference must not occur after the end reference.
+- the start reference must not occur after the end reference;
+- evidence references must fall within the topic boundaries.
 
-The validator will operate independently of the LLM so that source-addressability does not depend solely on model behavior.
+The validator operates independently of the LLM so that source addressability does not depend solely on model behavior.
+
+The current validated topic index contains 57 topics and passed provenance validation with zero errors.
 
 ## 9. Evaluation
 
-The final system will be evaluated using:
+The system is evaluated using:
 
 ### Location Accuracy
+
 Whether topic start, end, and evidence references point to the correct transcript locations.
 
 ### Topic Relevance
+
 Whether the topic represents a meaningful subject discussed in the deposition.
 
 ### Boundary Quality
+
 Whether the selected start and end references appropriately cover the topic without unnecessary material.
 
 ### Coverage
+
 Whether important deposition topics are represented.
 
 ### Redundancy
+
 Whether the index contains unnecessary duplicate or near-duplicate topics.
 
 ### Stability
-The complete pipeline will be executed three times using the same deposition,
-transcript, chunking configuration, batch size, and extraction process. Topic
-counts, labels, boundaries, and provenance references will be compared across
-runs. The evaluation will distinguish exact label-and-boundary agreement from
-broader topic similarity and will document meaningful differences between
-runs.
 
-### Observed Validation Results
+The complete deposition is executed three times using the same deposition, transcript, chunking configuration, batch size, and extraction process.
+
+The evaluation compares:
+
+- topic counts,
+- topic labels,
+- topic boundaries,
+- provenance references.
+
+The evaluation distinguishes exact label-and-boundary agreement from broader topic similarity and documents meaningful differences between runs.
+
+### Observed Manual Validation Results
 
 The manual review covered 20 topic entries.
 
@@ -182,34 +205,60 @@ Observed results were:
 - Redundancy: 19/20 (95%)
 - Overall manual review: 20/20 (100%)
 
-The 57-topic validated index described above is the main generated index.
-The following three runs are independent executions used specifically to
-measure segmentation stability and are not replacements for the main index.
+The main generated index contains 57 validated topic entries.
 
-The complete deposition was processed three times using the same transcript,
-chunking configuration, batch size, and extraction pipeline.
+### Observed Three-Run Stability Results
 
-The three runs produced 43, 42, and 45 topics respectively. All three runs
-passed deterministic provenance validation with zero invalid boundary
-references and zero invalid evidence references.
+The complete deposition was processed three times using the same transcript, chunking configuration, batch size, and extraction pipeline.
 
-The variation in topic counts reflects differences in LLM topic granularity
-and boundary selection rather than failures in source addressability.
+Each run processed:
+
+- 2,027 canonical transcript records
+- 51 transcript chunks
+- batch size of 5
+- 11 LLM requests
+
+The three runs produced:
+
+- Run 1: 43 topics
+- Run 2: 42 topics
+- Run 3: 45 topics
+
+Topic count stability therefore varied across runs.
+
+All three runs passed deterministic provenance validation with:
+
+- 0 invalid topic boundary references
+- 0 invalid evidence references
+
+The variation in topic counts reflects differences in LLM topic granularity and boundary selection rather than failures in source addressability.
+
+The stability experiment also showed that exact label-and-boundary agreement across independent LLM runs is limited. This is treated as an important reliability consideration rather than being hidden or averaged away.
 
 ## 10. Failure Analysis
 
-At least three difficult or failed cases will be documented.
+Three difficult or failed segmentation cases are documented in:
 
-For each case, the evaluation will describe:
+`docs/segmentation_failure_cases.md`
+
+Each case records:
 
 - the system output,
 - the expected result,
 - why the system struggled,
 - the improvement applied or proposed.
 
+The documented cases involve topic splitting or boundary variation around:
+
+1. student-loan portfolio transfers;
+2. Vervent involvement with PEAKS loans;
+3. PEAKS cancellation rights and enforceability.
+
+These cases demonstrate that the main remaining weakness is semantic segmentation consistency rather than source provenance.
+
 ## 11. Reproducibility
 
-The repository will contain:
+The repository contains:
 
 - source code,
 - dependency information,
@@ -219,4 +268,17 @@ The repository will contain:
 - AI usage documentation,
 - Git history showing meaningful development stages.
 
-The final README will identify the final submission commit SHA and a meaningful earlier commit used as a comparison point.
+The project was also tested from a fresh Git clone using a new Python virtual environment and the dependencies listed in `requirements.txt`.
+
+The fresh-clone validation confirmed that:
+
+- the repository can be cloned successfully;
+- the Python environment can be created;
+- dependencies can be installed from `requirements.txt`;
+- `pip check` reports no broken requirements;
+- the included canonical transcript and topic index pass provenance validation;
+- the Streamlit application starts successfully.
+
+A reproducibility issue involving a missing Streamlit dependency was identified during the fresh-clone test and fixed by explicitly declaring Streamlit in `requirements.txt`.
+
+The README identifies the final submission commit and a meaningful earlier commit used as a comparison point.
