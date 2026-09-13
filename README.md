@@ -413,9 +413,9 @@ d889052 test: update complete-deposition stability evaluation
 
 ### Final Submission Commit
 
-To be filled after the final submission documentation and packaging commits are completed:
+e6fa324 docs: replace final presentation
 
-FINAL_SUBMISSION_SHA
+This commit represents the final submission-state snapshot of the repository, including the verified final presentation and all previously completed implementation, validation, documentation, and output artifacts.
 
 
 ## Limitations
