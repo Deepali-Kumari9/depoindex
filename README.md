@@ -468,7 +468,7 @@ d889052 test: update complete-deposition stability evaluation
 
 ### Final Submission Commit
 
-e6fa324 docs: replace final presentation
+fb50b6a docs: improve README reproducibility and navigation
 
 This commit represents the final submission-state snapshot of the repository, including the verified final presentation and all previously completed implementation, validation, documentation, and output artifacts.
 
