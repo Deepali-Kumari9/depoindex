@@ -18,8 +18,9 @@ ChatGPT was used for:
 
 Google Gemini was used as the LLM component for deposition topic extraction.
 
-Model used:
-- Gemini 3.6 Flash
+Models used:
+- Gemini 3.6 Flash (baseline)
+- Gemini 3.5 Flash-Lite (final batched pipeline)
 
 The initial baseline used Gemini 3.6 Flash. After the baseline encountered free-tier quota limits, the batched pipeline switched to Gemini 3.5 Flash-Lite to allow higher free-tier throughput while retaining the same structured page:line provenance requirements.
 
