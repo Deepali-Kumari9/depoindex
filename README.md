@@ -30,9 +30,10 @@ PDF
 -> Boundary Refinement
 -> Provenance Validation
 -> Topic Index Generation
--> Manual Evaluation
--> Three-Run Stability Evaluation
 -> Streamlit Interface
+
+Validation:
+Manual Evaluation + Three-Run Stability + Failure Analysis
 
 
 ## Architecture
@@ -205,6 +206,15 @@ Live demo:
 
 https://deepali-kumari9-depoindex-app-ew2v6l.streamlit.app/
 
+### Bonus: Attorney-Facing Source Navigation
+
+The interface provides direct navigation from a page:line reference to the
+corresponding deposition testimony, with configurable surrounding context.
+
+This is useful to attorneys because an indexed topic can be verified against
+the underlying testimony without manually searching the full deposition.
+The feature directly supports the auditability requirement of the topic index.
+
 ## Submission Artifacts
 
 - [Validation Report](docs/validation_report.md)
@@ -219,6 +229,7 @@ https://deepali-kumari9-depoindex-app-ew2v6l.streamlit.app/
 ```text
 depoindex/
 |-- app.py
+|-- data/                    (place supplied PDF here; not committed)
 |-- docs/
 |   |-- DepoIndex_Presentation.pdf
 |   |-- segmentation_failure_cases.md
@@ -255,7 +266,7 @@ depoindex/
 
 ### Requirements
 
-- Python 3.10+
+- Python 3.10+ (tested with Python 3.11)
 - Google Gemini API key
 - Dependencies listed in `requirements.txt`
 
@@ -293,10 +304,54 @@ To re-run extraction from scratch, place the supplied PDF at:
 
 `data/Persis_Yu_Deposition_Problem_statement.pdf`
 
-The pre-extracted canonical transcript and all downstream outputs are already
-included in `outputs/`, so the rest of the pipeline (chunking, LLM extraction,
-validation, evaluation, and the Streamlit app) can be reproduced without the
+The pre-extracted canonical transcript and downstream outputs are already
+included in `outputs/`, so the completed results can be reviewed without the
 original PDF.
+
+### Running the Full Pipeline
+
+The committed outputs in `outputs/` already contain the results of the
+completed extraction, segmentation, validation, and evaluation workflow.
+
+To regenerate the pipeline from the supplied deposition PDF, first place the
+PDF at:
+
+`data/Persis_Yu_Deposition_Problem_statement.pdf`
+
+Run the processing stages in order:
+
+```bash
+# 1. Extract canonical transcript records with page:line provenance
+python src/extraction/extract_transcript.py
+
+# 2. Create provenance-preserving transcript chunks
+python src/segmentation/chunk_transcript.py
+
+# 3. Run batched LLM topic extraction
+#    Requires GEMINI_API_KEY in .env
+python src/llm/batched_extract.py
+
+# 4. Refine and globally order extracted topics
+python src/segmentation/refine_topics.py
+
+# 5. Build the validated topic index
+python src/validation/build_topic_index.py
+
+# 6. Generate the human-readable Markdown topic index
+python src/validation/generate_markdown_index.py
+
+# 7. Validate topic provenance against the canonical transcript
+python src/validation/validate_provenance.py
+```
+
+The manual evaluation and three-run stability results included in this
+repository are evaluation artifacts from the completed validation process.
+They are documented in docs/validation_report.md and
+docs/segmentation_failure_cases.md.
+
+The full pipeline requires a valid Gemini API key for the LLM extraction
+stage. The supplied deposition PDF is not committed to the repository because
+it was provided as assignment material.
 
 ## Reproducibility
 
