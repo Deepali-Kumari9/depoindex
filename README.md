@@ -348,23 +348,24 @@ The project was developed incrementally rather than as a single final commit.
 
 Important milestones include:
 
-42dbffb feat: add provenance-preserving transcript chunking
-7837e6c feat: add baseline LLM topic extraction
-06fdbc2 test: evaluate baseline topic segmentation
-14b6056 feat: refine topic boundaries and merge related segments
-3303704 test: add deterministic provenance validation
-17a5384 feat: add validated topic index schema and output generation
-44c7cd3 feat: generate human-readable deposition topic index
-911a395 feat: improve LLM extraction with batched requests
-181572d test: add manual topic index evaluation
-9e4f7a5 test: measure three-run pipeline stability
-cf67e30 docs: document segmentation failure cases
-77d3770 feat: add attorney-facing topic index interface
-3e61f80 fix: declare streamlit dependency for reproducible setup
-ead75a0 docs: complete reproducibility and AI usage documentation
-26b631c docs: update segmentation failure analysis
-d889052 test: update complete-deposition stability evaluation
-936c2f1 docs: clarify model usage and clean submission README
+- `42dbffb` feat: add provenance-preserving transcript chunking
+- `7837e6c` feat: add baseline LLM topic extraction
+- `06fdbc2` test: evaluate baseline topic segmentation
+- `14b6056` feat: refine topic boundaries and merge related segments
+- `3303704` test: add deterministic provenance validation
+- `17a5384` feat: add validated topic index schema and output generation
+- `44c7cd3` feat: generate human-readable deposition topic index
+- `911a395` feat: improve LLM extraction with batched requests
+- `181572d` test: add manual topic index evaluation
+- `9e4f7a5` test: measure three-run pipeline stability
+- `cf67e30` docs: document segmentation failure cases
+- `77d3770` feat: add attorney-facing topic index interface
+- `3e61f80` fix: declare streamlit dependency for reproducible setup
+- `ead75a0` docs: complete reproducibility and AI usage documentation
+- `26b631c` docs: update segmentation failure analysis
+- `d889052` test: update complete-deposition stability evaluation
+- `936c2f1` docs: clarify model usage and clean submission README
+- `0ec4d6c` docs: improve README formatting and Git history
 
 The history records meaningful implementation, testing, failure analysis, interface development, reproducibility fixes, and complete-deposition stability evaluation.
 
