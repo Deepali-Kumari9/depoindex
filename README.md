@@ -270,6 +270,20 @@ GEMINI_API_KEY=your_api_key_here
 
 The API key is kept outside version control.
 
+### Source Deposition PDF
+
+The original deposition PDF is not included in this repository because it was
+provided as assignment material.
+
+To re-run extraction from scratch, place the supplied PDF at:
+
+`data/Persis_Yu_Deposition_Problem_statement.pdf`
+
+The pre-extracted canonical transcript and all downstream outputs are already
+included in `outputs/`, so the rest of the pipeline (chunking, LLM extraction,
+validation, evaluation, and the Streamlit app) can be reproduced without the
+original PDF.
+
 ## Reproducibility
 
 A fresh-clone reproducibility test was performed from the GitHub repository.
