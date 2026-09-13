@@ -205,6 +205,14 @@ Live demo:
 
 https://deepali-kumari9-depoindex-app-ew2v6l.streamlit.app/
 
+## Submission Artifacts
+
+- [Validation Report](docs/validation_report.md)
+- [5-Slide Presentation](docs/DepoIndex_Presentation.pdf)
+- [Human-Readable Topic Index](outputs/deposition_topic_index.md)
+- [Validated Topic Index JSON](outputs/validated_topic_index.json)
+
+
 
 ## Project Structure
 
@@ -212,7 +220,9 @@ https://deepali-kumari9-depoindex-app-ew2v6l.streamlit.app/
 depoindex/
 |-- app.py
 |-- docs/
-|   `-- segmentation_failure_cases.md
+|   |-- DepoIndex_Presentation.pdf
+|   |-- segmentation_failure_cases.md
+|   `-- validation_report.md
 |-- evaluation/
 |   |-- evaluate_baseline.py
 |   |-- evaluate_manual.py
