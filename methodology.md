@@ -73,6 +73,8 @@ No transcript line is rewritten or assigned a new artificial source reference du
 
 The baseline uses Google Gemini 3.6 Flash.
 
+The initial baseline used Gemini 3.6 Flash. After the baseline encountered free-tier quota limits, the batched pipeline switched to Gemini 3.5 Flash-Lite to allow higher free-tier throughput while retaining the same structured page:line provenance requirements.
+
 The LLM receives transcript text together with its exact source references.
 
 It is instructed to return structured JSON containing:

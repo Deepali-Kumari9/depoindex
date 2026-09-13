@@ -21,6 +21,8 @@ Google Gemini was used as the LLM component for deposition topic extraction.
 Model used:
 - Gemini 3.6 Flash
 
+The initial baseline used Gemini 3.6 Flash. After the baseline encountered free-tier quota limits, the batched pipeline switched to Gemini 3.5 Flash-Lite to allow higher free-tier throughput while retaining the same structured page:line provenance requirements.
+
 The model received transcript chunks containing exact `page:line` source references and was instructed to return structured JSON containing:
 - topic
 - start_ref
