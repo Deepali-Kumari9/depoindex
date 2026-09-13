@@ -201,6 +201,10 @@ Then open:
 
 http://localhost:8501
 
+Live demo:
+
+https://deepali-kumari9-depoindex-app-ew2v6l.streamlit.app/
+
 
 ## Project Structure
 
