@@ -24,15 +24,15 @@ The goal of DepoIndex is to:
 ## Pipeline
 
 PDF
-â†’ Canonical Transcript Extraction
-â†’ Provenance-Preserving Chunking
-â†’ LLM Topic Extraction
-â†’ Boundary Refinement
-â†’ Provenance Validation
-â†’ Topic Index Generation
-â†’ Manual Evaluation
-â†’ Three-Run Stability Evaluation
-â†’ Streamlit Interface
+-> Canonical Transcript Extraction
+-> Provenance-Preserving Chunking
+-> LLM Topic Extraction
+-> Boundary Refinement
+-> Provenance Validation
+-> Topic Index Generation
+-> Manual Evaluation
+-> Three-Run Stability Evaluation
+-> Streamlit Interface
 
 
 ## Architecture
@@ -141,7 +141,7 @@ The complete deposition was processed three times using the same transcript, chu
 Each run processed:
 
 - 2,027 canonical transcript records
-- Printed pages 7â€“88
+- Printed pages 7-88
 - 51 transcript chunks
 - Batch size of 5 chunks per LLM request
 
@@ -204,37 +204,38 @@ http://localhost:8501
 
 ## Project Structure
 
+```text
 depoindex/
-â”œâ”€â”€ app.py
-â”œâ”€â”€ docs/
-â”‚ â””â”€â”€ segmentation_failure_cases.md
-â”œâ”€â”€ evaluation/
-â”‚ â”œâ”€â”€ evaluate_baseline.py
-â”‚ â”œâ”€â”€ evaluate_manual.py
-â”‚ â”œâ”€â”€ evaluate_stability.py
-â”‚ â””â”€â”€ manual_evaluation.json
-â”œâ”€â”€ outputs/
-â”‚ â”œâ”€â”€ canonical_transcript.json
-â”‚ â”œâ”€â”€ transcript_chunks.json
-â”‚ â”œâ”€â”€ batched_topics.json
-â”‚ â”œâ”€â”€ refined_topics.json
-â”‚ â”œâ”€â”€ validated_topic_index.json
-â”‚ â”œâ”€â”€ deposition_topic_index.md
-â”‚ â”œâ”€â”€ stability_run_1.json
-â”‚ â”œâ”€â”€ stability_run_2.json
-â”‚ â”œâ”€â”€ stability_run_3.json
-â”‚ â””â”€â”€ stability_report.json
-â”œâ”€â”€ src/
-â”‚ â”œâ”€â”€ extraction/
-â”‚ â”œâ”€â”€ llm/
-â”‚ â”œâ”€â”€ segmentation/
-â”‚ â””â”€â”€ validation/
-â”œâ”€â”€ .gitignore
-â”œâ”€â”€ llm_usage.md
-â”œâ”€â”€ methodology.md
-â”œâ”€â”€ requirements.txt
-â””â”€â”€ README.md
-
+|-- app.py
+|-- docs/
+|   `-- segmentation_failure_cases.md
+|-- evaluation/
+|   |-- evaluate_baseline.py
+|   |-- evaluate_manual.py
+|   |-- evaluate_stability.py
+|   `-- manual_evaluation.json
+|-- outputs/
+|   |-- canonical_transcript.json
+|   |-- transcript_chunks.json
+|   |-- batched_topics.json
+|   |-- refined_topics.json
+|   |-- validated_topic_index.json
+|   |-- deposition_topic_index.md
+|   |-- stability_run_1.json
+|   |-- stability_run_2.json
+|   |-- stability_run_3.json
+|   `-- stability_report.json
+|-- src/
+|   |-- extraction/
+|   |-- llm/
+|   |-- segmentation/
+|   `-- validation/
+|-- .gitignore
+|-- llm_usage.md
+|-- methodology.md
+|-- requirements.txt
+`-- README.md
+```
 
 ## Setup
 
@@ -347,6 +348,14 @@ The project was developed incrementally rather than as a single final commit.
 
 Important milestones include:
 
+42dbffb feat: add provenance-preserving transcript chunking
+7837e6c feat: add baseline LLM topic extraction
+06fdbc2 test: evaluate baseline topic segmentation
+14b6056 feat: refine topic boundaries and merge related segments
+3303704 test: add deterministic provenance validation
+17a5384 feat: add validated topic index schema and output generation
+44c7cd3 feat: generate human-readable deposition topic index
+911a395 feat: improve LLM extraction with batched requests
 181572d test: add manual topic index evaluation
 9e4f7a5 test: measure three-run pipeline stability
 cf67e30 docs: document segmentation failure cases
@@ -355,7 +364,7 @@ cf67e30 docs: document segmentation failure cases
 ead75a0 docs: complete reproducibility and AI usage documentation
 26b631c docs: update segmentation failure analysis
 d889052 test: update complete-deposition stability evaluation
-
+936c2f1 docs: clarify model usage and clean submission README
 
 The history records meaningful implementation, testing, failure analysis, interface development, reproducibility fixes, and complete-deposition stability evaluation.
 
