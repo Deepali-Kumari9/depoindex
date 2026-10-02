@@ -2,13 +2,13 @@
   "metadata": {
     "model": "gemini-3.5-flash-lite",
     "batch_size": 5,
-    "topics_available": 44,
-    "topics_validated": 44
+    "topics_available": 39,
+    "topics_validated": 39
   },
   "results": {
     "1": {
       "topic_number": 1,
-      "topic": "Deposition ground rules and introductory instructions",
+      "topic": "Deposition Preliminaries and Instructions",
       "start_ref": "7:11",
       "end_ref": "8:23",
       "evidence_refs": [
@@ -21,13 +21,13 @@
         "8:21"
       ],
       "result": "PASS",
-      "reason": "The evidence shows counsel explaining deposition ground rules and instructions to the witness."
+      "reason": "The evidence shows counsel explaining deposition rules, instructions, and procedures at the start of the deposition."
     },
     "2": {
       "topic_number": 2,
-      "topic": "Expert witness scope of testimony",
+      "topic": "Expert Witness Retainer and Scope of Testimony",
       "start_ref": "8:24",
-      "end_ref": "9:19",
+      "end_ref": "9:18",
       "evidence_refs": [
         "8:24",
         "9:1",
@@ -36,581 +36,623 @@
         "9:14"
       ],
       "result": "PASS",
-      "reason": "The evidence directly discusses the witness being retained as an expert and the scope of what they were asked to provide."
+      "reason": "The evidence confirms the witness was retained as an expert and discusses the scope of what they were asked to provide."
     },
     "3": {
       "topic_number": 3,
-      "topic": "Expert report introduction and speaking pace instructions",
-      "start_ref": "9:20",
-      "end_ref": "10:22",
+      "topic": "Professional Background and Student Borrower Protection Center",
+      "start_ref": "11:2",
+      "end_ref": "12:6",
       "evidence_refs": [
-        "9:20",
-        "10:2",
-        "10:5",
-        "10:9",
-        "10:16",
-        "10:21"
+        "11:2",
+        "11:18",
+        "11:22",
+        "12:5"
       ],
       "result": "PASS",
-      "reason": "The evidence covers discussing an exhibit and instructing the witness to speak slower while reading."
+      "reason": "The evidence covers the witness's background as an attorney and their role with the Student Borrower Protection Center."
     },
     "4": {
       "topic_number": 4,
-      "topic": "Witness professional background and Student Borrower Protection Center",
-      "start_ref": "11:1",
-      "end_ref": "12:6",
-      "evidence_refs": [
-        "11:1",
-        "11:2",
-        "11:5",
-        "11:18",
-        "11:22",
-        "12:3",
-        "12:6"
-      ],
-      "result": "PASS",
-      "reason": "The evidence touches upon the witness's background as an attorney and discusses the Student Borrower Protection Center."
-    },
-    "5": {
-      "topic_number": 5,
-      "topic": "SBPB policy agenda, advocacy, and initiatives",
+      "topic": "Policy Agenda and Advocacy Work",
       "start_ref": "12:7",
       "end_ref": "15:11",
       "evidence_refs": [
         "12:7",
-        "12:12",
-        "12:17",
         "12:24",
         "13:4",
         "13:12",
         "13:18",
-        "14:2",
         "14:5",
         "14:13",
-        "14:17",
+        "14:18",
         "15:2",
-        "15:4",
-        "15:11"
+        "15:5"
       ],
       "result": "PASS",
-      "reason": "The evidence details the policy agenda, issues, campaigns, and regulatory initiatives of the organization."
+      "reason": "The evidence details the organization's policy agenda, national campaigns, regulatory work, and rulemakings."
     },
-    "6": {
-      "topic_number": 6,
-      "topic": "Witness's professional background and rulemaking experience",
+    "5": {
+      "topic_number": 5,
+      "topic": "Witness professional background in student loans, rulemakings, legislation, and loan servicing",
       "start_ref": "15:13",
-      "end_ref": "16:11",
+      "end_ref": "18:17",
       "evidence_refs": [
         "15:13",
         "15:16",
-        "15:19",
         "15:23",
-        "16:3",
         "16:5",
-        "16:8"
+        "16:16",
+        "17:2",
+        "17:10",
+        "18:4",
+        "18:10",
+        "18:14",
+        "18:17"
       ],
       "result": "PASS",
-      "reason": "The evidence directly discusses the witness's role as a negotiator in rulemaking, working on legislation, and rules related to borrower discharge and the CARES Act."
+      "reason": "The evidence discusses the witness's professional history involving student loans, negotiations, rulemakings, and work as a legal aid attorney."
+    },
+    "6": {
+      "topic_number": 6,
+      "topic": "National Consumer Law Center work, Congressional testimony, and experience with loan portfolio transfers",
+      "start_ref": "18:18",
+      "end_ref": "21:8",
+      "evidence_refs": [
+        "18:18",
+        "18:21",
+        "19:2",
+        "19:15",
+        "19:19",
+        "20:5",
+        "20:22",
+        "21:5"
+      ],
+      "result": "PASS",
+      "reason": "The evidence directly discusses the witness's work, Congressional testimony, and loan portfolio transfer experience."
     },
     "7": {
       "topic_number": 7,
-      "topic": "Work involving student loan servicers and comments on Department of Education RFIs",
-      "start_ref": "16:16",
-      "end_ref": "18:13",
+      "topic": "Mechanics, data transfer processes, and risks associated with student loan servicing transfers",
+      "start_ref": "21:10",
+      "end_ref": "23:11",
       "evidence_refs": [
-        "16:16",
-        "16:20",
-        "17:2",
-        "17:10",
-        "17:12",
-        "18:4",
-        "18:8",
-        "18:11"
+        "21:10",
+        "21:14",
+        "22:2",
+        "22:8",
+        "22:13",
+        "22:21",
+        "23:1",
+        "23:7"
       ],
       "result": "PASS",
-      "reason": "The evidence covers the witness providing comments to the Department of Education/RFIs and questions regarding working as or studying loan servicers."
+      "reason": "The evidence discusses data loss, risks, and mechanics associated with loan servicing transfers."
     },
     "8": {
       "topic_number": 8,
-      "topic": "Work at the National Consumer Law Center and congressional testimony",
-      "start_ref": "18:14",
-      "end_ref": "19:14",
-      "evidence_refs": [
-        "18:14",
-        "18:17",
-        "18:21",
-        "19:2",
-        "19:9",
-        "19:13"
-      ],
-      "result": "PASS",
-      "reason": "The evidence details the witness's work as a legal aid attorney representing student loan borrowers and testifying before Congress in 2019."
-    },
-    "9": {
-      "topic_number": 9,
-      "topic": "Student loan portfolio transfers between servicers",
-      "start_ref": "19:15",
-      "end_ref": "23:6",
-      "evidence_refs": [
-        "19:15",
-        "19:19",
-        "19:22",
-        "20:5",
-        "20:13",
-        "20:22",
-        "21:5",
-        "21:10",
-        "22:1",
-        "22:7",
-        "22:18",
-        "23:1"
-      ],
-      "result": "PASS",
-      "reason": "The evidence addresses student loan portfolio transfers between servicers, associated risks, and occurrences of such transfers."
-    },
-    "10": {
-      "topic_number": 10,
-      "topic": "State laws and regulations regarding student loan data transfers and PEAKS loans",
+      "topic": "State laws and data transfer regulations regarding student loans",
       "start_ref": "23:12",
       "end_ref": "24:13",
       "evidence_refs": [
         "23:12",
         "23:14",
-        "23:15",
-        "23:20",
-        "23:21",
         "23:23",
-        "23:24",
-        "24:7",
-        "24:8",
-        "24:9",
-        "24:10",
-        "24:11",
-        "24:12",
-        "24:13"
+        "24:6",
+        "24:9"
       ],
       "result": "PASS",
-      "reason": "The evidence discusses state laws and regulations regarding student loan data transfers, specifically mentioning California law, PEAKS loans, and data transfers involving Access Group and Vervent."
+      "reason": "The evidence explicitly references state laws and regulations regarding student loan servicing."
     },
-    "11": {
-      "topic_number": 11,
-      "topic": "Witness professional background in criminal law and RICO statutes",
+    "9": {
+      "topic_number": 9,
+      "topic": "Witness professional experience in criminal law",
       "start_ref": "24:14",
-      "end_ref": "26:14",
+      "end_ref": "25:7",
       "evidence_refs": [
         "24:14",
         "24:16",
-        "24:17",
-        "24:20",
-        "24:21",
-        "24:24",
-        "25:4",
-        "25:5",
-        "25:9",
-        "25:10",
-        "25:12",
-        "25:14",
-        "25:15",
-        "25:19",
-        "25:21",
-        "26:6",
-        "26:7",
-        "26:9",
-        "26:10",
-        "26:13",
-        "26:14"
+        "24:19",
+        "24:23",
+        "25:5"
       ],
       "result": "PASS",
-      "reason": "The evidence discusses the witness's job background, criminal law experience (DA's office, teen court), and questioning regarding RICO statutes."
+      "reason": "The evidence covers the witness's professional experience and internship related to criminal law."
     },
-    "12": {
-      "topic_number": 12,
-      "topic": "Report formatting discussion regarding paragraph numbering",
+    "10": {
+      "topic_number": 10,
+      "topic": "Familiarity and experience with the RICO statute in student loan cases",
+      "start_ref": "25:8",
+      "end_ref": "26:14",
+      "evidence_refs": [
+        "25:8",
+        "25:12",
+        "25:18",
+        "26:6",
+        "26:9"
+      ],
+      "result": "PASS",
+      "reason": "The evidence addresses familiarity and experience with the RICO statute and the witness's report."
+    },
+    "11": {
+      "topic_number": 11,
+      "topic": "Expert report formatting and structure",
       "start_ref": "26:15",
       "end_ref": "27:1",
       "evidence_refs": [
         "26:15",
-        "26:16",
-        "26:17",
         "26:18",
-        "26:19"
+        "26:22"
       ],
       "result": "PASS",
-      "reason": "The evidence directly addresses paragraph numbers in the report and whether omitting them after paragraph 8 was a conscious decision."
+      "reason": "The evidence discusses expert report paragraph numbers and structure."
     },
-    "13": {
-      "topic_number": 13,
-      "topic": "Overview of for-profit colleges and ITT student debt analysis",
+    "12": {
+      "topic_number": 12,
+      "topic": "For-profit colleges, ITT overview, and student debt outcomes",
       "start_ref": "27:2",
       "end_ref": "31:11",
       "evidence_refs": [
         "27:2",
-        "27:3",
-        "27:7",
-        "27:10",
         "27:13",
-        "27:14",
         "27:22",
-        "27:23",
-        "27:24",
-        "28:1",
-        "28:2",
-        "28:3",
-        "28:4",
-        "28:5",
         "28:10",
-        "28:12",
-        "28:16",
-        "28:17",
-        "28:18",
         "28:20",
-        "28:21",
-        "28:24",
-        "29:2",
         "29:8",
-        "29:9",
-        "29:10",
-        "29:11",
-        "29:14",
-        "29:15",
-        "29:19",
         "29:22",
-        "29:23",
-        "29:25",
-        "30:1",
         "30:10",
-        "30:11",
         "30:16",
-        "30:21",
-        "30:24",
-        "31:1",
-        "31:3",
-        "31:4",
-        "31:9",
-        "31:10",
-        "31:11"
+        "31:1"
       ],
       "result": "PASS",
-      "reason": "The evidence covers for-profit colleges, ITT student debt, education quality, and systemic problems identified by the Senate HELP Committee."
+      "reason": "The evidence covers for-profit colleges, ITT overview, student debt, and earnings data."
     },
-    "14": {
-      "topic_number": 14,
-      "topic": "Evaluating ITT student outcomes and default rates",
+    "13": {
+      "topic_number": 13,
+      "topic": "Evaluating ITT student outcomes and institutional quality",
       "start_ref": "31:12",
-      "end_ref": "33:4",
+      "end_ref": "34:8",
       "evidence_refs": [
         "31:12",
         "31:16",
-        "32:8",
-        "33:1",
-        "33:4"
-      ],
-      "result": "PASS",
-      "reason": "The evidence discusses ITT student outcomes, default rates, and whether graduating and earning more was typical or an outlier."
-    },
-    "15": {
-      "topic_number": 15,
-      "topic": "Aggregate data versus individual student anecdotes",
-      "start_ref": "33:7",
-      "end_ref": "35:8",
-      "evidence_refs": [
+        "31:17",
+        "32:3",
+        "32:4",
         "33:9",
         "33:16",
-        "33:22",
-        "34:12",
-        "35:2",
-        "35:7"
+        "33:17",
+        "33:23",
+        "33:24",
+        "34:1"
       ],
       "result": "PASS",
-      "reason": "The evidence explicitly compares individual anecdotes to aggregate data and outliers regarding the student experience."
+      "reason": "The evidence discusses ITT student outcomes, default rates, and institutional quality metrics."
     },
-    "16": {
-      "topic_number": 16,
-      "topic": "Vervent defendants' awareness of ITT misrepresentations",
-      "start_ref": "35:9",
+    "14": {
+      "topic_number": 14,
+      "topic": "ITT misrepresentations and Vervent defendants' awareness",
+      "start_ref": "34:9",
       "end_ref": "37:1",
       "evidence_refs": [
+        "34:12",
+        "34:13",
+        "34:14",
+        "35:1",
+        "35:2",
+        "35:3",
         "35:18",
         "35:22",
-        "36:3",
-        "36:9",
+        "35:24",
+        "36:10",
+        "36:12",
+        "36:14",
         "36:23"
       ],
       "result": "PASS",
-      "reason": "The evidence discusses sources citing misrepresentations and the witness's awareness regarding the Vervent defendants."
+      "reason": "The evidence covers ITT misrepresentations and the Vervent defendants' awareness based on reports."
     },
-    "17": {
-      "topic_number": 17,
-      "topic": "Discussion of hypothetical ITT graduate salaries and outliers",
+    "15": {
+      "topic_number": 15,
+      "topic": "Hypothetical student financial outcomes and outlier status",
       "start_ref": "37:15",
       "end_ref": "39:16",
       "evidence_refs": [
         "37:23",
         "38:1",
         "38:10",
+        "38:11",
         "38:15",
+        "38:18",
         "38:20",
         "39:5",
         "39:16"
       ],
       "result": "PASS",
-      "reason": "The evidence covers discussions about ITT graduates making more money, outliers, and someone not making any money."
+      "reason": "The evidence addresses hypothetical student outcomes and whether successful students are considered outliers."
     },
-    "18": {
-      "topic_number": 18,
-      "topic": "ITT Graduate Salaries and Outliers",
+    "16": {
+      "topic_number": 16,
+      "topic": "ITT graduate salary and outlier analysis",
       "start_ref": "39:17",
-      "end_ref": "42:4",
+      "end_ref": "42:2",
       "evidence_refs": [
         "39:17",
+        "39:18",
         "39:19",
-        "40:12",
+        "39:22",
+        "39:23",
+        "39:24",
+        "39:25",
+        "40:1",
+        "40:4",
+        "40:5",
+        "40:7",
+        "40:10",
+        "40:15",
+        "40:16",
+        "40:17",
+        "40:24",
+        "41:1",
+        "41:2",
         "41:4",
+        "41:7",
         "41:8",
+        "41:16",
+        "41:18",
+        "41:19",
+        "41:20",
+        "41:21",
+        "41:22",
+        "42:1",
         "42:2"
       ],
       "result": "PASS",
-      "reason": "The evidence explicitly discusses whether a graduate making more after graduating would be considered an outlier compared to typical experiences."
+      "reason": "The evidence directly discusses ITT graduate salaries, pre- and post-graduation earnings comparisons, and whether high earners represent outliers."
     },
-    "19": {
-      "topic_number": 19,
-      "topic": "Vervent Involvement in PEAKS Loans and ITT Recruiting",
+    "17": {
+      "topic_number": 17,
+      "topic": "Vervent defendants' involvement with PEAKS loans and origination timeline",
       "start_ref": "42:5",
       "end_ref": "44:12",
       "evidence_refs": [
+        "42:5",
+        "42:6",
         "42:7",
         "42:11",
+        "42:12",
+        "42:13",
+        "42:14",
+        "42:16",
         "42:17",
+        "42:19",
+        "42:20",
+        "42:23",
+        "42:24",
+        "43:4",
+        "43:5",
+        "43:8",
         "43:9",
+        "43:10",
         "43:13",
-        "44:8"
+        "43:14",
+        "43:15",
+        "43:16",
+        "43:17",
+        "44:1",
+        "44:8",
+        "44:11"
       ],
       "result": "PASS",
-      "reason": "The evidence specifically addresses PEAKS loans, the Vervent defendants' lack of involvement in loan origination, and whether servicers play a role in recruiting."
+      "reason": "The evidence covers the Vervent defendants' involvement with PEAKS loans, their timeline relative to loan origination, and lack of recruitment role."
     },
-    "20": {
-      "topic_number": 20,
-      "topic": "Enforceability and Legal Status of PEAKS Loans",
+    "18": {
+      "topic_number": 18,
+      "topic": "Enforceability and legal determinations regarding PEAKS loans",
       "start_ref": "44:13",
       "end_ref": "47:17",
       "evidence_refs": [
-        "44:19",
+        "44:13",
+        "44:14",
+        "44:18",
+        "44:20",
+        "44:22",
         "44:23",
+        "45:4",
+        "45:5",
+        "45:8",
         "45:9",
+        "45:10",
+        "45:13",
+        "45:16",
         "45:17",
+        "45:18",
+        "45:19",
+        "45:21",
+        "45:23",
+        "45:24",
+        "46:6",
+        "46:7",
+        "46:9",
         "46:10",
+        "46:12",
+        "46:13",
+        "46:15",
         "46:16",
+        "46:17",
+        "46:18",
+        "46:20",
+        "46:21",
+        "46:23",
+        "47:5",
         "47:7",
-        "47:10"
+        "47:9",
+        "47:10",
+        "47:11",
+        "47:12",
+        "47:14",
+        "47:15",
+        "47:16",
+        "47:17"
       ],
       "result": "PASS",
-      "reason": "The evidence focuses on whether the PEAKS loans became invalid, unenforceable, and related legal/bankruptcy determinations and cease-and-desist instructions."
+      "reason": "The evidence addresses whether there were legal determinations or orders regarding the enforceability and collection of PEAKS loans."
     },
-    "21": {
-      "topic_number": 21,
-      "topic": "Enforceability and Material Defects of PEAKS Loan Documents",
+    "19": {
+      "topic_number": 19,
+      "topic": "Enforceability and material defects of PEAKS loan documents",
       "start_ref": "47:18",
       "end_ref": "49:14",
       "evidence_refs": [
         "47:18",
         "47:22",
-        "47:23",
         "48:12",
-        "48:13",
+        "48:18",
         "48:19",
-        "48:20",
         "49:6",
-        "49:7",
-        "49:8",
-        "49:12",
-        "49:13",
-        "49:14"
+        "49:12"
       ],
       "result": "PASS",
-      "reason": "The evidence explicitly discusses material defects in the loan documents and whether they impact enforceability."
+      "reason": "The evidence discusses material defects in the PEAKS loan documents and their relationship to loan enforceability."
     },
-    "22": {
-      "topic_number": 22,
-      "topic": "Witness's Scope of Report Regarding Loan Enforceability",
+    "20": {
+      "topic_number": 20,
+      "topic": "Scope of expert report regarding loan enforceability and missing Truth in Lending Act disclosures",
       "start_ref": "49:15",
-      "end_ref": "50:11",
+      "end_ref": "52:6",
       "evidence_refs": [
-        "49:16",
         "49:18",
-        "49:21",
-        "49:22",
-        "50:3",
         "50:4",
-        "50:5",
-        "50:9",
-        "50:11"
-      ],
-      "result": "PASS",
-      "reason": "The evidence covers the witness's statements regarding the scope of their report concerning loan enforceability."
-    },
-    "23": {
-      "topic_number": 23,
-      "topic": "Missing Loan Documentation and Truth in Lending Act Requirements",
-      "start_ref": "50:12",
-      "end_ref": "53:12",
-      "evidence_refs": [
-        "50:13",
         "50:14",
-        "50:15",
-        "50:16",
-        "50:18",
         "50:19",
         "50:20",
-        "50:21",
-        "50:24",
-        "51:1",
-        "51:2",
-        "51:13",
-        "51:14",
-        "51:15",
-        "51:22",
-        "51:23",
-        "51:24",
+        "51:11",
+        "51:13"
+      ],
+      "result": "PASS",
+      "reason": "The evidence covers the scope of the expert's report, loan enforceability, and missing disclosures under the Truth in Lending Act."
+    },
+    "21": {
+      "topic_number": 21,
+      "topic": "California Student Loan Servicing Law review and compliance",
+      "start_ref": "52:21",
+      "end_ref": "53:9",
+      "evidence_refs": [
         "52:21",
-        "52:22",
         "52:24",
         "52:25",
-        "53:2",
+        "53:1",
         "53:4",
-        "53:5",
-        "53:7",
         "53:9"
       ],
       "result": "PASS",
-      "reason": "The evidence addresses missing loan documents, the Truth in Lending Act, and California student loan servicing law."
+      "reason": "The evidence explicitly discusses the California student loan servicing law and confirms it was outside the scope of the witness's report."
+    },
+    "22": {
+      "topic_number": 22,
+      "topic": "Definitive proof of loan enforceability and Vervent's access to loan records and interest rates",
+      "start_ref": "53:10",
+      "end_ref": "55:5",
+      "evidence_refs": [
+        "53:25",
+        "54:1",
+        "54:6",
+        "54:18",
+        "55:2",
+        "55:5"
+      ],
+      "result": "PASS",
+      "reason": "The evidence directly addresses Vervent's lack of loan documents, proof of interest rates, and reliance on a prior servicer's spreadsheet."
+    },
+    "23": {
+      "topic_number": 23,
+      "topic": "Right to cancel loans and effect of missing disclosures",
+      "start_ref": "55:6",
+      "end_ref": "58:22",
+      "evidence_refs": [
+        "55:6",
+        "55:7",
+        "55:8",
+        "55:12",
+        "55:13",
+        "55:14",
+        "55:15",
+        "55:19",
+        "55:20",
+        "55:21",
+        "56:6",
+        "56:7",
+        "56:8",
+        "56:12",
+        "56:13",
+        "56:14",
+        "56:15",
+        "56:19",
+        "56:20",
+        "56:21",
+        "56:22",
+        "56:23",
+        "56:24",
+        "56:25",
+        "57:1",
+        "57:2",
+        "57:3",
+        "57:5",
+        "57:6",
+        "57:7",
+        "57:8",
+        "57:9",
+        "57:16",
+        "57:17",
+        "57:18",
+        "57:19",
+        "57:20",
+        "57:21",
+        "57:22",
+        "57:24",
+        "58:1",
+        "58:2",
+        "58:8",
+        "58:9",
+        "58:10",
+        "58:11",
+        "58:12",
+        "58:13",
+        "58:14",
+        "58:15",
+        "58:16",
+        "58:17",
+        "58:18",
+        "58:21",
+        "58:22"
+      ],
+      "result": "PASS",
+      "reason": "The evidence covers missing disclosures, borrowers' right to cancel loans, and the resulting unenforceability of loans without disclosures."
     },
     "24": {
       "topic_number": 24,
-      "topic": "Definitive Proof and Servicer Access to Loan Documents",
-      "start_ref": "53:13",
-      "end_ref": "55:20",
+      "topic": "Loan enforceability and post-origination events including CFPB settlement",
+      "start_ref": "58:23",
+      "end_ref": "62:5",
       "evidence_refs": [
-        "53:21",
-        "53:22",
-        "54:1",
-        "54:2",
-        "54:3",
-        "54:6",
-        "54:8",
-        "54:18",
-        "54:19",
-        "54:20",
-        "55:2",
-        "55:3",
-        "55:4",
-        "55:5",
-        "55:10",
-        "55:11",
-        "55:12",
-        "55:15",
-        "55:16",
-        "55:19",
-        "55:20"
+        "58:23",
+        "58:24",
+        "58:25",
+        "59:1",
+        "59:2",
+        "59:3",
+        "59:4",
+        "59:5",
+        "59:7",
+        "59:8",
+        "59:11",
+        "59:12",
+        "60:3",
+        "60:4",
+        "60:5",
+        "60:8",
+        "60:9",
+        "60:10",
+        "60:11",
+        "60:12",
+        "60:13",
+        "60:14",
+        "60:15",
+        "60:16",
+        "60:17",
+        "60:18",
+        "60:19",
+        "60:20",
+        "60:21",
+        "60:22",
+        "60:23",
+        "60:24",
+        "60:25",
+        "61:1",
+        "61:2",
+        "61:3",
+        "61:4",
+        "61:5",
+        "61:6",
+        "61:7",
+        "61:8",
+        "61:9",
+        "61:10",
+        "61:11",
+        "61:12",
+        "61:13",
+        "61:14",
+        "61:15",
+        "61:16",
+        "61:17",
+        "61:18",
+        "61:19",
+        "61:20",
+        "61:21",
+        "61:22",
+        "61:23",
+        "62:1",
+        "62:2",
+        "62:3",
+        "62:4",
+        "62:5"
       ],
       "result": "PASS",
-      "reason": "The evidence focuses on servicer (Vervent) access to loan documents and whether definitive proof existed."
+      "reason": "The evidence discusses post-origination events impacting loan enforceability, including Truth in Lending Act purposes and CFPB findings and settlement."
     },
     "25": {
       "topic_number": 25,
-      "topic": "Right to cancel loans and effect of missing disclosures",
-      "start_ref": "56:6",
-      "end_ref": "57:23",
-      "evidence_refs": [
-        "56:6",
-        "56:8",
-        "56:12",
-        "56:15",
-        "56:19",
-        "56:21",
-        "56:23",
-        "57:1",
-        "57:5",
-        "57:16",
-        "57:21"
-      ],
-      "result": "PASS",
-      "reason": "The evidence discusses the borrowers' right to cancel loans and the effects of missing final disclosures."
-    },
-    "26": {
-      "topic_number": 26,
-      "topic": "Enforceability of loans and lack of disclosures",
-      "start_ref": "57:24",
-      "end_ref": "59:12",
-      "evidence_refs": [
-        "57:24",
-        "58:2",
-        "58:8",
-        "58:11",
-        "58:14",
-        "58:17",
-        "58:21",
-        "58:23",
-        "59:2",
-        "59:7",
-        "59:11"
-      ],
-      "result": "PASS",
-      "reason": "The evidence directly discusses loan enforceability, non-existent loans, and the right to cancel loans due to missing disclosures."
-    },
-    "27": {
-      "topic_number": 27,
-      "topic": "Factors impacting loan enforceability and CFPB settlement",
-      "start_ref": "60:2",
-      "end_ref": "62:7",
-      "evidence_refs": [
-        "60:2",
-        "60:5",
-        "60:9",
-        "60:13",
-        "60:19",
-        "61:7",
-        "61:11",
-        "61:14",
-        "61:20",
-        "61:22",
-        "62:3",
-        "62:6"
-      ],
-      "result": "PASS",
-      "reason": "The evidence covers factors impacting loan enforceability and discusses the CFPB settlement and loan cancellation."
-    },
-    "28": {
-      "topic_number": 28,
-      "topic": "ITT business practices, public reports, and government funding",
+      "topic": "ITT recruiting practices, public reports, and government student loan programs",
       "start_ref": "62:8",
       "end_ref": "63:20",
       "evidence_refs": [
         "62:8",
         "62:10",
+        "62:11",
+        "62:12",
+        "62:13",
+        "62:14",
+        "62:15",
+        "62:16",
         "62:17",
+        "62:19",
         "62:20",
+        "62:21",
+        "62:22",
         "62:23",
         "62:25",
+        "63:1",
         "63:3",
+        "63:4",
         "63:6",
+        "63:7",
+        "63:8",
         "63:9",
+        "63:10",
+        "63:11",
         "63:12",
+        "63:13",
+        "63:14",
+        "63:15",
+        "63:16",
+        "63:17",
         "63:18",
+        "63:19",
         "63:20"
       ],
       "result": "PASS",
-      "reason": "The evidence addresses ITT's business practices, public reports, and its participation in Title IV government funding."
+      "reason": "The evidence covers ITT recruiting and financial aid practices from public reports, and government student loan programs like Title IV."
     },
-    "29": {
-      "topic_number": 29,
-      "topic": "Federal government student loans and perception of ITT",
+    "26": {
+      "topic_number": 26,
+      "topic": "Federal government student loans and ITT's industry reputation",
       "start_ref": "63:21",
-      "end_ref": "65:12",
+      "end_ref": "66:20",
       "evidence_refs": [
         "63:21",
         "63:22",
         "63:23",
         "63:24",
+        "63:25",
         "64:8",
         "64:9",
         "64:10",
@@ -629,17 +671,7 @@
         "65:4",
         "65:5",
         "65:6",
-        "65:7"
-      ],
-      "result": "PASS",
-      "reason": "The evidence examines federal government student loans and whether they serve as a seal of approval or indication of ITT's legitimacy."
-    },
-    "30": {
-      "topic_number": 30,
-      "topic": "Widespread abusive practices and investigations of ITT",
-      "start_ref": "65:13",
-      "end_ref": "66:20",
-      "evidence_refs": [
+        "65:7",
         "65:13",
         "65:14",
         "65:15",
@@ -659,12 +691,6 @@
         "66:4",
         "66:5",
         "66:6",
-        "66:8",
-        "66:9",
-        "66:10",
-        "66:11",
-        "66:12",
-        "66:13",
         "66:14",
         "66:15",
         "66:16",
@@ -674,13 +700,13 @@
         "66:20"
       ],
       "result": "PASS",
-      "reason": "The evidence details widespread abusive practices, whistleblower suits, DOJ investigations, and what was known about ITT."
+      "reason": "The evidence discusses federal student loans, the Title IV program, and what was known about ITT's industry reputation and practices."
     },
-    "31": {
-      "topic_number": 31,
-      "topic": "CFPB Civil Investigative Demand and investigations regarding Vervent defendants",
+    "27": {
+      "topic_number": 27,
+      "topic": "CFPB Civil Investigative Demand and findings regarding Vervent defendants",
       "start_ref": "66:21",
-      "end_ref": "68:25",
+      "end_ref": "68:17",
       "evidence_refs": [
         "66:21",
         "66:22",
@@ -717,7 +743,17 @@
         "68:14",
         "68:15",
         "68:16",
-        "68:17",
+        "68:17"
+      ],
+      "result": "PASS",
+      "reason": "The evidence covers the 2012 CFPB Civil Investigative Demand and whether findings or complaints involved wrongdoing by the Vervent defendants."
+    },
+    "28": {
+      "topic_number": 28,
+      "topic": "SEC investigation and findings regarding Vervent defendants",
+      "start_ref": "68:18",
+      "end_ref": "71:14",
+      "evidence_refs": [
         "68:18",
         "68:19",
         "68:20",
@@ -725,23 +761,11 @@
         "68:22",
         "68:23",
         "68:24",
-        "68:25"
-      ],
-      "result": "PASS",
-      "reason": "The evidence directly discusses the CFPB Civil Investigative Demand and its relation to the PEAKS loans and Vervent defendants."
-    },
-    "32": {
-      "topic_number": 32,
-      "topic": "SEC investigation of PEAKS loans and Vervent defendants",
-      "start_ref": "69:1",
-      "end_ref": "71:14",
-      "evidence_refs": [
         "69:1",
         "69:2",
         "69:3",
         "69:4",
         "69:5",
-        "69:6",
         "69:7",
         "69:8",
         "69:9",
@@ -783,11 +807,11 @@
         "71:13"
       ],
       "result": "PASS",
-      "reason": "The evidence covers the SEC investigation regarding PEAKS loans and whether it involved wrongdoing by the Vervent defendants."
+      "reason": "The evidence addresses the SEC investigation regarding the PEAKS loans and whether it made findings against the Vervent defendants."
     },
-    "33": {
-      "topic_number": 33,
-      "topic": "CFPB lawsuit against ITT regarding predatory loans",
+    "29": {
+      "topic_number": 29,
+      "topic": "February 2014 CFPB suit against ITT over predatory loans",
       "start_ref": "71:15",
       "end_ref": "71:22",
       "evidence_refs": [
@@ -801,16 +825,20 @@
         "71:22"
       ],
       "result": "PASS",
-      "reason": "The evidence explicitly references the February 2014 CFPB suit against ITT over predatory loans and the PEAKS loans."
+      "reason": "The evidence explicitly discusses the February 2014 CFPB suit against ITT over predatory loans including the PEAKS loans."
     },
-    "34": {
-      "topic_number": 34,
-      "topic": "CFPB investigation and settlement regarding ITT and PEAKS loan program",
-      "start_ref": "71:21",
+    "30": {
+      "topic_number": 30,
+      "topic": "CFPB settlement and ITT/Vervent PEAKS loan program",
+      "start_ref": "71:23",
       "end_ref": "73:13",
       "evidence_refs": [
-        "71:21",
         "71:23",
+        "71:24",
+        "72:2",
+        "72:3",
+        "72:4",
+        "72:5",
         "72:23",
         "72:24",
         "73:1",
@@ -825,20 +853,30 @@
         "73:13"
       ],
       "result": "PASS",
-      "reason": "The evidence discusses the CFPB action, settlements, and the PEAKS loan program in connection to ITT and Vervent."
+      "reason": "The evidence addresses the CFPB settlement involving ITT and its relation to the PEAKS loan program and Vervent."
     },
-    "35": {
-      "topic_number": 35,
-      "topic": "State Attorneys General investigations into ITT",
-      "start_ref": "74:1",
+    "31": {
+      "topic_number": 31,
+      "topic": "State attorneys general and regulatory investigations into ITT and PEAKS loans",
+      "start_ref": "73:14",
       "end_ref": "75:4",
       "evidence_refs": [
+        "73:14",
+        "73:15",
+        "73:16",
+        "73:17",
+        "73:19",
+        "73:20",
+        "73:22",
+        "73:23",
+        "73:24",
         "74:1",
         "74:2",
         "74:3",
         "74:6",
         "74:7",
         "74:8",
+        "74:9",
         "74:10",
         "74:11",
         "74:12",
@@ -855,18 +893,17 @@
         "75:4"
       ],
       "result": "PASS",
-      "reason": "The evidence covers state attorneys general investigations into ITT and whether they made findings against the Vervent defendants."
+      "reason": "The evidence directly discusses state attorneys general investigations into ITT regarding PEAKS loans and Vervent's involvement."
     },
-    "36": {
-      "topic_number": 36,
-      "topic": "U.S. Department of Education findings and role regarding ITT and loan servicers",
+    "32": {
+      "topic_number": 32,
+      "topic": "Department of Education involvement and loan servicer investigations",
       "start_ref": "75:5",
-      "end_ref": "75:23",
+      "end_ref": "76:5",
       "evidence_refs": [
         "75:5",
         "75:6",
         "75:7",
-        "75:8",
         "75:9",
         "75:10",
         "75:11",
@@ -874,7 +911,6 @@
         "75:13",
         "75:14",
         "75:15",
-        "75:16",
         "75:17",
         "75:18",
         "75:19",
@@ -884,16 +920,20 @@
         "75:23"
       ],
       "result": "PASS",
-      "reason": "The evidence directly discusses the U.S. Department of Education's findings regarding ITT and loan servicers like Vervent."
+      "reason": "The evidence covers Department of Education findings, behavior regarding ITT, and its role compared to financial regulators."
     },
-    "37": {
-      "topic_number": 37,
-      "topic": "Witness professional background regarding investigations",
-      "start_ref": "76:14",
+    "33": {
+      "topic_number": 33,
+      "topic": "Witness's professional experience and definition of investigations",
+      "start_ref": "76:10",
       "end_ref": "78:3",
       "evidence_refs": [
+        "76:11",
+        "76:12",
         "76:14",
         "76:15",
+        "76:16",
+        "76:17",
         "76:18",
         "76:19",
         "76:20",
@@ -911,6 +951,7 @@
         "77:10",
         "77:11",
         "77:12",
+        "77:13",
         "77:15",
         "77:16",
         "77:17",
@@ -920,16 +961,15 @@
         "77:23",
         "77:24",
         "77:25",
-        "78:1",
         "78:2",
         "78:3"
       ],
       "result": "PASS",
-      "reason": "The evidence covers the witness's professional background and experience regarding investigations."
+      "reason": "The evidence details the witness's professional experience and her clarification of what constitutes an investigation."
     },
-    "38": {
-      "topic_number": 38,
-      "topic": "Nature and implications of investigations regarding wrongdoing",
+    "34": {
+      "topic_number": 34,
+      "topic": "Implications of investigations regarding wrongdoing and servicing decisions",
       "start_ref": "78:4",
       "end_ref": "79:24",
       "evidence_refs": [
@@ -967,112 +1007,99 @@
         "79:24"
       ],
       "result": "PASS",
-      "reason": "The evidence addresses what an investigation means regarding the occurrence of wrongdoing and whether it mandated stopping loan servicing."
+      "reason": "The evidence addresses whether investigations imply wrongdoing and if they necessitated Vervent stopping the servicing of loans."
     },
-    "39": {
-      "topic_number": 39,
-      "topic": "Functions of loan servicers and regulations regarding school investigations",
+    "35": {
+      "topic_number": 35,
+      "topic": "Loan Servicing Functions and Responsibilities",
       "start_ref": "79:25",
       "end_ref": "81:14",
       "evidence_refs": [
         "79:25",
-        "80:1",
+        "80:7",
         "80:9",
+        "80:10",
         "80:16",
-        "80:23",
+        "80:24",
         "81:1",
-        "81:10",
+        "81:3",
+        "81:7",
         "81:11"
       ],
       "result": "PASS",
-      "reason": "The evidence discusses the functions of loan servicers and regulations or statutes regarding stopping loan servicing."
+      "reason": "The evidence discusses the functions, duties, and responsibilities of loan servicers like collecting payments and tracking data."
     },
-    "40": {
-      "topic_number": 40,
-      "topic": "Enforceability of PEAKS loans and CFPB settlement",
+    "36": {
+      "topic_number": 36,
+      "topic": "Enforceability of PEAKS Loans and CFPB Settlement",
       "start_ref": "81:15",
-      "end_ref": "83:3",
+      "end_ref": "83:4",
       "evidence_refs": [
         "81:15",
         "81:16",
+        "81:24",
         "82:7",
         "82:11",
         "82:13",
         "82:15",
         "82:20",
-        "83:1",
         "83:2"
       ],
       "result": "PASS",
-      "reason": "The evidence covers the enforceability of the PEAKS loans and the CFPB settlement."
+      "reason": "The evidence explicitly discusses the enforceability of PEAKS loans, unfair and deceptive practices, and the CFPB settlement resulting in loan cancellation."
     },
-    "41": {
-      "topic_number": 41,
-      "topic": "Determination of loan enforceability prior to fall 2020",
-      "start_ref": "83:4",
-      "end_ref": "85:13",
-      "evidence_refs": [
-        "83:4",
-        "83:5",
-        "83:10",
-        "83:24",
-        "84:13",
-        "85:1",
-        "85:5",
-        "85:12"
-      ],
-      "result": "PASS",
-      "reason": "The evidence directly discusses whether there was a determination regarding loan enforceability and mentions opinions on evidence of enforceability prior to the referenced timeframe."
-    },
-    "42": {
-      "topic_number": 42,
-      "topic": "Loan enforceability at origination versus later points in time",
-      "start_ref": "85:14",
+    "37": {
+      "topic_number": 37,
+      "topic": "Timeline and Determinations of Loan Unenforceability",
+      "start_ref": "83:5",
       "end_ref": "87:3",
       "evidence_refs": [
+        "83:5",
+        "83:6",
+        "83:10",
+        "83:24",
+        "84:1",
+        "84:13",
+        "85:1",
+        "85:4",
         "85:16",
-        "85:21",
         "86:2",
         "86:10",
         "86:12",
         "86:20",
-        "86:23",
         "87:1"
       ],
       "result": "PASS",
-      "reason": "The evidence explicitly contrasts whether the loans were unenforceable at their outset/origination versus things that occurred after origination."
+      "reason": "The evidence directly addresses opinions and questions regarding the timeline and determinations of whether the PEAKS loans were unenforceable at origination or later."
     },
-    "43": {
-      "topic_number": 43,
-      "topic": "Review of investigations into Vervent's actual loan servicing",
+    "38": {
+      "topic_number": 38,
+      "topic": "Review of Servicing Practices and Investigations",
       "start_ref": "87:4",
       "end_ref": "88:1",
       "evidence_refs": [
         "87:4",
         "87:5",
         "87:11",
-        "87:13",
         "87:20",
         "87:24"
       ],
       "result": "PASS",
-      "reason": "The evidence explicitly references a review of various investigations and issues relating to Vervent's actual loan servicing."
+      "reason": "The evidence references a review of various investigations and the servicing practices of the Vervent defendants."
     },
-    "44": {
-      "topic_number": 44,
-      "topic": "Conclusion of deposition",
-      "start_ref": "88:4",
+    "39": {
+      "topic_number": 39,
+      "topic": "Conclusion of Deposition",
+      "start_ref": "88:2",
       "end_ref": "88:13",
       "evidence_refs": [
         "88:4",
         "88:6",
         "88:9",
-        "88:11",
-        "88:12",
-        "88:13"
+        "88:11"
       ],
       "result": "PASS",
-      "reason": "The evidence captures the final exchange, going off the record, and the formal conclusion of the deposition testimony."
+      "reason": "The evidence shows counsel concluding their questioning and the reporter/videographer preparing to go off the record."
     }
   }
 }

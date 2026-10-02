@@ -5,6 +5,7 @@ import time
 from dotenv import load_dotenv
 from google import genai
 
+
 load_dotenv()
 
 api_key = os.getenv("GEMINI_API_KEY")
@@ -12,10 +13,12 @@ api_key = os.getenv("GEMINI_API_KEY")
 if not api_key:
     raise ValueError("GEMINI_API_KEY not found in .env file")
 
+
 client = genai.Client(
     api_key=api_key,
     http_options={"timeout": 60000}
 )
+
 
 INPUT_PATH = os.getenv(
     "DEPOINDEX_INPUT_PATH",
@@ -27,7 +30,8 @@ OUTPUT_PATH = os.getenv(
     "outputs/batched_topics.json"
 )
 
-# 5 original chunks per Gemini request
+
+# Up to 5 original chunks per Gemini request.
 BATCH_SIZE = 5
 
 
@@ -39,7 +43,7 @@ def load_chunks(path):
 def build_valid_reference_set(chunks):
     """
     Build a set containing every real page:line reference
-    present in the canonical transcript.
+    present in the supplied transcript chunks.
 
     This is used only for validation.
 
@@ -61,7 +65,7 @@ def validate_ref_format(ref):
     Check whether a reference has the basic page:line format.
 
     Examples:
-        25:8  -> valid format
+        25:8  -> valid
         69:0  -> invalid
         abc   -> invalid
     """
@@ -93,16 +97,15 @@ def validate_topic_references(result, valid_refs):
     topics = result.get("topics", [])
 
     if not isinstance(topics, list):
-        errors.append(
-            "'topics' must be a list"
-        )
+        errors.append("'topics' must be a list")
         return errors
 
     for topic_index, topic in enumerate(topics, start=1):
 
-        # -----------------------------
+        # ---------------------------------------
         # Validate start_ref
-        # -----------------------------
+        # ---------------------------------------
+
         start_ref = topic.get("start_ref")
 
         if not validate_ref_format(start_ref):
@@ -110,6 +113,7 @@ def validate_topic_references(result, valid_refs):
                 f"Topic {topic_index}: "
                 f"invalid start_ref '{start_ref}'"
             )
+
         elif start_ref not in valid_refs:
             errors.append(
                 f"Topic {topic_index}: "
@@ -117,9 +121,10 @@ def validate_topic_references(result, valid_refs):
                 f"does not exist in transcript"
             )
 
-        # -----------------------------
+        # ---------------------------------------
         # Validate end_ref
-        # -----------------------------
+        # ---------------------------------------
+
         end_ref = topic.get("end_ref")
 
         if not validate_ref_format(end_ref):
@@ -127,6 +132,7 @@ def validate_topic_references(result, valid_refs):
                 f"Topic {topic_index}: "
                 f"invalid end_ref '{end_ref}'"
             )
+
         elif end_ref not in valid_refs:
             errors.append(
                 f"Topic {topic_index}: "
@@ -134,9 +140,10 @@ def validate_topic_references(result, valid_refs):
                 f"does not exist in transcript"
             )
 
-        # -----------------------------
+        # ---------------------------------------
         # Validate evidence_refs
-        # -----------------------------
+        # ---------------------------------------
+
         evidence_refs = topic.get(
             "evidence_refs",
             []
@@ -178,18 +185,53 @@ def save_results(results, path):
 
 
 def build_prompt(chunks):
+    """
+    Build the LLM prompt using both:
+
+    1. Transcript content
+    2. Explicit document-location metadata
+
+    The metadata helps the model control references and understand
+    where each supplied chunk belongs in the original document.
+    """
+
     sections = []
 
     for chunk in chunks:
-        transcript_text = "\n".join(
-            f"{record['source_ref']} | {record['semantic_text']}"
+
+        # ---------------------------------------
+        # Explicit document metadata
+        # ---------------------------------------
+
+        metadata = (
+            f"Chunk ID: {chunk['chunk_id']}\n"
+            f"Transcript range: "
+            f"{chunk['start_ref']} -> {chunk['end_ref']}\n"
+            f"Printed page range: "
+            f"{chunk['start_page']} -> {chunk['end_page']}\n"
+            f"Transcript records: "
+            f"{chunk['record_count']}"
+        )
+
+        # ---------------------------------------
+        # Transcript records
+        # ---------------------------------------
+
+        transcript_lines = "\n".join(
+            f"{record['source_ref']} | "
+            f"{record['semantic_text']}"
             for record in chunk["records"]
         )
 
         sections.append(
-            f"===== CHUNK {chunk['chunk_id']} "
-            f"({chunk['start_ref']} to {chunk['end_ref']}) =====\n"
-            f"{transcript_text}"
+            "===== CHUNK "
+            f"{chunk['chunk_id']} =====\n"
+            "\n"
+            "DOCUMENT METADATA:\n"
+            f"{metadata}\n"
+            "\n"
+            "TRANSCRIPT RECORDS:\n"
+            f"{transcript_lines}"
         )
 
     combined_transcript = "\n\n".join(sections)
@@ -197,31 +239,75 @@ def build_prompt(chunks):
     return f"""
 You are analyzing a legal deposition transcript for a topic index.
 
-The transcript is divided into several consecutive chunks.
-Each transcript line has an exact page:line reference.
+The transcript is divided into consecutive chunks.
 
-Your task is to identify meaningful topics discussed across the supplied
-chunks.
+Each chunk contains explicit document-location metadata:
+
+- chunk ID
+- transcript start and end references
+- printed-page range
+- number of transcript records
+
+Each transcript record also has an exact page:line reference.
+
+Use the document metadata to understand where each chunk belongs
+within the original deposition and to control provenance references.
+
+IMPORTANT:
+
+The chunk metadata describes the location of the supplied transcript.
+It does NOT replace the actual transcript evidence.
+
+Use the transcript lines themselves to determine topic meaning,
+boundaries, and evidence.
+
+Your task is to identify meaningful topics discussed across the
+supplied chunks.
 
 IMPORTANT PROVENANCE RULES:
 
 1. Use only the supplied transcript.
+
 2. Do not invent information.
-3. Every start_ref and end_ref MUST be an exact page:line reference
+
+3. Use the supplied document metadata to understand the location
+   of each chunk in the original transcript.
+
+4. Every start_ref and end_ref MUST be an exact page:line reference
    appearing in the supplied transcript.
-4. Every evidence_ref MUST be an exact page:line reference appearing
-   in the supplied transcript.
-5. Preserve the actual boundaries of the discussion.
-6. Do not extend a topic into unrelated discussion.
-7. If a topic meaningfully reappears after another topic, create a
-   separate topic entry and use related_to to link it to the earlier
-   topic when appropriate.
-8. Do not create duplicate topics merely because a chunk boundary occurs.
-9. Topics may begin in one chunk and end in another.
-10. Use the page:line references to determine boundaries, not chunk numbers.
-11. NEVER use a page:0 reference.
-12. If you cannot identify a valid existing page:line reference,
+
+5. Every evidence_ref MUST be an exact page:line reference
+   appearing in the supplied transcript.
+
+6. Preserve the actual boundaries of the discussion.
+
+7. Do not extend a topic into unrelated discussion.
+
+8. Use transcript page:line references rather than chunk IDs
+   as topic boundaries.
+
+9. Topics may begin in one chunk and end in another supplied chunk.
+
+10. Do not create duplicate topics merely because a chunk boundary
+    occurs.
+
+11. If a topic meaningfully reappears after another topic, create
+    a separate topic entry and use related_to to link it to the
+    earlier topic when appropriate.
+
+12. Do not use chunk numbers as provenance references.
+
+13. NEVER use a page:0 reference.
+
+14. If you cannot identify a valid existing page:line reference,
     do not invent or approximate one.
+
+15. Evidence references must correspond to actual transcript lines
+    that support the topic.
+
+16. The original transcript wording is authoritative for evidence.
+    The semantic_text field is provided for easier semantic processing
+    but must not be used to invent or alter provenance.
 
 Return ONLY valid JSON.
 
@@ -233,24 +319,29 @@ Required format:
       "topic": "short meaningful topic label",
       "start_ref": "page:line",
       "end_ref": "page:line",
-      "evidence_refs": ["page:line", "page:line"],
+      "evidence_refs": [
+        "page:line",
+        "page:line"
+      ],
       "related_to": []
     }}
   ]
 }}
 
-If a topic is a continuation or meaningful re-entry of an earlier topic,
-use the earlier topic's index in related_to, for example:
+If a topic is a continuation or meaningful re-entry of an earlier
+topic, use the earlier topic's index in related_to.
+
+For example:
 
 "related_to": [2]
 
-Otherwise use:
+Otherwise:
 
 "related_to": []
 
 Do not include any explanation outside the JSON.
 
-TRANSCRIPT:
+SUPPLIED TRANSCRIPT AND DOCUMENT METADATA:
 
 {combined_transcript}
 """
@@ -272,6 +363,7 @@ def clean_json_response(result):
 
 
 def extract_batch(chunks, valid_refs):
+
     prompt = build_prompt(chunks)
 
     max_retries = 3
@@ -280,16 +372,17 @@ def extract_batch(chunks, valid_refs):
     last_validation_errors = []
 
     for attempt in range(max_retries):
+
         try:
 
             # ---------------------------------------
-            # If a previous attempt produced invalid
-            # provenance, tell the model exactly what
-            # needs to be corrected.
+            # Retry prompt after invalid provenance
             # ---------------------------------------
+
             retry_prompt = prompt
 
             if last_validation_errors:
+
                 retry_prompt += f"""
 
 IMPORTANT CORRECTION FROM PREVIOUS ATTEMPT:
@@ -303,6 +396,7 @@ The following references were invalid:
 Generate the JSON again.
 
 Do NOT repair these references yourself.
+
 Use only exact page:line references that actually
 appear in the supplied transcript.
 
@@ -319,12 +413,11 @@ Return ONLY valid JSON.
             )
 
             # ---------------------------------------
-            # Validate the ORIGINAL LLM output.
+            # Validate ORIGINAL LLM output.
             #
-            # IMPORTANT:
-            # We do NOT normalize or silently repair
-            # invalid references.
+            # No silent reference repair.
             # ---------------------------------------
+
             validation_errors = validate_topic_references(
                 result,
                 valid_refs
@@ -368,11 +461,11 @@ Return ONLY valid JSON.
             # ---------------------------------------
             # Only validated output reaches here.
             # ---------------------------------------
+
             return result
 
         except ValueError:
-            # Validation errors are handled above.
-            # Re-raise only after final retry.
+
             if attempt == max_retries - 1:
                 raise
 
@@ -403,13 +496,8 @@ def main():
 
     chunks = load_chunks(INPUT_PATH)
 
-    # Build the set of REAL references from the
-    # canonical transcript.
-    #
-    # This is used for validation only.
-    valid_refs = build_valid_reference_set(
-        chunks
-    )
+    # Build the set of REAL references from the transcript.
+    valid_refs = build_valid_reference_set(chunks)
 
     all_results = []
 
@@ -483,6 +571,7 @@ def main():
                 batch_result
             )
 
+            # Incremental save
             save_results(
                 all_results,
                 OUTPUT_PATH
