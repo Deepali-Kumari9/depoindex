@@ -36,43 +36,38 @@ def load_chunks(path):
         return json.load(file)
 
 
-def build_provenance_index(chunks):
+def build_valid_reference_set(chunks):
     """
-    Build a mapping of each printed page to its last valid
-    transcript line.
+    Build a set containing every real page:line reference
+    present in the canonical transcript.
 
-    This is used to deterministically repair page:0 references
-    produced by the LLM at page boundaries.
+    This is used only for validation.
+
+    IMPORTANT:
+    We do NOT modify or repair an invalid LLM reference.
     """
-    last_line_by_page = {}
+
+    valid_refs = set()
 
     for chunk in chunks:
         for record in chunk["records"]:
-            page = record["printed_page"]
-            line = record["line"]
+            valid_refs.add(record["source_ref"])
 
-            if page not in last_line_by_page:
-                last_line_by_page[page] = line
-            else:
-                last_line_by_page[page] = max(
-                    last_line_by_page[page],
-                    line
-                )
-
-    return last_line_by_page
+    return valid_refs
 
 
-def normalize_ref(ref, last_line_by_page):
+def validate_ref_format(ref):
     """
-    Normalize invalid page:0 references.
+    Check whether a reference has the basic page:line format.
 
-    Example:
-        69:0 -> 68:<last valid line on page 68>
-
-    Other references are left unchanged.
+    Examples:
+        25:8  -> valid format
+        69:0  -> invalid
+        abc   -> invalid
     """
+
     if not ref or ":" not in ref:
-        return ref
+        return False
 
     page_str, line_str = ref.split(":", 1)
 
@@ -80,42 +75,96 @@ def normalize_ref(ref, last_line_by_page):
         page = int(page_str)
         line = int(line_str)
     except ValueError:
-        return ref
+        return False
 
-    # Gemini can sometimes represent a page transition as
-    # "next_page:0". This is not a real transcript reference.
-    # Convert it to the final valid line of the previous page.
-    if line == 0 and page > 1:
-        previous_page = page - 1
-
-        if previous_page in last_line_by_page:
-            return f"{previous_page}:{last_line_by_page[previous_page]}"
-
-    return ref
+    # Page and transcript line numbers start from 1.
+    return page > 0 and line > 0
 
 
-def normalize_topics(result, last_line_by_page):
+def validate_topic_references(result, valid_refs):
     """
-    Apply deterministic provenance normalization to all
-    topic boundary and evidence references.
+    Validate all provenance references produced by the LLM.
+
+    Invalid references are reported instead of silently repaired.
     """
-    for topic in result.get("topics", []):
-        topic["start_ref"] = normalize_ref(
-            topic.get("start_ref"),
-            last_line_by_page
+
+    errors = []
+
+    topics = result.get("topics", [])
+
+    if not isinstance(topics, list):
+        errors.append(
+            "'topics' must be a list"
+        )
+        return errors
+
+    for topic_index, topic in enumerate(topics, start=1):
+
+        # -----------------------------
+        # Validate start_ref
+        # -----------------------------
+        start_ref = topic.get("start_ref")
+
+        if not validate_ref_format(start_ref):
+            errors.append(
+                f"Topic {topic_index}: "
+                f"invalid start_ref '{start_ref}'"
+            )
+        elif start_ref not in valid_refs:
+            errors.append(
+                f"Topic {topic_index}: "
+                f"start_ref '{start_ref}' "
+                f"does not exist in transcript"
+            )
+
+        # -----------------------------
+        # Validate end_ref
+        # -----------------------------
+        end_ref = topic.get("end_ref")
+
+        if not validate_ref_format(end_ref):
+            errors.append(
+                f"Topic {topic_index}: "
+                f"invalid end_ref '{end_ref}'"
+            )
+        elif end_ref not in valid_refs:
+            errors.append(
+                f"Topic {topic_index}: "
+                f"end_ref '{end_ref}' "
+                f"does not exist in transcript"
+            )
+
+        # -----------------------------
+        # Validate evidence_refs
+        # -----------------------------
+        evidence_refs = topic.get(
+            "evidence_refs",
+            []
         )
 
-        topic["end_ref"] = normalize_ref(
-            topic.get("end_ref"),
-            last_line_by_page
-        )
+        if not isinstance(evidence_refs, list):
+            errors.append(
+                f"Topic {topic_index}: "
+                "'evidence_refs' must be a list"
+            )
+            continue
 
-        topic["evidence_refs"] = [
-            normalize_ref(ref, last_line_by_page)
-            for ref in topic.get("evidence_refs", [])
-        ]
+        for ref in evidence_refs:
 
-    return result
+            if not validate_ref_format(ref):
+                errors.append(
+                    f"Topic {topic_index}: "
+                    f"invalid evidence_ref '{ref}'"
+                )
+
+            elif ref not in valid_refs:
+                errors.append(
+                    f"Topic {topic_index}: "
+                    f"evidence_ref '{ref}' "
+                    f"does not exist in transcript"
+                )
+
+    return errors
 
 
 def save_results(results, path):
@@ -155,6 +204,7 @@ Your task is to identify meaningful topics discussed across the supplied
 chunks.
 
 IMPORTANT PROVENANCE RULES:
+
 1. Use only the supplied transcript.
 2. Do not invent information.
 3. Every start_ref and end_ref MUST be an exact page:line reference
@@ -169,8 +219,9 @@ IMPORTANT PROVENANCE RULES:
 8. Do not create duplicate topics merely because a chunk boundary occurs.
 9. Topics may begin in one chunk and end in another.
 10. Use the page:line references to determine boundaries, not chunk numbers.
-11. Do not use page:0 references. If a topic ends at a page transition,
-    use the final valid transcript line on the preceding page.
+11. NEVER use a page:0 reference.
+12. If you cannot identify a valid existing page:line reference,
+    do not invent or approximate one.
 
 Return ONLY valid JSON.
 
@@ -220,55 +271,145 @@ def clean_json_response(result):
     return json.loads(result)
 
 
-def extract_batch(chunks, last_line_by_page):
+def extract_batch(chunks, valid_refs):
     prompt = build_prompt(chunks)
 
     max_retries = 3
     retry_delays = [20, 40, 60]
 
+    last_validation_errors = []
+
     for attempt in range(max_retries):
         try:
+
+            # ---------------------------------------
+            # If a previous attempt produced invalid
+            # provenance, tell the model exactly what
+            # needs to be corrected.
+            # ---------------------------------------
+            retry_prompt = prompt
+
+            if last_validation_errors:
+                retry_prompt += f"""
+
+IMPORTANT CORRECTION FROM PREVIOUS ATTEMPT:
+
+The previous response contained invalid provenance references.
+
+The following references were invalid:
+
+{chr(10).join(last_validation_errors)}
+
+Generate the JSON again.
+
+Do NOT repair these references yourself.
+Use only exact page:line references that actually
+appear in the supplied transcript.
+
+Return ONLY valid JSON.
+"""
+
             interaction = client.interactions.create(
                 model="gemini-3.5-flash-lite",
-                input=prompt
+                input=retry_prompt
             )
 
             result = clean_json_response(
                 interaction.output_text
             )
 
-            # Deterministic post-processing of LLM provenance.
-            result = normalize_topics(
+            # ---------------------------------------
+            # Validate the ORIGINAL LLM output.
+            #
+            # IMPORTANT:
+            # We do NOT normalize or silently repair
+            # invalid references.
+            # ---------------------------------------
+            validation_errors = validate_topic_references(
                 result,
-                last_line_by_page
+                valid_refs
             )
 
+            if validation_errors:
+
+                last_validation_errors = validation_errors
+
+                if attempt == max_retries - 1:
+                    raise ValueError(
+                        "LLM produced invalid provenance "
+                        "references after all retries:\n"
+                        + "\n".join(validation_errors)
+                    )
+
+                print(
+                    f"Invalid provenance detected "
+                    f"(attempt {attempt + 1}/{max_retries}):",
+                    flush=True
+                )
+
+                for error in validation_errors:
+                    print(
+                        f"  - {error}",
+                        flush=True
+                    )
+
+                print(
+                    f"Retrying after "
+                    f"{retry_delays[attempt]} seconds...",
+                    flush=True
+                )
+
+                time.sleep(
+                    retry_delays[attempt]
+                )
+
+                continue
+
+            # ---------------------------------------
+            # Only validated output reaches here.
+            # ---------------------------------------
             return result
 
+        except ValueError:
+            # Validation errors are handled above.
+            # Re-raise only after final retry.
+            if attempt == max_retries - 1:
+                raise
+
         except Exception as error:
+
             if attempt == max_retries - 1:
                 raise
 
             print(
-                f"Request failed (attempt {attempt + 1}/{max_retries}): "
+                f"Request failed "
+                f"(attempt {attempt + 1}/{max_retries}): "
                 f"{error}",
                 flush=True
             )
 
             print(
-                f"Waiting {retry_delays[attempt]} seconds before retry...",
+                f"Waiting {retry_delays[attempt]} "
+                f"seconds before retry...",
                 flush=True
             )
 
-            time.sleep(retry_delays[attempt])
+            time.sleep(
+                retry_delays[attempt]
+            )
 
 
 def main():
+
     chunks = load_chunks(INPUT_PATH)
 
-    # Build provenance information from the actual transcript chunks.
-    # This ensures normalization uses real transcript boundaries.
-    last_line_by_page = build_provenance_index(chunks)
+    # Build the set of REAL references from the
+    # canonical transcript.
+    #
+    # This is used for validation only.
+    valid_refs = build_valid_reference_set(
+        chunks
+    )
 
     all_results = []
 
@@ -276,39 +417,71 @@ def main():
         len(chunks) + BATCH_SIZE - 1
     ) // BATCH_SIZE
 
-    print(f"Total chunks: {len(chunks)}")
-    print(f"Batch size: {BATCH_SIZE}")
-    print(f"Total Gemini requests: {total_batches}")
+    print(
+        f"Total chunks: {len(chunks)}"
+    )
+
+    print(
+        f"Batch size: {BATCH_SIZE}"
+    )
+
+    print(
+        f"Total Gemini requests: {total_batches}"
+    )
+
     print()
 
-    for start in range(0, len(chunks), BATCH_SIZE):
-        batch = chunks[start:start + BATCH_SIZE]
-        batch_number = (start // BATCH_SIZE) + 1
+    for start in range(
+        0,
+        len(chunks),
+        BATCH_SIZE
+    ):
+
+        batch = chunks[
+            start:start + BATCH_SIZE
+        ]
+
+        batch_number = (
+            start // BATCH_SIZE
+        ) + 1
 
         print(
-            f"Processing batch {batch_number}/{total_batches} "
-            f"(chunks {batch[0]['chunk_id']}-{batch[-1]['chunk_id']})...",
+            f"Processing batch "
+            f"{batch_number}/{total_batches} "
+            f"(chunks "
+            f"{batch[0]['chunk_id']}-"
+            f"{batch[-1]['chunk_id']})...",
             flush=True
         )
 
         try:
+
             result = extract_batch(
                 batch,
-                last_line_by_page
+                valid_refs
             )
 
             batch_result = {
                 "batch_id": batch_number,
+
                 "chunk_ids": [
                     chunk["chunk_id"]
                     for chunk in batch
                 ],
+
                 "start_ref": batch[0]["start_ref"],
+
                 "end_ref": batch[-1]["end_ref"],
-                "topics": result.get("topics", [])
+
+                "topics": result.get(
+                    "topics",
+                    []
+                )
             }
 
-            all_results.append(batch_result)
+            all_results.append(
+                batch_result
+            )
 
             save_results(
                 all_results,
@@ -316,29 +489,39 @@ def main():
             )
 
             print(
-                f"Completed batch {batch_number}: "
+                f"Completed batch "
+                f"{batch_number}: "
                 f"{len(batch_result['topics'])} topics"
             )
 
         except Exception as error:
+
             print(
-                f"Error in batch {batch_number}: {error}",
+                f"Error in batch "
+                f"{batch_number}: {error}",
                 flush=True
             )
 
             error_result = {
                 "batch_id": batch_number,
+
                 "chunk_ids": [
                     chunk["chunk_id"]
                     for chunk in batch
                 ],
+
                 "start_ref": batch[0]["start_ref"],
+
                 "end_ref": batch[-1]["end_ref"],
+
                 "topics": [],
+
                 "error": str(error)
             }
 
-            all_results.append(error_result)
+            all_results.append(
+                error_result
+            )
 
             save_results(
                 all_results,
@@ -349,7 +532,11 @@ def main():
         time.sleep(2)
 
     print()
-    print(f"Saved batched results to: {OUTPUT_PATH}")
+
+    print(
+        f"Saved batched results to: "
+        f"{OUTPUT_PATH}"
+    )
 
 
 if __name__ == "__main__":

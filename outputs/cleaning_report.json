@@ -1,0 +1,82 @@
+{
+  "input_records": 2027,
+  "kept_records": 2012,
+  "excluded_records": 15,
+  "excluded": [
+    {
+      "source_ref": "32:20",
+      "text": "(Simultaneous speakers.)",
+      "reason": "procedural_non_substantive"
+    },
+    {
+      "source_ref": "34:17",
+      "text": "(Simultaneous speakers.)",
+      "reason": "procedural_non_substantive"
+    },
+    {
+      "source_ref": "36:6",
+      "text": "(Simultaneous speakers.)",
+      "reason": "procedural_non_substantive"
+    },
+    {
+      "source_ref": "37:12",
+      "text": "(A brief recess was taken.)",
+      "reason": "procedural_non_substantive"
+    },
+    {
+      "source_ref": "39:7",
+      "text": "(Simultaneous speakers.)",
+      "reason": "procedural_non_substantive"
+    },
+    {
+      "source_ref": "44:5",
+      "text": "(Record read.)",
+      "reason": "procedural_non_substantive"
+    },
+    {
+      "source_ref": "48:7",
+      "text": "(Simultaneous speakers.)",
+      "reason": "procedural_non_substantive"
+    },
+    {
+      "source_ref": "52:11",
+      "text": "(Simultaneous speakers.)",
+      "reason": "procedural_non_substantive"
+    },
+    {
+      "source_ref": "52:18",
+      "text": "(Record read.)",
+      "reason": "procedural_non_substantive"
+    },
+    {
+      "source_ref": "64:2",
+      "text": "(Simultaneous speakers.)",
+      "reason": "procedural_non_substantive"
+    },
+    {
+      "source_ref": "65:9",
+      "text": "(Simultaneous speakers.)",
+      "reason": "procedural_non_substantive"
+    },
+    {
+      "source_ref": "72:14",
+      "text": "(Simultaneous speakers.)",
+      "reason": "procedural_non_substantive"
+    },
+    {
+      "source_ref": "76:7",
+      "text": "(A brief recess was taken.)",
+      "reason": "procedural_non_substantive"
+    },
+    {
+      "source_ref": "83:15",
+      "text": "(Simultaneous speakers.)",
+      "reason": "procedural_non_substantive"
+    },
+    {
+      "source_ref": "86:4",
+      "text": "(Simultaneous speakers.)",
+      "reason": "procedural_non_substantive"
+    }
+  ]
+}

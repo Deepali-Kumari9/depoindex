@@ -4307,7 +4307,7 @@
   {
     "chunk_id": 16,
     "start_ref": "31:12",
-    "end_ref": "33:1",
+    "end_ref": "33:2",
     "records": [
       {
         "pdf_page_index": 30,
@@ -4543,13 +4543,6 @@
       {
         "pdf_page_index": 31,
         "printed_page": 32,
-        "line": 20,
-        "text": "(Simultaneous speakers.)",
-        "source_ref": "32:20"
-      },
-      {
-        "pdf_page_index": 31,
-        "printed_page": 32,
         "line": 21,
         "text": "BY MR. PURCELL:",
         "source_ref": "32:21"
@@ -4588,21 +4581,21 @@
         "line": 1,
         "text": "if an ITT student graduated with a degree and also made",
         "source_ref": "33:1"
-      }
-    ]
-  },
-  {
-    "chunk_id": 17,
-    "start_ref": "33:2",
-    "end_ref": "34:16",
-    "records": [
+      },
       {
         "pdf_page_index": 32,
         "printed_page": 33,
         "line": 2,
         "text": "twice as much, if not more, than they made prior to",
         "source_ref": "33:2"
-      },
+      }
+    ]
+  },
+  {
+    "chunk_id": 17,
+    "start_ref": "33:3",
+    "end_ref": "34:18",
+    "records": [
       {
         "pdf_page_index": 32,
         "printed_page": 33,
@@ -4875,20 +4868,6 @@
         "line": 16,
         "text": "education --",
         "source_ref": "34:16"
-      }
-    ]
-  },
-  {
-    "chunk_id": 18,
-    "start_ref": "34:17",
-    "end_ref": "36:6",
-    "records": [
-      {
-        "pdf_page_index": 33,
-        "printed_page": 34,
-        "line": 17,
-        "text": "(Simultaneous speakers.)",
-        "source_ref": "34:17"
       },
       {
         "pdf_page_index": 33,
@@ -4896,7 +4875,14 @@
         "line": 18,
         "text": "THE REPORTER:  I'm sorry, I'm sorry, you need to",
         "source_ref": "34:18"
-      },
+      }
+    ]
+  },
+  {
+    "chunk_id": 18,
+    "start_ref": "34:19",
+    "end_ref": "36:9",
+    "records": [
       {
         "pdf_page_index": 33,
         "printed_page": 34,
@@ -5159,20 +5145,6 @@
       {
         "pdf_page_index": 35,
         "printed_page": 36,
-        "line": 6,
-        "text": "(Simultaneous speakers.)",
-        "source_ref": "36:6"
-      }
-    ]
-  },
-  {
-    "chunk_id": 19,
-    "start_ref": "36:7",
-    "end_ref": "37:21",
-    "records": [
-      {
-        "pdf_page_index": 35,
-        "printed_page": 36,
         "line": 7,
         "text": "Q    -- talking about?",
         "source_ref": "36:7"
@@ -5190,7 +5162,14 @@
         "line": 9,
         "text": "there are numerous sources that cite to misrepresentations",
         "source_ref": "36:9"
-      },
+      }
+    ]
+  },
+  {
+    "chunk_id": 19,
+    "start_ref": "36:10",
+    "end_ref": "37:25",
+    "records": [
       {
         "pdf_page_index": 35,
         "printed_page": 36,
@@ -5383,13 +5362,6 @@
       {
         "pdf_page_index": 36,
         "printed_page": 37,
-        "line": 12,
-        "text": "(A brief recess was taken.)",
-        "source_ref": "37:12"
-      },
-      {
-        "pdf_page_index": 36,
-        "printed_page": 37,
         "line": 13,
         "text": "THE VIDEOGRAPHER:  We are going back on the",
         "source_ref": "37:13"
@@ -5449,14 +5421,7 @@
         "line": 21,
         "text": "else.",
         "source_ref": "37:21"
-      }
-    ]
-  },
-  {
-    "chunk_id": 20,
-    "start_ref": "37:22",
-    "end_ref": "39:11",
-    "records": [
+      },
       {
         "pdf_page_index": 36,
         "printed_page": 37,
@@ -5484,7 +5449,14 @@
         "line": 25,
         "text": "Would it be fair to say that if somebody went to",
         "source_ref": "37:25"
-      },
+      }
+    ]
+  },
+  {
+    "chunk_id": 20,
+    "start_ref": "38:1",
+    "end_ref": "39:16",
+    "records": [
       {
         "pdf_page_index": 37,
         "printed_page": 38,
@@ -5705,13 +5677,6 @@
       {
         "pdf_page_index": 38,
         "printed_page": 39,
-        "line": 7,
-        "text": "(Simultaneous speakers.)",
-        "source_ref": "39:7"
-      },
-      {
-        "pdf_page_index": 38,
-        "printed_page": 39,
         "line": 8,
         "text": "Q    Ms. Yu, (unintelligible) --",
         "source_ref": "39:8"
@@ -5736,14 +5701,7 @@
         "line": 11,
         "text": "BY MR. PURCELL:",
         "source_ref": "39:11"
-      }
-    ]
-  },
-  {
-    "chunk_id": 21,
-    "start_ref": "39:12",
-    "end_ref": "41:1",
-    "records": [
+      },
       {
         "pdf_page_index": 38,
         "printed_page": 39,
@@ -5778,7 +5736,14 @@
         "line": 16,
         "text": "Q    If there's an ITT student and they, A, got a",
         "source_ref": "39:16"
-      },
+      }
+    ]
+  },
+  {
+    "chunk_id": 21,
+    "start_ref": "39:17",
+    "end_ref": "41:6",
+    "records": [
       {
         "pdf_page_index": 38,
         "printed_page": 39,
@@ -6023,14 +5988,7 @@
         "line": 1,
         "text": "between 10 and $15 an hour; went to ITT; got a degree;",
         "source_ref": "41:1"
-      }
-    ]
-  },
-  {
-    "chunk_id": 22,
-    "start_ref": "41:2",
-    "end_ref": "42:16",
-    "records": [
+      },
       {
         "pdf_page_index": 40,
         "printed_page": 41,
@@ -6065,7 +6023,14 @@
         "line": 6,
         "text": "MR. BLOOD:  Same objections.",
         "source_ref": "41:6"
-      },
+      }
+    ]
+  },
+  {
+    "chunk_id": 22,
+    "start_ref": "41:7",
+    "end_ref": "42:21",
+    "records": [
       {
         "pdf_page_index": 40,
         "printed_page": 41,
@@ -6310,14 +6275,7 @@
         "line": 16,
         "text": "Q    Okay.  So based on your review of everything, the",
         "source_ref": "42:16"
-      }
-    ]
-  },
-  {
-    "chunk_id": 23,
-    "start_ref": "42:17",
-    "end_ref": "44:6",
-    "records": [
+      },
       {
         "pdf_page_index": 41,
         "printed_page": 42,
@@ -6352,7 +6310,14 @@
         "line": 21,
         "text": "defendants took the portfolio after most of those loans",
         "source_ref": "42:21"
-      },
+      }
+    ]
+  },
+  {
+    "chunk_id": 23,
+    "start_ref": "42:22",
+    "end_ref": "44:12",
+    "records": [
       {
         "pdf_page_index": 41,
         "printed_page": 42,
@@ -6587,24 +6552,10 @@
       {
         "pdf_page_index": 43,
         "printed_page": 44,
-        "line": 5,
-        "text": "(Record read.)",
-        "source_ref": "44:5"
-      },
-      {
-        "pdf_page_index": 43,
-        "printed_page": 44,
         "line": 6,
         "text": "BY MR. PURCELL:",
         "source_ref": "44:6"
-      }
-    ]
-  },
-  {
-    "chunk_id": 24,
-    "start_ref": "44:7",
-    "end_ref": "45:21",
-    "records": [
+      },
       {
         "pdf_page_index": 43,
         "printed_page": 44,
@@ -6646,7 +6597,14 @@
         "line": 12,
         "text": "Q    Okay.  Thank you.",
         "source_ref": "44:12"
-      },
+      }
+    ]
+  },
+  {
+    "chunk_id": 24,
+    "start_ref": "44:13",
+    "end_ref": "46:2",
+    "records": [
       {
         "pdf_page_index": 43,
         "printed_page": 44,
@@ -6884,14 +6842,7 @@
         "line": 21,
         "text": "Q    And that occurred in the fall of 2020; correct?",
         "source_ref": "45:21"
-      }
-    ]
-  },
-  {
-    "chunk_id": 25,
-    "start_ref": "45:22",
-    "end_ref": "47:11",
-    "records": [
+      },
       {
         "pdf_page_index": 44,
         "printed_page": 45,
@@ -6933,7 +6884,14 @@
         "line": 2,
         "text": "just a little more for me?",
         "source_ref": "46:2"
-      },
+      }
+    ]
+  },
+  {
+    "chunk_id": 25,
+    "start_ref": "46:3",
+    "end_ref": "47:17",
+    "records": [
       {
         "pdf_page_index": 45,
         "printed_page": 46,
@@ -7171,14 +7129,7 @@
         "line": 11,
         "text": "point before the fall of 2020 when the",
         "source_ref": "47:11"
-      }
-    ]
-  },
-  {
-    "chunk_id": 26,
-    "start_ref": "47:12",
-    "end_ref": "49:1",
-    "records": [
+      },
       {
         "pdf_page_index": 46,
         "printed_page": 47,
@@ -7220,7 +7171,14 @@
         "line": 17,
         "text": "what is not there.  Whether or not the loans were",
         "source_ref": "47:17"
-      },
+      }
+    ]
+  },
+  {
+    "chunk_id": 26,
+    "start_ref": "47:18",
+    "end_ref": "49:8",
+    "records": [
       {
         "pdf_page_index": 46,
         "printed_page": 47,
@@ -7318,13 +7276,6 @@
         "line": 6,
         "text": "their loans and --",
         "source_ref": "48:6"
-      },
-      {
-        "pdf_page_index": 47,
-        "printed_page": 48,
-        "line": 7,
-        "text": "(Simultaneous speakers.)",
-        "source_ref": "48:7"
       },
       {
         "pdf_page_index": 47,
@@ -7458,14 +7409,7 @@
         "line": 1,
         "text": "A    So --",
         "source_ref": "49:1"
-      }
-    ]
-  },
-  {
-    "chunk_id": 27,
-    "start_ref": "49:2",
-    "end_ref": "50:16",
-    "records": [
+      },
       {
         "pdf_page_index": 48,
         "printed_page": 49,
@@ -7514,7 +7458,14 @@
         "line": 8,
         "text": "enforceability of these documents -- of these loans,",
         "source_ref": "49:8"
-      },
+      }
+    ]
+  },
+  {
+    "chunk_id": 27,
+    "start_ref": "49:9",
+    "end_ref": "50:23",
+    "records": [
       {
         "pdf_page_index": 48,
         "printed_page": 49,
@@ -7745,14 +7696,7 @@
         "line": 16,
         "text": "of information, and those pieces -- those documents need",
         "source_ref": "50:16"
-      }
-    ]
-  },
-  {
-    "chunk_id": 28,
-    "start_ref": "50:17",
-    "end_ref": "52:6",
-    "records": [
+      },
       {
         "pdf_page_index": 49,
         "printed_page": 50,
@@ -7801,7 +7745,14 @@
         "line": 23,
         "text": "I mean, so we don't have any basic information",
         "source_ref": "50:23"
-      },
+      }
+    ]
+  },
+  {
+    "chunk_id": 28,
+    "start_ref": "50:24",
+    "end_ref": "52:14",
+    "records": [
       {
         "pdf_page_index": 49,
         "printed_page": 50,
@@ -8032,14 +7983,7 @@
         "line": 6,
         "text": "Q    -- report; correct?",
         "source_ref": "52:6"
-      }
-    ]
-  },
-  {
-    "chunk_id": 29,
-    "start_ref": "52:7",
-    "end_ref": "53:21",
-    "records": [
+      },
       {
         "pdf_page_index": 51,
         "printed_page": 52,
@@ -8071,13 +8015,6 @@
       {
         "pdf_page_index": 51,
         "printed_page": 52,
-        "line": 11,
-        "text": "(Simultaneous speakers.)",
-        "source_ref": "52:11"
-      },
-      {
-        "pdf_page_index": 51,
-        "printed_page": 52,
         "line": 12,
         "text": "MR. BLOOD:  There's no question pending.",
         "source_ref": "52:12"
@@ -8095,7 +8032,14 @@
         "line": 14,
         "text": "MR. PURCELL:  And Mr. Court Reporter, can you",
         "source_ref": "52:14"
-      },
+      }
+    ]
+  },
+  {
+    "chunk_id": 29,
+    "start_ref": "52:15",
+    "end_ref": "54:5",
+    "records": [
       {
         "pdf_page_index": 51,
         "printed_page": 52,
@@ -8116,13 +8060,6 @@
         "line": 17,
         "text": "THE REPORTER:  Sure.",
         "source_ref": "52:17"
-      },
-      {
-        "pdf_page_index": 51,
-        "printed_page": 52,
-        "line": 18,
-        "text": "(Record read.)",
-        "source_ref": "52:18"
       },
       {
         "pdf_page_index": 51,
@@ -8319,14 +8256,7 @@
         "line": 21,
         "text": "Q    Are you aware of any definitive proof that the",
         "source_ref": "53:21"
-      }
-    ]
-  },
-  {
-    "chunk_id": 30,
-    "start_ref": "53:22",
-    "end_ref": "55:11",
-    "records": [
+      },
       {
         "pdf_page_index": 52,
         "printed_page": 53,
@@ -8389,7 +8319,14 @@
         "line": 5,
         "text": "The fact that they didn't have those -- those",
         "source_ref": "54:5"
-      },
+      }
+    ]
+  },
+  {
+    "chunk_id": 30,
+    "start_ref": "54:6",
+    "end_ref": "55:20",
+    "records": [
       {
         "pdf_page_index": 53,
         "printed_page": 54,
@@ -8606,14 +8543,7 @@
         "line": 11,
         "text": "access to those documents.  Vervent did not have those",
         "source_ref": "55:11"
-      }
-    ]
-  },
-  {
-    "chunk_id": 31,
-    "start_ref": "55:12",
-    "end_ref": "57:1",
-    "records": [
+      },
       {
         "pdf_page_index": 54,
         "printed_page": 55,
@@ -8676,7 +8606,14 @@
         "line": 20,
         "text": "those further disclosures do not exist and were not",
         "source_ref": "55:20"
-      },
+      }
+    ]
+  },
+  {
+    "chunk_id": 31,
+    "start_ref": "55:21",
+    "end_ref": "57:10",
+    "records": [
       {
         "pdf_page_index": 54,
         "printed_page": 55,
@@ -8893,14 +8830,7 @@
         "line": 1,
         "text": "the final disclosure, then they have an infinite right to",
         "source_ref": "57:1"
-      }
-    ]
-  },
-  {
-    "chunk_id": 32,
-    "start_ref": "57:2",
-    "end_ref": "58:16",
-    "records": [
+      },
       {
         "pdf_page_index": 56,
         "printed_page": 57,
@@ -8963,7 +8893,14 @@
         "line": 10,
         "text": "Is that what canceling the loan would be?",
         "source_ref": "57:10"
-      },
+      }
+    ]
+  },
+  {
+    "chunk_id": 32,
+    "start_ref": "57:11",
+    "end_ref": "58:25",
+    "records": [
       {
         "pdf_page_index": 56,
         "printed_page": 57,
@@ -9180,14 +9117,7 @@
         "line": 16,
         "text": "and so you -- so I mean, I -- I guess one of the -- it's",
         "source_ref": "58:16"
-      }
-    ]
-  },
-  {
-    "chunk_id": 33,
-    "start_ref": "58:17",
-    "end_ref": "60:6",
-    "records": [
+      },
       {
         "pdf_page_index": 57,
         "printed_page": 58,
@@ -9250,7 +9180,14 @@
         "line": 25,
         "text": "say it's a $20,000 loan and ITT has records that they --",
         "source_ref": "58:25"
-      },
+      }
+    ]
+  },
+  {
+    "chunk_id": 33,
+    "start_ref": "59:1",
+    "end_ref": "60:15",
+    "records": [
       {
         "pdf_page_index": 58,
         "printed_page": 59,
@@ -9467,14 +9404,7 @@
         "line": 6,
         "text": "A    So am I -- sorry -- is the question -- I mean, I",
         "source_ref": "60:6"
-      }
-    ]
-  },
-  {
-    "chunk_id": 34,
-    "start_ref": "60:7",
-    "end_ref": "61:21",
-    "records": [
+      },
       {
         "pdf_page_index": 59,
         "printed_page": 60,
@@ -9537,7 +9467,14 @@
         "line": 15,
         "text": "Consumer Financial Protection Bureau brought up in terms",
         "source_ref": "60:15"
-      },
+      }
+    ]
+  },
+  {
+    "chunk_id": 34,
+    "start_ref": "60:16",
+    "end_ref": "62:5",
+    "records": [
       {
         "pdf_page_index": 59,
         "printed_page": 60,
@@ -9754,14 +9691,7 @@
         "line": 21,
         "text": "were, you know -- when the loans were canceled, ultimately",
         "source_ref": "61:21"
-      }
-    ]
-  },
-  {
-    "chunk_id": 35,
-    "start_ref": "61:22",
-    "end_ref": "63:11",
-    "records": [
+      },
       {
         "pdf_page_index": 60,
         "printed_page": 61,
@@ -9824,7 +9754,14 @@
         "line": 5,
         "text": "A    That was not in my understanding the -- the",
         "source_ref": "62:5"
-      },
+      }
+    ]
+  },
+  {
+    "chunk_id": 35,
+    "start_ref": "62:6",
+    "end_ref": "63:20",
+    "records": [
       {
         "pdf_page_index": 61,
         "printed_page": 62,
@@ -10041,14 +9978,7 @@
         "line": 11,
         "text": "standards in terms of who it provided Title IV loans to.",
         "source_ref": "63:11"
-      }
-    ]
-  },
-  {
-    "chunk_id": 36,
-    "start_ref": "63:12",
-    "end_ref": "65:1",
-    "records": [
+      },
       {
         "pdf_page_index": 62,
         "printed_page": 63,
@@ -10111,7 +10041,14 @@
         "line": 20,
         "text": "Q    Well, aside from being the quality of the school,",
         "source_ref": "63:20"
-      },
+      }
+    ]
+  },
+  {
+    "chunk_id": 36,
+    "start_ref": "63:21",
+    "end_ref": "65:12",
+    "records": [
       {
         "pdf_page_index": 62,
         "printed_page": 63,
@@ -10153,13 +10090,6 @@
         "line": 1,
         "text": "MR. BLOOD:  Hang on --",
         "source_ref": "64:1"
-      },
-      {
-        "pdf_page_index": 63,
-        "printed_page": 64,
-        "line": 2,
-        "text": "(Simultaneous speakers.)",
-        "source_ref": "64:2"
       },
       {
         "pdf_page_index": 63,
@@ -10328,14 +10258,7 @@
         "line": 1,
         "text": "BY MR. PURCELL:",
         "source_ref": "65:1"
-      }
-    ]
-  },
-  {
-    "chunk_id": 37,
-    "start_ref": "65:2",
-    "end_ref": "66:16",
-    "records": [
+      },
       {
         "pdf_page_index": 64,
         "printed_page": 65,
@@ -10388,13 +10311,6 @@
       {
         "pdf_page_index": 64,
         "printed_page": 65,
-        "line": 9,
-        "text": "(Simultaneous speakers.)",
-        "source_ref": "65:9"
-      },
-      {
-        "pdf_page_index": 64,
-        "printed_page": 65,
         "line": 10,
         "text": "MR. BLOOD:  Hang on.  Wait.",
         "source_ref": "65:10"
@@ -10412,7 +10328,14 @@
         "line": 12,
         "text": "Go ahead.",
         "source_ref": "65:12"
-      },
+      }
+    ]
+  },
+  {
+    "chunk_id": 37,
+    "start_ref": "65:13",
+    "end_ref": "67:2",
+    "records": [
       {
         "pdf_page_index": 64,
         "printed_page": 65,
@@ -10615,14 +10538,7 @@
         "line": 16,
         "text": "looked into ITT, who would have understood what the",
         "source_ref": "66:16"
-      }
-    ]
-  },
-  {
-    "chunk_id": 38,
-    "start_ref": "66:17",
-    "end_ref": "68:6",
-    "records": [
+      },
       {
         "pdf_page_index": 65,
         "printed_page": 66,
@@ -10699,7 +10615,14 @@
         "line": 2,
         "text": "Consumer Financial Protection Bureau Civil Investigative",
         "source_ref": "67:2"
-      },
+      }
+    ]
+  },
+  {
+    "chunk_id": 38,
+    "start_ref": "67:3",
+    "end_ref": "68:17",
+    "records": [
       {
         "pdf_page_index": 66,
         "printed_page": 67,
@@ -10902,14 +10825,7 @@
         "line": 6,
         "text": "PEAKS loans?",
         "source_ref": "68:6"
-      }
-    ]
-  },
-  {
-    "chunk_id": 39,
-    "start_ref": "68:7",
-    "end_ref": "69:21",
-    "records": [
+      },
       {
         "pdf_page_index": 67,
         "printed_page": 68,
@@ -10986,7 +10902,14 @@
         "line": 17,
         "text": "I am publicly aware of.",
         "source_ref": "68:17"
-      },
+      }
+    ]
+  },
+  {
+    "chunk_id": 39,
+    "start_ref": "68:18",
+    "end_ref": "70:7",
+    "records": [
       {
         "pdf_page_index": 67,
         "printed_page": 68,
@@ -11189,14 +11112,7 @@
         "line": 21,
         "text": "about the payments on behalf of borrowers, which was",
         "source_ref": "69:21"
-      }
-    ]
-  },
-  {
-    "chunk_id": 40,
-    "start_ref": "69:22",
-    "end_ref": "71:11",
-    "records": [
+      },
       {
         "pdf_page_index": 68,
         "printed_page": 69,
@@ -11273,7 +11189,14 @@
         "line": 7,
         "text": "BY MR. PURCELL:",
         "source_ref": "70:7"
-      },
+      }
+    ]
+  },
+  {
+    "chunk_id": 40,
+    "start_ref": "70:8",
+    "end_ref": "71:22",
+    "records": [
       {
         "pdf_page_index": 69,
         "printed_page": 70,
@@ -11476,14 +11399,7 @@
         "line": 11,
         "text": "conduct with respect to the payments that ITT made on",
         "source_ref": "71:11"
-      }
-    ]
-  },
-  {
-    "chunk_id": 41,
-    "start_ref": "71:12",
-    "end_ref": "73:1",
-    "records": [
+      },
       {
         "pdf_page_index": 70,
         "printed_page": 71,
@@ -11560,7 +11476,14 @@
         "line": 22,
         "text": "A    Forwards.",
         "source_ref": "71:22"
-      },
+      }
+    ]
+  },
+  {
+    "chunk_id": 41,
+    "start_ref": "71:23",
+    "end_ref": "73:13",
+    "records": [
       {
         "pdf_page_index": 70,
         "printed_page": 71,
@@ -11676,13 +11599,6 @@
       {
         "pdf_page_index": 71,
         "printed_page": 72,
-        "line": 14,
-        "text": "(Simultaneous speakers.)",
-        "source_ref": "72:14"
-      },
-      {
-        "pdf_page_index": 71,
-        "printed_page": 72,
         "line": 15,
         "text": "MR. PURCELL:  -- there's a 27 in the middle,",
         "source_ref": "72:15"
@@ -11763,14 +11679,7 @@
         "line": 1,
         "text": "with the PEAKS loan program.  No, the settlement with ITT",
         "source_ref": "73:1"
-      }
-    ]
-  },
-  {
-    "chunk_id": 42,
-    "start_ref": "73:2",
-    "end_ref": "74:16",
-    "records": [
+      },
       {
         "pdf_page_index": 72,
         "printed_page": 73,
@@ -11854,7 +11763,14 @@
         "line": 13,
         "text": "the PEAKS loan program.",
         "source_ref": "73:13"
-      },
+      }
+    ]
+  },
+  {
+    "chunk_id": 42,
+    "start_ref": "73:14",
+    "end_ref": "75:3",
+    "records": [
       {
         "pdf_page_index": 72,
         "printed_page": 73,
@@ -12050,14 +11966,7 @@
         "line": 16,
         "text": "A    To -- to my knowledge, their findings were --",
         "source_ref": "74:16"
-      }
-    ]
-  },
-  {
-    "chunk_id": 43,
-    "start_ref": "74:17",
-    "end_ref": "76:6",
-    "records": [
+      },
       {
         "pdf_page_index": 73,
         "printed_page": 74,
@@ -12141,7 +12050,14 @@
         "line": 3,
         "text": "findings they may have made internally and not release",
         "source_ref": "75:3"
-      },
+      }
+    ]
+  },
+  {
+    "chunk_id": 43,
+    "start_ref": "75:4",
+    "end_ref": "76:19",
+    "records": [
       {
         "pdf_page_index": 74,
         "printed_page": 75,
@@ -12337,20 +12253,6 @@
         "line": 6,
         "text": "3:06 P.M.",
         "source_ref": "76:6"
-      }
-    ]
-  },
-  {
-    "chunk_id": 44,
-    "start_ref": "76:7",
-    "end_ref": "77:21",
-    "records": [
-      {
-        "pdf_page_index": 75,
-        "printed_page": 76,
-        "line": 7,
-        "text": "(A brief recess was taken.)",
-        "source_ref": "76:7"
       },
       {
         "pdf_page_index": 75,
@@ -12435,7 +12337,14 @@
         "line": 19,
         "text": "experience in conducting investigations?",
         "source_ref": "76:19"
-      },
+      }
+    ]
+  },
+  {
+    "chunk_id": 44,
+    "start_ref": "76:20",
+    "end_ref": "78:9",
+    "records": [
       {
         "pdf_page_index": 75,
         "printed_page": 76,
@@ -12624,14 +12533,7 @@
         "line": 21,
         "text": "from your report, you mentioned several investigators into",
         "source_ref": "77:21"
-      }
-    ]
-  },
-  {
-    "chunk_id": 45,
-    "start_ref": "77:22",
-    "end_ref": "79:11",
-    "records": [
+      },
       {
         "pdf_page_index": 76,
         "printed_page": 77,
@@ -12722,7 +12624,14 @@
         "line": 9,
         "text": "that, you know, they may be investigating complaints.",
         "source_ref": "78:9"
-      },
+      }
+    ]
+  },
+  {
+    "chunk_id": 45,
+    "start_ref": "78:10",
+    "end_ref": "79:24",
+    "records": [
       {
         "pdf_page_index": 77,
         "printed_page": 78,
@@ -12911,14 +12820,7 @@
         "line": 11,
         "text": "investigation that occurred and because that investigation",
         "source_ref": "79:11"
-      }
-    ]
-  },
-  {
-    "chunk_id": 46,
-    "start_ref": "79:12",
-    "end_ref": "81:1",
-    "records": [
+      },
       {
         "pdf_page_index": 78,
         "printed_page": 79,
@@ -13009,7 +12911,14 @@
         "line": 24,
         "text": "enforceability of the loan and whether or not Vervent was",
         "source_ref": "79:24"
-      },
+      }
+    ]
+  },
+  {
+    "chunk_id": 46,
+    "start_ref": "79:25",
+    "end_ref": "81:14",
+    "records": [
       {
         "pdf_page_index": 78,
         "printed_page": 79,
@@ -13198,14 +13107,7 @@
         "line": 1,
         "text": "tracking the data about the borrowers, keeping -- keeping",
         "source_ref": "81:1"
-      }
-    ]
-  },
-  {
-    "chunk_id": 47,
-    "start_ref": "81:2",
-    "end_ref": "82:16",
-    "records": [
+      },
       {
         "pdf_page_index": 80,
         "printed_page": 81,
@@ -13296,7 +13198,14 @@
         "line": 14,
         "text": "THE WITNESS:  There is not a law that",
         "source_ref": "81:14"
-      },
+      }
+    ]
+  },
+  {
+    "chunk_id": 47,
+    "start_ref": "81:15",
+    "end_ref": "83:4",
+    "records": [
       {
         "pdf_page_index": 80,
         "printed_page": 81,
@@ -13485,14 +13394,7 @@
         "line": 16,
         "text": "were then unenforceable.",
         "source_ref": "82:16"
-      }
-    ]
-  },
-  {
-    "chunk_id": 48,
-    "start_ref": "82:17",
-    "end_ref": "84:6",
-    "records": [
+      },
       {
         "pdf_page_index": 81,
         "printed_page": 82,
@@ -13583,7 +13485,14 @@
         "line": 4,
         "text": "A    The -- that there was evidence of the loans would",
         "source_ref": "83:4"
-      },
+      }
+    ]
+  },
+  {
+    "chunk_id": 48,
+    "start_ref": "83:5",
+    "end_ref": "84:20",
+    "records": [
       {
         "pdf_page_index": 82,
         "printed_page": 83,
@@ -13653,13 +13562,6 @@
         "line": 14,
         "text": "A    There are questions about --",
         "source_ref": "83:14"
-      },
-      {
-        "pdf_page_index": 82,
-        "printed_page": 83,
-        "line": 15,
-        "text": "(Simultaneous speakers.)",
-        "source_ref": "83:15"
       },
       {
         "pdf_page_index": 82,
@@ -13772,14 +13674,7 @@
         "line": 6,
         "text": "need --",
         "source_ref": "84:6"
-      }
-    ]
-  },
-  {
-    "chunk_id": 49,
-    "start_ref": "84:7",
-    "end_ref": "85:21",
-    "records": [
+      },
       {
         "pdf_page_index": 83,
         "printed_page": 84,
@@ -13877,7 +13772,14 @@
         "line": 20,
         "text": "may not matter, but maybe define by whom a",
         "source_ref": "84:20"
-      },
+      }
+    ]
+  },
+  {
+    "chunk_id": 49,
+    "start_ref": "84:21",
+    "end_ref": "86:11",
+    "records": [
       {
         "pdf_page_index": 83,
         "printed_page": 84,
@@ -14059,14 +13961,7 @@
         "line": 21,
         "text": "if the loans are unenforceable because they don't exist,",
         "source_ref": "85:21"
-      }
-    ]
-  },
-  {
-    "chunk_id": 50,
-    "start_ref": "85:22",
-    "end_ref": "87:11",
-    "records": [
+      },
       {
         "pdf_page_index": 84,
         "printed_page": 85,
@@ -14119,13 +14014,6 @@
       {
         "pdf_page_index": 85,
         "printed_page": 86,
-        "line": 4,
-        "text": "(Simultaneous speakers.)",
-        "source_ref": "86:4"
-      },
-      {
-        "pdf_page_index": 85,
-        "printed_page": 86,
         "line": 5,
         "text": "A    Right, yeah.  So I mean --",
         "source_ref": "86:5"
@@ -14171,7 +14059,14 @@
         "line": 11,
         "text": "were -- loans were unenforceable, they were unenforceable",
         "source_ref": "86:11"
-      },
+      }
+    ]
+  },
+  {
+    "chunk_id": 50,
+    "start_ref": "86:12",
+    "end_ref": "88:1",
+    "records": [
       {
         "pdf_page_index": 85,
         "printed_page": 86,
@@ -14346,14 +14241,7 @@
         "line": 11,
         "text": "Q    In your review of the various investigations into",
         "source_ref": "87:11"
-      }
-    ]
-  },
-  {
-    "chunk_id": 51,
-    "start_ref": "87:12",
-    "end_ref": "88:13",
-    "records": [
+      },
       {
         "pdf_page_index": 86,
         "printed_page": 87,
@@ -14458,7 +14346,14 @@
         "line": 1,
         "text": "MR. BLOOD:  Same objection.",
         "source_ref": "88:1"
-      },
+      }
+    ]
+  },
+  {
+    "chunk_id": 51,
+    "start_ref": "88:2",
+    "end_ref": "88:13",
+    "records": [
       {
         "pdf_page_index": 87,
         "printed_page": 88,

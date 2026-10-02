@@ -1,7 +1,7 @@
 import json
 
 
-INPUT_PATH = "outputs/canonical_transcript.json"
+INPUT_PATH = "outputs/cleaned_transcript.json"
 OUTPUT_PATH = "outputs/transcript_chunks.json"
 
 CHUNK_SIZE = 40
@@ -42,4 +42,5 @@ if __name__ == "__main__":
     print(f"Transcript records: {len(records)}")
     print(f"Chunks created: {len(chunks)}")
     print(f"Chunk size: {CHUNK_SIZE}")
+    print(f"Source: {INPUT_PATH}")
     print(f"Saved to: {OUTPUT_PATH}")
