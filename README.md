@@ -8,6 +8,8 @@ DepoIndex extracts meaningful topics and topic transitions from a deposition tra
 
 The project processes the Persis Yu deposition through a provenance-preserving pipeline and produces a validated topic index that can be searched and reviewed through a Streamlit interface.
 
+A key design principle is that **LLM output is treated as a candidate result rather than ground truth**. The generated topics are checked using deterministic provenance validation and semantic grounding validation before being presented to the user.
+
 ## Problem
 
 Deposition transcripts contain long discussions that move between subjects, return to earlier subjects, and sometimes contain brief digressions.
@@ -16,25 +18,34 @@ The goal of DepoIndex is to:
 
 - Identify meaningful deposition topics and transitions.
 - Preserve exact page:line references for every topic.
-- Maintain provenance through extraction, chunking, LLM processing, and validation.
+- Maintain provenance through extraction, preprocessing, chunking, LLM processing, and validation.
 - Produce a structured topic index for review.
+- Ground LLM-generated topics in the original transcript evidence.
 - Evaluate topic quality manually.
 - Measure segmentation stability across repeated LLM runs.
 
 ## Pipeline
 
+```text
 PDF
 -> Canonical Transcript Extraction
+-> Transcript Cleaning
+-> Semantic Preprocessing
 -> Provenance-Preserving Chunking
--> LLM Topic Extraction
+-> Batched LLM Topic Extraction
 -> Boundary Refinement
 -> Provenance Validation
+-> Semantic Grounding Validation
 -> Topic Index Generation
 -> Streamlit Interface
+```
 
 Validation:
-Manual Evaluation + Three-Run Stability + Failure Analysis
 
+```text
+Manual Evaluation + Provenance Validation + Semantic Grounding Validation
++ Stability Evaluation + Failure Analysis
+```
 
 ## Architecture
 
@@ -47,52 +58,126 @@ Each record contains:
 - PDF page index
 - Printed page number
 - Line number
-- Transcript text
+- Original transcript text
 - Exact `page:line` source reference
 
 The canonical transcript contains **2,027 records**, beginning at `7:11` and ending at `88:13`.
 
-### 2. Provenance-Preserving Chunking
+The canonical transcript is treated as the source of truth for downstream provenance validation.
 
-The canonical transcript is divided into manageable chunks while retaining the original page-and-line references.
+### 2. Transcript Cleaning
 
-The full transcript produces **51 chunks** using a chunk size of 40 records.
+Non-substantive procedural transcript records are removed from semantic processing while the original canonical transcript remains unchanged.
 
-### 3. LLM Topic Extraction
+This includes procedural records such as:
+
+- Simultaneous speakers
+- Record read
+- Brief recesses
+
+The cleaning stage preserves the original source references so that the underlying testimony can still be traced back to the canonical transcript.
+
+### 3. Semantic Preprocessing
+
+A separate semantic representation of each transcript record is created before LLM processing.
+
+The preprocessing currently performs lightweight NLP normalization:
+
+- Whitespace normalization
+- Removal of `Q` / `A` speaker labels from the semantic copy
+
+The original transcript text is never overwritten.
+
+For example:
+
+```text
+Original:
+Q    Good afternoon, Ms. Yu.  My name's John Purcell.
+
+Semantic text:
+Good afternoon, Ms. Yu. My name's John Purcell.
+```
+
+This allows the LLM to work with a cleaner semantic representation while preserving the original text and provenance for verification.
+
+### 4. Provenance-Preserving Chunking
+
+The cleaned transcript is divided into manageable chunks while retaining the original page-and-line references.
+
+- The full transcript produces **51 chunks** using a chunk size of **40 transcript records**.
+- Each chunk retains the source references required to map LLM output back to the original deposition.
+
+### 5. LLM Topic Extraction
 
 Google Gemini is used to identify meaningful topics from groups of transcript chunks.
 
-The implementation processes five consecutive chunks per request to reduce API usage while still allowing topics to span chunk boundaries.
+The implementation processes **up to five chunks per request** to reduce API usage while keeping the LLM context manageable.
 
-The complete transcript produced **57 raw topic candidates** in the main extraction run.
+The final extraction pipeline produced **44 topic candidates**.
 
-### 4. Boundary Refinement
+Each candidate contains structured information such as:
 
-LLM results are sorted globally by transcript position and assigned deterministic topic IDs.
+- Topic label
+- Start reference
+- End reference
+- Evidence references
+- Source chunk IDs
+- Related-topic information where available
+
+The LLM is responsible for the semantic task of identifying candidate topics and evidence. Deterministic Python code is responsible for organizing and validating the results.
+
+### 6. Boundary Refinement
+
+LLM results are refined and globally ordered using the original transcript references.
 
 Topic source chunks are derived from the actual page-and-line references rather than trusting batch-local relationships returned by the model.
 
-### 5. Provenance Validation
+The final refined topic output contains **44 topics**.
 
-Every topic is checked against the canonical transcript.
+### 7. Provenance Validation
+
+Every final topic is checked against the canonical transcript.
 
 Validation verifies that:
 
 - `start_ref` exists.
 - `end_ref` exists.
 - Every evidence reference exists.
-- Start occurs before or at the end.
-- Evidence references fall within topic boundaries.
+- The start reference occurs before or at the end reference.
+- Evidence references fall within the topic boundaries.
 
-Current validation result:
+The validator does not silently repair invalid references. Invalid references are treated as validation failures.
 
-- Topics checked: 57
-- Errors found: 0
-- Validation: **PASSED**
+Current final validation result:
+
+| Check | Result |
+|---|---|
+| Canonical transcript records | 2,027 |
+| Topics checked | 44 |
+| Errors found | 0 |
+| Validation | **PASSED** |
+
+### 8. Semantic Grounding Validation
+
+Structural provenance alone does not guarantee that a topic is actually supported by its evidence.
+
+DepoIndex therefore performs a second validation step using Gemini. For each topic, the selected evidence references are checked against the topic description to determine whether the evidence supports the generated topic.
+
+The final validation result was:
+
+| Check | Result |
+|---|---|
+| Topics validated | 44 |
+| Passed | 44 |
+| Failed | 0 |
+
+Therefore, **44/44 final topics passed semantic grounding validation**.
+
+This provides an additional check beyond simply verifying that the referenced page-and-line numbers exist.
 
 ## Output
 
-The validated topic index contains **57 topics**.
+The final validated topic index contains **44 topics**.
 
 Each topic includes:
 
@@ -106,10 +191,16 @@ Each topic includes:
 Example:
 
 ```text
-Topic: Deposition ground rules and admonitions
-Start: 7:15
+Topic: Deposition ground rules and introductory instructions
+Start: 7:11
 End: 8:23
 ```
+
+Output files:
+
+- Validated topic index: `outputs/validated_topic_index.json`
+- Semantic grounding validation report: `outputs/semantic_grounding_validation.json`
+- Human-readable topic index: `outputs/deposition_topic_index.md`
 
 ## Evaluation
 
@@ -135,9 +226,9 @@ Results:
 
 The main boundary observations involved reporter interruptions, topic transitions, and broad topics containing potential subthemes.
 
-### Three-Run Stability Evaluation
+### Stability Evaluation
 
-The complete deposition was processed three times using the same transcript, chunking configuration, batch size, and extraction pipeline.
+An earlier complete-deposition stability experiment processed the same deposition three times using the same transcript, chunking configuration, batch size, and extraction pipeline.
 
 Each run processed:
 
@@ -146,23 +237,25 @@ Each run processed:
 - 51 transcript chunks
 - Batch size of 5 chunks per LLM request
 
-Results:
+Results from that evaluation were:
 
 | Run | Topics | Provenance |
-|---|---|---|
+|---|---:|---|
 | Run 1 | 43 | Valid |
 | Run 2 | 42 | Valid |
 | Run 3 | 45 | Valid |
 
 Topic counts varied across runs, showing that LLM-based segmentation is not fully deterministic.
 
-Under a strict comparison of topic label, start reference, and end reference, one topic was identical across all three runs.
+Under a strict comparison of topic label, start reference, and end reference, **one topic was identical across all three runs**.
 
-Pairwise exact matches were:
+Pairwise exact matches:
 
-- Run 1 vs Run 2: 8
-- Run 1 vs Run 3: 3
-- Run 2 vs Run 3: 4
+| Comparison | Exact matches |
+|---|---:|
+| Run 1 vs Run 2 | 8 |
+| Run 1 vs Run 3 | 3 |
+| Run 2 vs Run 3 | 4 |
 
 Despite segmentation variation, all three runs had valid provenance:
 
@@ -170,13 +263,15 @@ Despite segmentation variation, all three runs had valid provenance:
 - Run 2: 0 invalid boundary references, 0 invalid evidence references
 - Run 3: 0 invalid boundary references, 0 invalid evidence references
 
-The observed instability is primarily in topic granularity and boundary selection rather than source addressing.
+This experiment demonstrates that LLM segmentation can vary in topic granularity and boundary selection even when the underlying source addressing remains valid.
 
-Detailed failure analysis is documented in:
-`docs/segmentation_failure_cases.md`
+Detailed failure analysis is documented in [`docs/segmentation_failure_cases.md`](docs/segmentation_failure_cases.md).
 
-The complete three-run stability report is stored in:
+The stability report is stored in:
+
 `outputs/stability_report.json`
+
+> **Note:** the three-run stability experiment is an earlier evaluation artifact and is not presented as a new post-preprocessing stability measurement.
 
 ## Streamlit Interface
 
@@ -192,15 +287,17 @@ The interface provides:
 - Page-and-line transcript navigation
 - Configurable transcript context
 
+The current validated topic index contains **44 topics**.
+
 Run locally with:
 
 ```bash
-streamlit run app.py
+python -m streamlit run app.py
 ```
 
 Then open:
 
-http://localhost:8501
+`http://localhost:8501`
 
 Live demo:
 
@@ -208,11 +305,10 @@ https://deepali-kumari9-depoindex-app-ew2v6l.streamlit.app/
 
 ### Bonus: Attorney-Facing Source Navigation
 
-The interface provides direct navigation from a page:line reference to the
-corresponding deposition testimony, with configurable surrounding context.
+The interface provides direct navigation from a `page:line` reference to the corresponding deposition testimony, with configurable surrounding context.
 
-This is useful to attorneys because an indexed topic can be verified against
-the underlying testimony without manually searching the full deposition.
+This is useful because an indexed topic can be verified against the underlying testimony without manually searching the full deposition.
+
 The feature directly supports the auditability requirement of the topic index.
 
 ## Submission Artifacts
@@ -221,15 +317,16 @@ The feature directly supports the auditability requirement of the topic index.
 - [5-Slide Presentation](docs/DepoIndex_Presentation.pdf)
 - [Human-Readable Topic Index](outputs/deposition_topic_index.md)
 - [Validated Topic Index JSON](outputs/validated_topic_index.json)
-
-
+- [Semantic Grounding Validation](outputs/semantic_grounding_validation.json)
 
 ## Project Structure
 
 ```text
 depoindex/
 |-- app.py
-|-- data/                    (place supplied PDF here; not committed)
+|-- data/
+|   `-- Persis_Yu_Deposition_Problem_statement.pdf
+|      (supplied assignment PDF; not committed)
 |-- docs/
 |   |-- DepoIndex_Presentation.pdf
 |   |-- segmentation_failure_cases.md
@@ -241,10 +338,13 @@ depoindex/
 |   `-- manual_evaluation.json
 |-- outputs/
 |   |-- canonical_transcript.json
+|   |-- cleaned_transcript.json
+|   |-- cleaning_report.json
 |   |-- transcript_chunks.json
 |   |-- batched_topics.json
 |   |-- refined_topics.json
 |   |-- validated_topic_index.json
+|   |-- semantic_grounding_validation.json
 |   |-- deposition_topic_index.md
 |   |-- stability_run_1.json
 |   |-- stability_run_2.json
@@ -252,9 +352,15 @@ depoindex/
 |   `-- stability_report.json
 |-- src/
 |   |-- extraction/
+|   |-- nlp/
+|   |   `-- preprocess_transcript.py
 |   |-- llm/
 |   |-- segmentation/
 |   `-- validation/
+|       |-- build_topic_index.py
+|       |-- validate_provenance.py
+|       |-- validate_semantic_grounding.py
+|       `-- generate_markdown_index.py
 |-- .gitignore
 |-- llm_usage.md
 |-- methodology.md
@@ -290,33 +396,33 @@ pip install -r requirements.txt
 
 Create a `.env` file:
 
+```text
 GEMINI_API_KEY=your_api_key_here
-
+```
 
 The API key is kept outside version control.
 
 ### Source Deposition PDF
 
-The original deposition PDF is not included in this repository because it was
-provided as assignment material.
+The original deposition PDF is not included in this repository because it was provided as assignment material.
 
 To re-run extraction from scratch, place the supplied PDF at:
 
-`data/Persis_Yu_Deposition_Problem_statement.pdf`
+```text
+data/Persis_Yu_Deposition_Problem_statement.pdf
+```
 
-The pre-extracted canonical transcript and downstream outputs are already
-included in `outputs/`, so the completed results can be reviewed without the
-original PDF.
+The pre-extracted canonical transcript and downstream outputs are included in `outputs/`, so the completed results can be reviewed without the original PDF.
 
-### Running the Full Pipeline
+## Running the Full Pipeline
 
-The committed outputs in `outputs/` already contain the results of the
-completed extraction, segmentation, validation, and evaluation workflow.
+The committed outputs in `outputs/` contain the results of the completed extraction, segmentation, validation, and evaluation workflow.
 
-To regenerate the pipeline from the supplied deposition PDF, first place the
-PDF at:
+To regenerate the pipeline from the supplied deposition PDF, first place the PDF at:
 
-`data/Persis_Yu_Deposition_Problem_statement.pdf`
+```text
+data/Persis_Yu_Deposition_Problem_statement.pdf
+```
 
 Run the processing stages in order:
 
@@ -324,38 +430,45 @@ Run the processing stages in order:
 # 1. Extract canonical transcript records with page:line provenance
 python src/extraction/extract_transcript.py
 
-# 2. Create provenance-preserving transcript chunks
+# 2. Clean transcript and create semantic representations
+python src/extraction/clean_transcript.py
+
+# 3. Create provenance-preserving transcript chunks
 python src/segmentation/chunk_transcript.py
 
-# 3. Run batched LLM topic extraction
+# 4. Run batched LLM topic extraction
 #    Requires GEMINI_API_KEY in .env
 python src/llm/batched_extract.py
 
-# 4. Refine and globally order extracted topics
+# 5. Refine and globally order extracted topics
 python src/segmentation/refine_topics.py
 
-# 5. Build the validated topic index
+# 6. Validate final topic provenance
+python src/validation/validate_provenance.py
+
+# 7. Validate semantic grounding of topic evidence
+#    Requires GEMINI_API_KEY in .env
+python src/validation/validate_semantic_grounding.py
+
+# 8. Build the validated topic index for the application
 python src/validation/build_topic_index.py
 
-# 6. Generate the human-readable Markdown topic index
+# 9. Generate the human-readable Markdown topic index
 python src/validation/generate_markdown_index.py
-
-# 7. Validate topic provenance against the canonical transcript
-python src/validation/validate_provenance.py
 ```
 
-The manual evaluation and three-run stability results included in this
-repository are evaluation artifacts from the completed validation process.
-They are documented in docs/validation_report.md and
-docs/segmentation_failure_cases.md.
+The manual evaluation and stability results included in this repository are evaluation artifacts from the completed validation process.
 
-The full pipeline requires a valid Gemini API key for the LLM extraction
-stage. The supplied deposition PDF is not committed to the repository because
-it was provided as assignment material.
+They are documented in:
+
+- [`docs/validation_report.md`](docs/validation_report.md)
+- [`docs/segmentation_failure_cases.md`](docs/segmentation_failure_cases.md)
+
+The full pipeline requires a valid Gemini API key for the LLM extraction and semantic grounding stages.
 
 ## Reproducibility
 
-A fresh-clone reproducibility test was performed from the GitHub repository.
+A fresh-clone reproducibility test was previously performed from the GitHub repository.
 
 The test verified:
 
@@ -370,29 +483,30 @@ The fresh-clone environment successfully installed all dependencies declared in 
 
 `pip check` reported:
 
+```text
 No broken requirements found.
+```
 
+The repository also contains the final validated topic index and semantic grounding validation report generated from the current pipeline.
 
-Provenance validation in the fresh clone reported:
+The Streamlit application can be started with:
 
-- Canonical transcript records: 2,027
-- Batches checked: 11
-- Topics checked: 57
-- Errors found: 0
-
-The Streamlit application also started successfully at:
-`http://localhost:8501`
+```bash
+python -m streamlit run app.py
+```
 
 The reproducibility test previously identified a missing Streamlit dependency in `requirements.txt`. This was fixed in:
 
+```text
 3e61f80 fix: declare streamlit dependency for reproducible setup
-
+```
 
 After the fix, the declared dependencies successfully supported the Streamlit application.
 
 ## AI Usage
 
 AI-assisted development is documented in:
+
 `llm_usage.md`
 
 The document records:
@@ -411,16 +525,20 @@ No fabricated successful results were used from failed API experiments.
 ## Methodology
 
 The overall technical methodology is documented in:
+
 `methodology.md`
 
-This covers:
+It covers:
 
 - Transcript extraction
+- Transcript cleaning
+- Semantic preprocessing
 - Provenance preservation
 - Chunking
 - Topic segmentation
 - Boundary refinement
 - Provenance validation
+- Semantic grounding validation
 - Manual evaluation
 - Stability testing
 - Failure analysis
@@ -431,60 +549,76 @@ The project was developed incrementally rather than as a single final commit.
 
 Important milestones include:
 
-- `42dbffb` feat: add provenance-preserving transcript chunking
-- `7837e6c` feat: add baseline LLM topic extraction
-- `06fdbc2` test: evaluate baseline topic segmentation
-- `14b6056` feat: refine topic boundaries and merge related segments
-- `3303704` test: add deterministic provenance validation
-- `17a5384` feat: add validated topic index schema and output generation
-- `44c7cd3` feat: generate human-readable deposition topic index
-- `911a395` feat: improve LLM extraction with batched requests
-- `181572d` test: add manual topic index evaluation
-- `9e4f7a5` test: measure three-run pipeline stability
-- `cf67e30` docs: document segmentation failure cases
-- `77d3770` feat: add attorney-facing topic index interface
-- `3e61f80` fix: declare streamlit dependency for reproducible setup
-- `ead75a0` docs: complete reproducibility and AI usage documentation
-- `26b631c` docs: update segmentation failure analysis
-- `d889052` test: update complete-deposition stability evaluation
-- `936c2f1` docs: clarify model usage and clean submission README
-- `0ec4d6c` docs: improve README formatting and Git history
-
-The history records meaningful implementation, testing, failure analysis, interface development, reproducibility fixes, and complete-deposition stability evaluation.
+```text
+42dbffb feat: add provenance-preserving transcript chunking
+7837e6c feat: add baseline LLM topic extraction
+06fdbc2 test: evaluate baseline topic segmentation
+14b6056 feat: refine topic boundaries and merge related segments
+3303704 test: add deterministic provenance validation
+17a5384 feat: add validated topic index schema and output generation
+44c7cd3 feat: generate human-readable deposition topic index
+911a395 feat: improve LLM extraction with batched requests
+181572d test: add manual topic index evaluation
+9e4f7a5 test: measure three-run pipeline stability
+cf67e30 docs: document segmentation failure cases
+77d3770 feat: add attorney-facing topic index interface
+3e61f80 fix: declare streamlit dependency for reproducible setup
+ead75a0 docs: complete reproducibility and AI usage documentation
+26b631c docs: update segmentation failure analysis
+d889052 test: update complete-deposition stability evaluation
+936c2f1 docs: clarify model usage and clean submission README
+0ec4d6c docs: improve README formatting and Git history
+59b7095 fix: add transcript cleaning and strict provenance validation
+aadc0cc feat: add semantic transcript preprocessing
+ec70767 feat: add semantic grounding validation
+d8d6bb8 fix: refresh validated topic index
+```
 
 ### Meaningful Earlier Commit
 
 Earlier validation milestone:
 
+```text
 9e4f7a5 test: measure three-run pipeline stability
+```
 
+This commit is meaningful because it established an empirical finding that LLM topic segmentation varied across repeated runs and motivated treating LLM output as non-deterministic rather than assuming identical results.
 
-This commit is meaningful because it established an initial empirical finding that LLM topic segmentation varied across repeated runs and motivated treating LLM output as non-deterministic rather than assuming identical results.
+The stability experiment was subsequently expanded and corrected to cover the complete deposition, with the complete-deposition evaluation captured in:
 
-The stability experiment was subsequently expanded and corrected to cover the complete deposition, with the final complete-deposition evaluation captured in commit:
-
+```text
 d889052 test: update complete-deposition stability evaluation
+```
 
+## Latest Project State
 
-### Final Submission Commit
+The latest repository state includes:
 
-fb50b6a docs: improve README reproducibility and navigation
+- Semantic transcript preprocessing
+- Strict provenance validation
+- Semantic grounding validation
+- Refreshed 44-topic validated index
+- Updated Streamlit output
 
-This commit represents the final submission-state snapshot of the repository, including the verified final presentation and all previously completed implementation, validation, documentation, and output artifacts.
+Latest commit:
 
+```text
+d8d6bb8 fix: refresh validated topic index
+```
+
+The Git working tree is clean and the local branch is synchronized with `origin/main`.
 
 ## Limitations
 
 - LLM topic segmentation can vary between runs.
 - Topic boundaries may occasionally be broader or narrower than ideal.
-- Manual evaluation was performed on a 20-topic sample rather than the complete 57-topic index.
-- The current system focuses on a single deposition.
+- Manual evaluation was performed on a 20-topic sample rather than the complete 44-topic index.
+- The current system has been evaluated on a single deposition.
 - Topic re-entry and closely related topics may require further refinement.
+- The current semantic preprocessing is lightweight NLP normalization rather than a full NLP pipeline.
 - The application is intended as a working technical prototype rather than a production legal system.
 
 ## Future Improvements
-
-Potential improvements include:
 
 - More systematic topic-boundary scoring
 - Better detection of topic re-entry
@@ -493,3 +627,4 @@ Potential improvements include:
 - Larger-scale evaluation across depositions
 - More advanced source navigation
 - Improved attorney-facing search and review workflows
+- More comprehensive automated boundary-quality evaluation
