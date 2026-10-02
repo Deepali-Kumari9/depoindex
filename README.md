@@ -43,8 +43,8 @@ PDF
 Validation:
 
 ```text
-Manual Evaluation + Provenance Validation + Semantic Grounding Validation
-+ Stability Evaluation + Failure Analysis
+Manual Evaluation + Provenance Validation + Boundary Validation
++ Semantic Grounding Validation + Stability Evaluation + Failure Analysis
 ```
 
 ## Architecture
@@ -107,13 +107,15 @@ The cleaned transcript is divided into manageable chunks while retaining the ori
 - The full transcript produces **51 chunks** using a chunk size of **40 transcript records**.
 - Each chunk retains the source references required to map LLM output back to the original deposition.
 
+For LLM requests, chunk metadata such as chunk ID, transcript range, printed-page range, and record count is supplied alongside the transcript records. This helps control context and reference location without replacing transcript evidence with metadata.
+
 ### 5. LLM Topic Extraction
 
 Google Gemini is used to identify meaningful topics from groups of transcript chunks.
 
 The implementation processes **up to five chunks per request** to reduce API usage while keeping the LLM context manageable.
 
-The final extraction pipeline produced **44 topic candidates**.
+The final extraction pipeline produced **39 topic candidates**.
 
 Each candidate contains structured information such as:
 
@@ -126,13 +128,17 @@ Each candidate contains structured information such as:
 
 The LLM is responsible for the semantic task of identifying candidate topics and evidence. Deterministic Python code is responsible for organizing and validating the results.
 
-### 6. Boundary Refinement
+### 6. Topic Refinement and Boundary Refinement
 
 LLM results are refined and globally ordered using the original transcript references.
 
 Topic source chunks are derived from the actual page-and-line references rather than trusting batch-local relationships returned by the model.
 
-The final refined topic output contains **44 topics**.
+Overlapping or semantically misplaced topic boundaries are then refined using transcript context. Failed boundary checks are automatically re-evaluated against the canonical transcript, and the selected start/end references are constrained to valid transcript records.
+
+The final refined topic output contains **39 topics**.
+
+The latest refinement pass corrected **3 failed semantic boundaries** automatically and preserved valid evidence references within the corrected boundaries.
 
 ### 7. Provenance Validation
 
@@ -153,7 +159,7 @@ Current final validation result:
 | Check | Result |
 |---|---|
 | Canonical transcript records | 2,027 |
-| Topics checked | 44 |
+| Topics checked | 39 |
 | Errors found | 0 |
 | Validation | **PASSED** |
 
@@ -167,17 +173,33 @@ The final validation result was:
 
 | Check | Result |
 |---|---|
-| Topics validated | 44 |
+| Topics validated | 39 |
 | Passed | 44 |
 | Failed | 0 |
 
-Therefore, **44/44 final topics passed semantic grounding validation**.
+Therefore, **39/39 final topics passed semantic grounding validation**.
 
 This provides an additional check beyond simply verifying that the referenced page-and-line numbers exist.
 
+## Boundary Validation
+
+A separate boundary validator checks whether each topic begins and ends at semantically appropriate transcript locations. The validator combines structural checks with transcript-context review and does not accept invalid references.
+
+Final result:
+
+| Check | Result |
+|---|---|
+| Topics validated | 39 |
+| LLM boundary checks passed | 39 |
+| LLM boundary checks failed | 0 |
+| Structural boundary errors | 0 |
+| Topic overlaps | 0 |
+
+When semantic boundary checks fail, `src/validation/refine_failed_boundaries.py` automatically re-evaluates the affected topic using surrounding canonical transcript context and updates the boundary only to valid source references.
+
 ## Output
 
-The final validated topic index contains **44 topics**.
+The final validated topic index contains **39 topics**.
 
 Each topic includes:
 
@@ -287,7 +309,7 @@ The interface provides:
 - Page-and-line transcript navigation
 - Configurable transcript context
 
-The current validated topic index contains **44 topics**.
+The current validated topic index contains **39 topics**.
 
 Run locally with:
 
@@ -345,6 +367,7 @@ depoindex/
 |   |-- refined_topics.json
 |   |-- validated_topic_index.json
 |   |-- semantic_grounding_validation.json
+|   |-- boundary_validation.json
 |   |-- deposition_topic_index.md
 |   |-- stability_run_1.json
 |   |-- stability_run_2.json
@@ -360,6 +383,8 @@ depoindex/
 |       |-- build_topic_index.py
 |       |-- validate_provenance.py
 |       |-- validate_semantic_grounding.py
+|       |-- validate_boundaries.py
+|       |-- refine_failed_boundaries.py
 |       `-- generate_markdown_index.py
 |-- .gitignore
 |-- llm_usage.md
@@ -446,14 +471,22 @@ python src/segmentation/refine_topics.py
 # 6. Validate final topic provenance
 python src/validation/validate_provenance.py
 
-# 7. Validate semantic grounding of topic evidence
+# 7. Validate topic boundaries against transcript context
+#    Requires GEMINI_API_KEY in .env
+python src/validation/validate_boundaries.py
+
+# 8. Refine any failed semantic boundaries automatically
+#    Requires GEMINI_API_KEY in .env
+python src/validation/refine_failed_boundaries.py
+
+# 9. Validate semantic grounding of topic evidence
 #    Requires GEMINI_API_KEY in .env
 python src/validation/validate_semantic_grounding.py
 
-# 8. Build the validated topic index for the application
+# 10. Build the validated topic index for the application
 python src/validation/build_topic_index.py
 
-# 9. Generate the human-readable Markdown topic index
+# 11. Generate the human-readable Markdown topic index
 python src/validation/generate_markdown_index.py
 ```
 
@@ -574,6 +607,14 @@ ec70767 feat: add semantic grounding validation
 d8d6bb8 fix: refresh validated topic index
 ```
 
+### Latest Commit
+
+```text
+b551010 Improve transcript topic extraction and validation
+```
+
+This commit added the final batched extraction, boundary validation/refinement, refreshed validation artifacts, and updated the final topic outputs.
+
 ### Meaningful Earlier Commit
 
 Earlier validation milestone:
@@ -594,19 +635,23 @@ d889052 test: update complete-deposition stability evaluation
 
 The latest repository state includes:
 
-- Semantic transcript preprocessing
+- Lightweight semantic transcript preprocessing
+- Metadata-controlled, provenance-preserving chunking
+- Batched Gemini topic extraction
 - Strict provenance validation
+- Automatic boundary refinement
+- Boundary validation against transcript context
 - Semantic grounding validation
-- Refreshed 44-topic validated index
+- 39-topic validated index
 - Updated Streamlit output
 
 Latest commit:
 
 ```text
-d8d6bb8 fix: refresh validated topic index
+b551010 Improve transcript topic extraction and validation
 ```
 
-The Git working tree is clean and the local branch is synchronized with `origin/main`.
+The latest changes were pushed to `origin/main`.
 
 ## Limitations
 
