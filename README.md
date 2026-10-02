@@ -132,7 +132,7 @@ The LLM is responsible for the semantic task of identifying candidate topics and
 
 LLM results are refined and globally ordered using the original transcript references.
 
-Topic source chunks are derived from the actual page-and-line references rather than trusting batch-local relationships returned by the model.
+Topic source chunks are derived deterministically from the final page-and-line boundaries. Batch-local `related_to` references are converted to global topic IDs before the final index is generated.
 
 Overlapping or semantically misplaced topic boundaries are then refined using transcript context. Failed boundary checks are automatically re-evaluated against the canonical transcript, and the selected start/end references are constrained to valid transcript records.
 
@@ -174,7 +174,7 @@ The final validation result was:
 | Check | Result |
 |---|---|
 | Topics validated | 39 |
-| Passed | 44 |
+| Passed | 39 |
 | Failed | 0 |
 
 Therefore, **39/39 final topics passed semantic grounding validation**.
@@ -610,7 +610,7 @@ d8d6bb8 fix: refresh validated topic index
 ### Latest Commit
 
 ```text
-b551010 Improve transcript topic extraction and validation
+e446ac2 Finalize validated topic extraction pipeline
 ```
 
 This commit added the final batched extraction, boundary validation/refinement, refreshed validation artifacts, and updated the final topic outputs.
@@ -648,7 +648,7 @@ The latest repository state includes:
 Latest commit:
 
 ```text
-b551010 Improve transcript topic extraction and validation
+e446ac2 Finalize validated topic extraction pipeline
 ```
 
 The latest changes were pushed to `origin/main`.
@@ -657,7 +657,7 @@ The latest changes were pushed to `origin/main`.
 
 - LLM topic segmentation can vary between runs.
 - Topic boundaries may occasionally be broader or narrower than ideal.
-- Manual evaluation was performed on a 20-topic sample rather than the complete 44-topic index.
+- Manual evaluation was performed on a 20-topic sample rather than the complete 39-topic index.
 - The current system has been evaluated on a single deposition.
 - Topic re-entry and closely related topics may require further refinement.
 - The current semantic preprocessing is lightweight NLP normalization rather than a full NLP pipeline.
