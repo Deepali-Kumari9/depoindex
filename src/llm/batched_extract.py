@@ -182,7 +182,7 @@ def build_prompt(chunks):
 
     for chunk in chunks:
         transcript_text = "\n".join(
-            f"{record['source_ref']} | {record['text']}"
+            f"{record['source_ref']} | {record['semantic_text']}"
             for record in chunk["records"]
         )
 

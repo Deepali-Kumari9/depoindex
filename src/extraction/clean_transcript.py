@@ -1,6 +1,11 @@
 import json
 import re
 from pathlib import Path
+import sys
+
+sys.path.append(str(Path(__file__).resolve().parents[1]))
+
+from nlp.preprocess_transcript import preprocess_record
 
 
 INPUT_FILE = Path("outputs/canonical_transcript.json")
@@ -42,7 +47,7 @@ def clean_transcript(records):
                 "reason": "procedural_non_substantive"
             })
         else:
-            cleaned.append(record)
+            cleaned.append(preprocess_record(record))
 
     return cleaned, excluded
 
