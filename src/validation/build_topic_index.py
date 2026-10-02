@@ -17,43 +17,95 @@ def validate_topic(topic, index):
         "start_ref",
         "end_ref",
         "evidence_refs",
+        "source_chunk_ids",
     ]
 
     errors = []
 
     for field in required_fields:
+
         if field not in topic:
+
             errors.append(
-                f"Topic {index}: missing field '{field}'"
+                f"Topic {index}: "
+                f"missing field '{field}'"
             )
 
-    if not errors:
-        if not topic["topic"].strip():
-            errors.append(f"Topic {index}: empty topic label")
+    if errors:
+        return errors
 
-        if not topic["start_ref"]:
-            errors.append(f"Topic {index}: empty start_ref")
+    if not topic["topic"].strip():
 
-        if not topic["end_ref"]:
-            errors.append(f"Topic {index}: empty end_ref")
+        errors.append(
+            f"Topic {index}: "
+            f"empty topic label"
+        )
 
-        if not isinstance(topic["evidence_refs"], list):
-            errors.append(
-                f"Topic {index}: evidence_refs must be a list"
-            )
+    if not topic["start_ref"]:
+
+        errors.append(
+            f"Topic {index}: "
+            f"empty start_ref"
+        )
+
+    if not topic["end_ref"]:
+
+        errors.append(
+            f"Topic {index}: "
+            f"empty end_ref"
+        )
+
+    if not isinstance(
+        topic["evidence_refs"],
+        list
+    ):
+
+        errors.append(
+            f"Topic {index}: "
+            f"evidence_refs must be a list"
+        )
+
+    if not isinstance(
+        topic["source_chunk_ids"],
+        list
+    ):
+
+        errors.append(
+            f"Topic {index}: "
+            f"source_chunk_ids must be a list"
+        )
+
+    if not topic["source_chunk_ids"]:
+
+        errors.append(
+            f"Topic {index}: "
+            f"source_chunk_ids cannot be empty"
+        )
 
     return errors
 
 
 def build_topic_index(topics):
+
     validated_topics = []
     errors = []
 
-    for index, topic in enumerate(topics, start=1):
-        topic_errors = validate_topic(topic, index)
+    for index, topic in enumerate(
+        topics,
+        start=1
+    ):
+
+        topic_errors = validate_topic(
+            topic,
+            index
+        )
 
         if topic_errors:
-            errors.extend(topic_errors)
+
+            errors.extend(
+                topic_errors
+            )
+
             continue
 
         validated_topic = {
@@ -61,29 +113,54 @@ def build_topic_index(topics):
             "topic": topic["topic"],
             "start_ref": topic["start_ref"],
             "end_ref": topic["end_ref"],
-            "evidence_refs": topic["evidence_refs"],
-            "source_chunk_ids": topic.get(
-                "source_chunk_ids", []
+            "evidence_refs": topic[
+                "evidence_refs"
+            ],
+            "related_to": topic.get(
+                "related_to",
+                []
             ),
+            "source_chunk_ids": topic[
+                "source_chunk_ids"
+            ],
         }
 
-        validated_topics.append(validated_topic)
+        validated_topics.append(
+            validated_topic
+        )
 
-    return validated_topics, errors
+    return (
+        validated_topics,
+        errors
+    )
 
 
-def save_output(topics, errors, path):
+def save_output(
+    topics,
+    errors,
+    path
+):
+
     output = {
         "metadata": {
             "topic_count": len(topics),
-            "validation_status": "PASSED" if not errors else "FAILED",
+            "validation_status": (
+                "PASSED"
+                if not errors
+                else "FAILED"
+            ),
             "source": INPUT_PATH,
         },
         "topics": topics,
         "validation_errors": errors,
     }
 
-    with open(path, "w", encoding="utf-8") as file:
+    with open(
+        path,
+        "w",
+        encoding="utf-8"
+    ) as file:
+
         json.dump(
             output,
             file,
@@ -93,9 +170,16 @@ def save_output(topics, errors, path):
 
 
 def main():
-    topics = load_topics(INPUT_PATH)
 
-    validated_topics, errors = build_topic_index(topics)
+    topics = load_topics(
+        INPUT_PATH
+    )
+
+    validated_topics, errors = (
+        build_topic_index(
+            topics
+        )
+    )
 
     save_output(
         validated_topics,
@@ -103,20 +187,52 @@ def main():
         OUTPUT_PATH
     )
 
-    print("=== DepoIndex Validated Topic Index ===")
+    print(
+        "=== DepoIndex "
+        "Validated Topic Index ==="
+    )
+
     print()
-    print(f"Input topics: {len(topics)}")
-    print(f"Validated topics: {len(validated_topics)}")
-    print(f"Validation errors: {len(errors)}")
+
+    print(
+        f"Input topics: "
+        f"{len(topics)}"
+    )
+
+    print(
+        f"Validated topics: "
+        f"{len(validated_topics)}"
+    )
+
+    print(
+        f"Validation errors: "
+        f"{len(errors)}"
+    )
+
     print()
 
     if errors:
-        print("Validation FAILED")
+
+        print(
+            "Validation FAILED"
+        )
+
         for error in errors:
-            print(f"- {error}")
+
+            print(
+                f"- {error}"
+            )
+
     else:
-        print("Validation PASSED")
-        print(f"Saved to: {OUTPUT_PATH}")
+
+        print(
+            "Validation PASSED"
+        )
+
+        print(
+            f"Saved to: "
+            f"{OUTPUT_PATH}"
+        )
 
 
 if __name__ == "__main__":

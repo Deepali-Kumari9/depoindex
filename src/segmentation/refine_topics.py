@@ -24,11 +24,31 @@ def build_reference_order(canonical_records):
 
 
 def flatten_topics(batched_data):
+    """
+    Flatten topics while preserving the batch-local topic position.
+
+    related_to values produced by the LLM are batch-local because each
+    Gemini request sees only its own batch of chunks. Therefore we keep
+    the originating batch and local topic index so those relationships
+    can be converted to final global topic IDs later.
+    """
+
     topics = []
 
-    for batch in batched_data:
-        for topic in batch.get("topics", []):
-            topics.append(dict(topic))
+    for batch_index, batch in enumerate(batched_data, start=1):
+
+        batch_topics = batch.get("topics", [])
+
+        for local_index, topic in enumerate(
+            batch_topics,
+            start=1
+        ):
+            topic_copy = dict(topic)
+
+            topic_copy["_batch_index"] = batch_index
+            topic_copy["_batch_topic_index"] = local_index
+
+            topics.append(topic_copy)
 
     return topics
 
@@ -44,31 +64,203 @@ def sort_topics(topics, ref_order):
 
 
 def assign_topic_ids(topics):
-    for index, topic in enumerate(topics, start=1):
+    for index, topic in enumerate(
+        topics,
+        start=1
+    ):
         topic["topic_id"] = index
 
 
 def normalize_related_to(topics):
-    valid_topic_ids = {
-        topic["topic_id"]
-        for topic in topics
-    }
+    """
+    Convert LLM batch-local related_to IDs into final global topic IDs.
+
+    Example:
+
+        Batch 2:
+            local topic 2 -> related_to [1]
+
+    becomes:
+
+        global topic 4 -> related_to [3]
+
+    if batch 2's local topic 1 became global topic 3.
+
+    Invalid local IDs are ignored.
+    Cross-batch relationships are not inferred because the LLM did not
+    receive the other batch's topic list.
+    """
+
+    batch_local_to_global = {}
 
     for topic in topics:
-        related = topic.get("related_to", [])
 
-        if not isinstance(related, list):
+        batch_index = topic.get("_batch_index")
+        local_index = topic.get(
+            "_batch_topic_index"
+        )
+
+        if (
+            batch_index is None
+            or local_index is None
+        ):
+            continue
+
+        batch_local_to_global[
+            (batch_index, local_index)
+        ] = topic["topic_id"]
+
+    for topic in topics:
+
+        batch_index = topic.get(
+            "_batch_index"
+        )
+
+        related = topic.get(
+            "related_to",
+            []
+        )
+
+        if not isinstance(
+            related,
+            list
+        ):
             topic["related_to"] = []
             continue
 
         normalized = []
 
         for related_id in related:
-            if related_id in valid_topic_ids:
-                normalized.append(related_id)
+
+            if not isinstance(
+                related_id,
+                int
+            ):
+                continue
+
+            global_id = batch_local_to_global.get(
+                (
+                    batch_index,
+                    related_id
+                )
+            )
+
+            if global_id is not None:
+                normalized.append(
+                    global_id
+                )
 
         topic["related_to"] = sorted(
             set(normalized)
+        )
+
+
+def assign_source_chunk_ids(
+    topics,
+    chunks,
+    ref_order
+):
+    """
+    Derive source chunk IDs deterministically from final topic
+    page:line boundaries.
+
+    A chunk is associated with a topic when the transcript ranges
+    overlap.
+    """
+
+    for topic in topics:
+
+        start_ref = topic.get(
+            "start_ref"
+        )
+
+        end_ref = topic.get(
+            "end_ref"
+        )
+
+        if (
+            start_ref not in ref_order
+            or end_ref not in ref_order
+        ):
+            topic["source_chunk_ids"] = []
+            continue
+
+        start_position = ref_order[
+            start_ref
+        ]
+
+        end_position = ref_order[
+            end_ref
+        ]
+
+        if start_position > end_position:
+            topic["source_chunk_ids"] = []
+            continue
+
+        source_chunk_ids = []
+
+        for chunk in chunks:
+
+            chunk_start = chunk.get(
+                "start_ref"
+            )
+
+            chunk_end = chunk.get(
+                "end_ref"
+            )
+
+            if (
+                chunk_start not in ref_order
+                or chunk_end not in ref_order
+            ):
+                continue
+
+            chunk_start_position = ref_order[
+                chunk_start
+            ]
+
+            chunk_end_position = ref_order[
+                chunk_end
+            ]
+
+            # Ranges overlap when:
+            #
+            # topic_start <= chunk_end
+            # AND
+            # chunk_start <= topic_end
+            #
+            if (
+                start_position
+                <= chunk_end_position
+                and
+                chunk_start_position
+                <= end_position
+            ):
+                source_chunk_ids.append(
+                    chunk["chunk_id"]
+                )
+
+        topic["source_chunk_ids"] = sorted(
+            set(source_chunk_ids)
+        )
+
+
+def remove_internal_fields(topics):
+    """
+    Remove internal bookkeeping fields before saving the final
+    refined topic file.
+    """
+
+    for topic in topics:
+
+        topic.pop(
+            "_batch_index",
+            None
+        )
+
+        topic.pop(
+            "_batch_topic_index",
+            None
         )
 
 
@@ -85,14 +277,26 @@ def refine_overlapping_boundaries(
     # the previous topic so that it ends before the next topic.
     # ---------------------------------------------------------
 
-    for index in range(len(topics) - 1):
+    for index in range(
+        len(topics) - 1
+    ):
 
         current = topics[index]
-        next_topic = topics[index + 1]
+        next_topic = topics[
+            index + 1
+        ]
 
-        current_start = current.get("start_ref")
-        current_end = current.get("end_ref")
-        next_start = next_topic.get("start_ref")
+        current_start = current.get(
+            "start_ref"
+        )
+
+        current_end = current.get(
+            "end_ref"
+        )
+
+        next_start = next_topic.get(
+            "start_ref"
+        )
 
         if (
             current_start not in ref_order
@@ -101,55 +305,59 @@ def refine_overlapping_boundaries(
         ):
             continue
 
-        current_end_position = ref_order[current_end]
-        next_start_position = ref_order[next_start]
+        current_end_position = ref_order[
+            current_end
+        ]
 
-        # Overlap exists when the current topic reaches
-        # or passes the start of the next topic.
-        if current_end_position >= next_start_position:
+        next_start_position = ref_order[
+            next_start
+        ]
 
-            # Cannot move before the first transcript record.
+        if (
+            current_end_position
+            >= next_start_position
+        ):
+
             if next_start_position == 0:
                 continue
 
-            # Find the canonical reference immediately
-            # before the next topic starts.
             new_current_end = canonical_records[
                 next_start_position - 1
             ]["source_ref"]
 
-            if new_current_end != current_end:
+            if (
+                new_current_end
+                != current_end
+            ):
 
                 refinements.append({
-                    "topic_id": current.get("topic_id"),
+                    "topic_id": current.get(
+                        "topic_id"
+                    ),
                     "old_end_ref": current_end,
                     "new_end_ref": new_current_end,
                     "next_topic_start_ref": next_start
                 })
 
-                current["end_ref"] = new_current_end
+                current["end_ref"] = (
+                    new_current_end
+                )
 
     # ---------------------------------------------------------
     # STEP 2:
-    # IMPORTANT:
-    # Clean evidence references for EVERY topic according
-    # to its FINAL start/end boundaries.
-    #
-    # This fixes cases such as:
-    #
-    # Topic 30:
-    # start = 71:23
-    # end   = 73:13
-    #
-    # evidence contained 71:21
-    #
-    # 71:21 is outside the final boundary, so it is removed.
+    # Remove evidence references that fall outside the final
+    # topic boundaries.
     # ---------------------------------------------------------
 
     for topic in topics:
 
-        start_ref = topic.get("start_ref")
-        end_ref = topic.get("end_ref")
+        start_ref = topic.get(
+            "start_ref"
+        )
+
+        end_ref = topic.get(
+            "end_ref"
+        )
 
         if (
             start_ref not in ref_order
@@ -157,8 +365,13 @@ def refine_overlapping_boundaries(
         ):
             continue
 
-        start_position = ref_order[start_ref]
-        end_position = ref_order[end_ref]
+        start_position = ref_order[
+            start_ref
+        ]
+
+        end_position = ref_order[
+            end_ref
+        ]
 
         original_evidence = topic.get(
             "evidence_refs",
@@ -176,7 +389,8 @@ def refine_overlapping_boundaries(
             for ref in original_evidence
             if (
                 ref in ref_order
-                and start_position
+                and
+                start_position
                 <= ref_order[ref]
                 <= end_position
             )
@@ -186,10 +400,6 @@ def refine_overlapping_boundaries(
 
 
 def main():
-
-    # ---------------------------------------------------------
-    # Load all required inputs.
-    # ---------------------------------------------------------
 
     batched_data = load_json(
         BATCHED_TOPICS_PATH
@@ -203,63 +413,53 @@ def main():
         CANONICAL_PATH
     )
 
-    # ---------------------------------------------------------
-    # Flatten topics from all Gemini batches.
-    # ---------------------------------------------------------
-
     topics = flatten_topics(
         batched_data
     )
 
-    raw_topic_count = len(topics)
-
-    # ---------------------------------------------------------
-    # Build canonical transcript reference ordering.
-    # ---------------------------------------------------------
+    raw_topic_count = len(
+        topics
+    )
 
     ref_order = build_reference_order(
         canonical_records
     )
-
-    # ---------------------------------------------------------
-    # Sort topics chronologically according to the canonical
-    # transcript rather than trusting batch order.
-    # ---------------------------------------------------------
 
     topics = sort_topics(
         topics,
         ref_order
     )
 
-    # ---------------------------------------------------------
-    # Assign final sequential topic IDs.
-    # ---------------------------------------------------------
-
     assign_topic_ids(
         topics
     )
 
-    # ---------------------------------------------------------
-    # Normalize related_to references.
-    # ---------------------------------------------------------
-
+    # Convert batch-local LLM relationships into global IDs.
     normalize_related_to(
         topics
     )
 
-    # ---------------------------------------------------------
-    # Refine overlapping boundaries and clean evidence refs.
-    # ---------------------------------------------------------
+    # Refine boundaries first because source chunk IDs must be
+    # calculated from the FINAL boundaries.
+    refinements = (
+        refine_overlapping_boundaries(
+            topics,
+            canonical_records,
+            ref_order
+        )
+    )
 
-    refinements = refine_overlapping_boundaries(
+    # Derive source chunks from final transcript boundaries.
+    assign_source_chunk_ids(
         topics,
-        canonical_records,
+        chunks,
         ref_order
     )
 
-    # ---------------------------------------------------------
-    # Save final refined topic index.
-    # ---------------------------------------------------------
+    # Remove internal bookkeeping fields before saving.
+    remove_internal_fields(
+        topics
+    )
 
     output = {
         "metadata": {
@@ -280,13 +480,10 @@ def main():
         OUTPUT_PATH
     )
 
-    # ---------------------------------------------------------
-    # Console summary.
-    # ---------------------------------------------------------
-
     print(
         "=== DepoIndex Topic Refinement ==="
     )
+
     print()
 
     print(
@@ -309,9 +506,23 @@ def main():
         f"{len(refinements)}"
     )
 
+    topics_with_chunks = sum(
+        1
+        for topic in topics
+        if topic.get(
+            "source_chunk_ids"
+        )
+    )
+
+    print(
+        f"Topics with source chunks: "
+        f"{topics_with_chunks}/{len(topics)}"
+    )
+
+    print()
+
     if refinements:
 
-        print()
         print(
             "Boundary refinements:"
         )
@@ -329,6 +540,7 @@ def main():
             )
 
     print()
+
     print(
         f"Saved to: "
         f"{OUTPUT_PATH}"

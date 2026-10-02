@@ -1,191 +1,126 @@
 # DepoIndex — Deposition Topic Index
 
-Total topics: **57**
+Total topics: **39**
 
 ---
 
-## T01 — Deposition ground rules and admonitions
+## T01 — Deposition Preliminaries and Instructions
 
-**Range:** `7:15` → `8:23`
+**Range:** `7:11` → `8:23`
 
 **Evidence:**
 
+- `7:11`
 - `7:15`
 - `7:24`
+- `8:3`
 - `8:8`
 - `8:18`
-- `8:22`
+- `8:21`
 
 ---
 
-## T02 — Scope of expert retention and opinions
+## T02 — Expert Witness Retainer and Scope of Testimony
 
 **Range:** `8:24` → `9:18`
 
 **Evidence:**
 
 - `8:24`
+- `9:1`
 - `9:5`
 - `9:9`
 - `9:14`
 
 ---
 
-## T03 — Marking Exhibit 1 and instructions regarding speaking speed
+## T03 — Professional Background and Student Borrower Protection Center
 
-**Range:** `9:19` → `10:24`
-
-**Evidence:**
-
-- `9:22`
-- `10:3`
-- `10:5`
-- `10:9`
-- `10:23`
-
----
-
-## T04 — Witness background and role at Student Borrower Protection Center
-
-**Range:** `11:1` → `12:6`
+**Range:** `11:2` → `12:6`
 
 **Evidence:**
 
 - `11:2`
-- `11:5`
 - `11:18`
 - `11:22`
 - `12:5`
 
 ---
 
-## T05 — Policy agenda and student loan cancellation campaign of Student Borrower Protection Center
+## T04 — Policy Agenda and Advocacy Work
 
-**Range:** `12:7` → `13:11`
+**Range:** `12:7` → `15:11`
 
 **Evidence:**
 
 - `12:7`
-- `12:12`
-- `12:17`
 - `12:24`
 - `13:4`
-
----
-
-## T06 — Regulatory policy initiatives and successes of Student Borrower Protection Center
-
-**Range:** `13:12` → `15:11`
-
-**Evidence:**
-
 - `13:12`
 - `13:18`
 - `14:5`
+- `14:13`
 - `14:18`
 - `15:2`
+- `15:5`
 
 ---
 
-## T07 — Witness background in student loan advocacy and rulemaking
+## T05 — Witness professional background in student loans, rulemakings, legislation, and loan servicing
 
-**Range:** `15:13` → `16:14`
+**Range:** `15:13` → `18:17`
 
 **Evidence:**
 
 - `15:13`
-- `16:11`
-- `16:14`
-
----
-
-## T08 — Comments and feedback on Department of Education student loan servicing contracts
-
-**Range:** `16:16` → `18:3`
-
-**Evidence:**
-
+- `15:16`
+- `15:23`
+- `16:5`
 - `16:16`
-- `17:12`
-- `18:3`
-
----
-
-## T09 — Witness employment and educational background regarding loan servicing
-
-**Range:** `18:4` → `18:13`
-
-**Evidence:**
-
+- `17:2`
+- `17:10`
 - `18:4`
 - `18:10`
-- `18:13`
-
----
-
-## T10 — NCLC work and Congressional testimony on student loan servicing
-
-**Range:** `18:14` → `19:14`
-
-**Evidence:**
-
 - `18:14`
-- `18:22`
-- `19:2`
-- `19:14`
+- `18:17`
 
 ---
 
-## T11 — Student loan portfolio transfers between servicers
+## T06 — National Consumer Law Center work, Congressional testimony, and experience with loan portfolio transfers
 
-**Range:** `19:15` → `21:8`
+**Range:** `18:18` → `21:8`
 
 **Evidence:**
 
+- `18:18`
+- `18:21`
+- `19:2`
 - `19:15`
-- `19:23`
-- `20:7`
-- `21:8`
+- `19:19`
+- `20:5`
+- `20:22`
+- `21:5`
 
 ---
 
-## T12 — Data transfer processes and risks to borrowers during servicer transfers
+## T07 — Mechanics, data transfer processes, and risks associated with student loan servicing transfers
 
-**Range:** `21:10` → `22:17`
+**Range:** `21:10` → `23:11`
 
 **Evidence:**
 
 - `21:10`
-- `21:16`
+- `21:14`
+- `22:2`
 - `22:8`
-- `22:17`
-
----
-
-## T13 — Servicing continuity during servicer portfolio exits
-
-**Range:** `22:18` → `23:6`
-
-**Evidence:**
-
-- `22:18`
-- `22:24`
-- `23:5`
-
----
-
-## T14 — Regulations governing student loan servicing data transfers
-
-**Range:** `23:7` → `23:11`
-
-**Evidence:**
-
+- `22:13`
+- `22:21`
+- `23:1`
 - `23:7`
-- `23:10`
 
 ---
 
-## T15 — Regulations and state laws regarding PEAKS loan data transfer from Access Group to Vervent
+## T08 — State laws and data transfer regulations regarding student loans
 
 **Range:** `23:12` → `24:13`
 
@@ -199,7 +134,7 @@ Total topics: **57**
 
 ---
 
-## T16 — Witness's work experience related to criminal law
+## T09 — Witness professional experience in criminal law
 
 **Range:** `24:14` → `25:7`
 
@@ -207,548 +142,920 @@ Total topics: **57**
 
 - `24:14`
 - `24:16`
-- `24:20`
-- `24:24`
+- `24:19`
+- `24:23`
 - `25:5`
-- `25:7`
 
 ---
 
-## T17 — Familiarity with RICO statute and expert report findings regarding RICO enterprise
+## T10 — Familiarity and experience with the RICO statute in student loan cases
 
 **Range:** `25:8` → `26:14`
 
 **Evidence:**
 
 - `25:8`
-- `25:13`
+- `25:12`
 - `25:18`
-- `26:7`
+- `26:6`
 - `26:9`
-- `26:13`
 
 ---
 
-## T18 — Structure and paragraph numbering of expert report
+## T11 — Expert report formatting and structure
 
 **Range:** `26:15` → `27:1`
 
 **Evidence:**
 
-- `26:16`
-- `26:19`
-- `26:25`
-- `27:1`
+- `26:15`
+- `26:18`
+- `26:22`
 
 ---
 
-## T19 — General background and legality of for-profit colleges
+## T12 — For-profit colleges, ITT overview, and student debt outcomes
 
-**Range:** `27:2` → `27:12`
+**Range:** `27:2` → `31:11`
 
 **Evidence:**
 
 - `27:2`
-- `27:7`
-- `27:10`
-
----
-
-## T20 — Witness's analysis of ITT education quality, student debt, and economic outcomes
-
-**Range:** `27:13` → `30:4`
-
-**Evidence:**
-
 - `27:13`
 - `27:22`
 - `28:10`
-- `28:21`
+- `28:20`
 - `29:8`
-- `30:1`
-
----
-
-## T21 — ITT student retention statistics and Senate HELP Committee report
-
-**Range:** `30:5` → `31:11`
-
-**Evidence:**
-
-- `30:5`
-- `30:11`
+- `29:22`
+- `30:10`
 - `30:16`
-- `30:21`
-- `31:3`
-- `31:11`
+- `31:1`
 
 ---
 
-## T22 — Evaluation of ITT Degree Value and Outlier Student Outcomes
+## T13 — Evaluating ITT student outcomes and institutional quality
 
-**Range:** `31:12` → `35:10`
+**Range:** `31:12` → `34:8`
 
 **Evidence:**
 
+- `31:12`
+- `31:16`
 - `31:17`
-- `32:17`
+- `32:3`
+- `32:4`
 - `33:9`
-- `34:12`
-- `35:1`
+- `33:16`
+- `33:17`
+- `33:23`
+- `33:24`
+- `34:1`
 
 ---
 
-## T23 — Vervent's Awareness of ITT Misrepresentations and Supporting Reports
+## T14 — ITT misrepresentations and Vervent defendants' awareness
 
-**Range:** `35:11` → `37:1`
+**Range:** `34:9` → `37:1`
 
 **Evidence:**
 
+- `34:12`
+- `34:13`
+- `34:14`
+- `35:1`
+- `35:2`
+- `35:3`
+- `35:18`
 - `35:22`
+- `35:24`
+- `36:10`
 - `36:12`
-- `36:17`
-- `36:24`
+- `36:14`
+- `36:23`
 
 ---
 
-## T24 — Outlier ITT Student Outcomes and Post-Graduation Earnings
+## T15 — Hypothetical student financial outcomes and outlier status
 
-**Range:** `37:19` → `39:11`
+**Range:** `37:15` → `39:16`
 
 **Evidence:**
 
 - `37:23`
+- `38:1`
+- `38:10`
 - `38:11`
+- `38:15`
 - `38:18`
-- `38:21`
-
----
-
-## T25 — Hypothetical regarding ITT graduate pre- and post-graduation earnings and outlier status
-
-**Range:** `39:12` → `42:4`
-
-**Evidence:**
-
+- `38:20`
+- `39:5`
 - `39:16`
-- `40:10`
-- `40:24`
-- `41:7`
-- `42:1`
 
 ---
 
-## T26 — Vervent defendants' non-involvement in PEAKS loan origination
+## T16 — ITT graduate salary and outlier analysis
 
-**Range:** `42:5` → `43:7`
+**Range:** `39:17` → `42:2`
 
 **Evidence:**
 
+- `39:17`
+- `39:18`
+- `39:19`
+- `39:22`
+- `39:23`
+- `39:24`
+- `39:25`
+- `40:1`
+- `40:4`
+- `40:5`
+- `40:7`
+- `40:10`
+- `40:15`
+- `40:16`
+- `40:17`
+- `40:24`
+- `41:1`
+- `41:2`
+- `41:4`
+- `41:7`
+- `41:8`
+- `41:16`
+- `41:18`
+- `41:19`
+- `41:20`
+- `41:21`
+- `41:22`
+- `42:1`
+- `42:2`
+
+---
+
+## T17 — Vervent defendants' involvement with PEAKS loans and origination timeline
+
+**Range:** `42:5` → `44:12`
+
+**Evidence:**
+
+- `42:5`
+- `42:6`
 - `42:7`
 - `42:11`
+- `42:12`
+- `42:13`
+- `42:14`
+- `42:16`
 - `42:17`
+- `42:19`
+- `42:20`
+- `42:23`
+- `42:24`
 - `43:4`
-
----
-
-## T27 — Vervent defendants' role regarding student recruiting for ITT
-
-**Range:** `43:8` → `44:12`
-
-**Evidence:**
-
+- `43:5`
 - `43:8`
+- `43:9`
+- `43:10`
 - `43:13`
+- `43:14`
+- `43:15`
+- `43:16`
+- `43:17`
+- `44:1`
 - `44:8`
 - `44:11`
 
 ---
 
-## T28 — Witness qualifications to offer opinions on PEAKS loans
+## T18 — Enforceability and legal determinations regarding PEAKS loans
 
-**Range:** `44:13` → `44:21`
+**Range:** `44:13` → `47:17`
 
 **Evidence:**
 
 - `44:13`
+- `44:14`
 - `44:18`
 - `44:20`
-
----
-
-## T29 — Legal enforceability of PEAKS loans, CFPB settlement, and bankruptcy collection orders
-
-**Range:** `44:22` → `47:11`
-
-**Evidence:**
-
 - `44:22`
+- `44:23`
+- `45:4`
+- `45:5`
+- `45:8`
+- `45:9`
 - `45:10`
+- `45:13`
 - `45:16`
+- `45:17`
+- `45:18`
+- `45:19`
+- `45:21`
+- `45:23`
+- `45:24`
+- `46:6`
+- `46:7`
 - `46:9`
+- `46:10`
+- `46:12`
+- `46:13`
 - `46:15`
+- `46:16`
+- `46:17`
+- `46:18`
+- `46:20`
+- `46:21`
+- `46:23`
+- `47:5`
+- `47:7`
 - `47:9`
-
----
-
-## T30 — Scope of report on PEAKS loan document defects and enforceability
-
-**Range:** `47:14` → `50:11`
-
-**Evidence:**
-
+- `47:10`
+- `47:11`
+- `47:12`
 - `47:14`
-- `47:22`
-- `48:18`
-- `49:9`
-- `50:4`
-- `50:11`
+- `47:15`
+- `47:16`
+- `47:17`
 
 ---
 
-## T31 — Missing PEAKS loan origination documents under Truth in Lending Act
+## T19 — Enforceability and material defects of PEAKS loan documents
 
-**Range:** `50:12` → `51:2`
+**Range:** `47:18` → `49:14`
 
 **Evidence:**
 
+- `47:18`
+- `47:22`
+- `48:12`
+- `48:18`
+- `48:19`
+- `49:6`
+- `49:12`
+
+---
+
+## T20 — Scope of expert report regarding loan enforceability and missing Truth in Lending Act disclosures
+
+**Range:** `49:15` → `52:6`
+
+**Evidence:**
+
+- `49:18`
+- `50:4`
 - `50:14`
 - `50:19`
-- `51:1`
-
----
-
-## T32 — Scope of expert review regarding disclosures held by Access Group and Vervent
-
-**Range:** `51:3` → `51:15`
-
-**Evidence:**
-
-- `51:3`
-- `51:6`
+- `50:20`
 - `51:11`
-- `51:14`
+- `51:13`
 
 ---
 
-## T33 — California Student Loan Servicing Law compliance and report scope
+## T21 — California Student Loan Servicing Law review and compliance
 
-**Range:** `51:16` → `53:12`
+**Range:** `52:21` → `53:9`
 
 **Evidence:**
 
-- `51:16`
-- `51:22`
 - `52:21`
+- `52:24`
+- `52:25`
+- `53:1`
 - `53:4`
 - `53:9`
 
 ---
 
-## T34 — Proof of enforceability and Vervent's access to underlying loan documents versus imported interest rate data
+## T22 — Definitive proof of loan enforceability and Vervent's access to loan records and interest rates
 
-**Range:** `53:13` → `55:11`
+**Range:** `53:10` → `55:5`
 
 **Evidence:**
 
-- `53:21`
-- `54:5`
+- `53:25`
+- `54:1`
+- `54:6`
 - `54:18`
-- `55:4`
-- `55:10`
+- `55:2`
+- `55:5`
 
 ---
 
-## T35 — Witness opinion on provision of final disclosures to PEAKS borrowers
+## T23 — Right to cancel loans and effect of missing disclosures
 
-**Range:** `55:14` → `56:11`
+**Range:** `55:6` → `58:22`
 
 **Evidence:**
 
+- `55:6`
+- `55:7`
+- `55:8`
+- `55:12`
+- `55:13`
 - `55:14`
-- `55:17`
-- `56:9`
-
----
-
-## T36 — Right to cancel loan and mechanics of cancellation for failure to provide disclosures
-
-**Range:** `56:12` → `58:22`
-
-**Evidence:**
-
+- `55:15`
+- `55:19`
+- `55:20`
+- `55:21`
+- `56:6`
+- `56:7`
+- `56:8`
 - `56:12`
+- `56:13`
+- `56:14`
+- `56:15`
+- `56:19`
+- `56:20`
+- `56:21`
 - `56:22`
+- `56:23`
+- `56:24`
+- `56:25`
+- `57:1`
+- `57:2`
+- `57:3`
+- `57:5`
+- `57:6`
+- `57:7`
+- `57:8`
+- `57:9`
 - `57:16`
+- `57:17`
+- `57:18`
+- `57:19`
+- `57:20`
+- `57:21`
+- `57:22`
+- `57:24`
+- `58:1`
+- `58:2`
+- `58:8`
+- `58:9`
+- `58:10`
+- `58:11`
+- `58:12`
+- `58:13`
 - `58:14`
+- `58:15`
+- `58:16`
+- `58:17`
+- `58:18`
+- `58:21`
+- `58:22`
 
 ---
 
-## T37 — Cancellation rights for disbursed loans and disclosure grace periods
+## T24 — Loan enforceability and post-origination events including CFPB settlement
 
-**Range:** `58:23` → `60:1`
+**Range:** `58:23` → `62:5`
 
 **Evidence:**
 
 - `58:23`
+- `58:24`
+- `58:25`
+- `59:1`
+- `59:2`
+- `59:3`
+- `59:4`
+- `59:5`
+- `59:7`
+- `59:8`
 - `59:11`
-- `59:16`
-
----
-
-## T38 — Post-origination events and factors affecting loan enforceability
-
-**Range:** `60:2` → `61:23`
-
-**Evidence:**
-
-- `60:2`
+- `59:12`
+- `60:3`
+- `60:4`
+- `60:5`
+- `60:8`
+- `60:9`
+- `60:10`
+- `60:11`
+- `60:12`
+- `60:13`
 - `60:14`
+- `60:15`
+- `60:16`
+- `60:17`
+- `60:18`
+- `60:19`
+- `60:20`
+- `60:21`
+- `60:22`
+- `60:23`
+- `60:24`
+- `60:25`
+- `61:1`
+- `61:2`
+- `61:3`
+- `61:4`
+- `61:5`
+- `61:6`
+- `61:7`
+- `61:8`
 - `61:9`
+- `61:10`
+- `61:11`
+- `61:12`
+- `61:13`
+- `61:14`
+- `61:15`
+- `61:16`
+- `61:17`
+- `61:18`
+- `61:19`
 - `61:20`
-
----
-
-## T39 — CFPB settlement scope regarding Vervent defendants
-
-**Range:** `61:24` → `62:7`
-
-**Evidence:**
-
-- `61:25`
+- `61:21`
+- `61:22`
+- `61:23`
+- `62:1`
 - `62:2`
+- `62:3`
+- `62:4`
 - `62:5`
 
 ---
 
-## T40 — Historical ITT recruiting practices and Department of Education Title IV participation
+## T25 — ITT recruiting practices, public reports, and government student loan programs
 
-**Range:** `62:8` → `63:11`
+**Range:** `62:8` → `63:20`
 
 **Evidence:**
 
 - `62:8`
+- `62:10`
+- `62:11`
+- `62:12`
+- `62:13`
+- `62:14`
+- `62:15`
+- `62:16`
 - `62:17`
+- `62:19`
+- `62:20`
+- `62:21`
+- `62:22`
+- `62:23`
+- `62:25`
+- `63:1`
 - `63:3`
+- `63:4`
+- `63:6`
+- `63:7`
+- `63:8`
 - `63:9`
-
----
-
-## T41 — Department of Education loans and industry perception of ITT's practices
-
-**Range:** `63:12` → `66:20`
-
-**Evidence:**
-
+- `63:10`
+- `63:11`
+- `63:12`
+- `63:13`
+- `63:14`
+- `63:15`
+- `63:16`
+- `63:17`
 - `63:18`
+- `63:19`
+- `63:20`
+
+---
+
+## T26 — Federal government student loans and ITT's industry reputation
+
+**Range:** `63:21` → `66:20`
+
+**Evidence:**
+
+- `63:21`
+- `63:22`
+- `63:23`
+- `63:24`
+- `63:25`
+- `64:8`
+- `64:9`
+- `64:10`
+- `64:11`
 - `64:12`
+- `64:13`
+- `64:14`
+- `64:15`
+- `64:21`
+- `64:22`
+- `64:23`
+- `64:24`
+- `64:25`
+- `65:2`
+- `65:3`
+- `65:4`
+- `65:5`
+- `65:6`
+- `65:7`
 - `65:13`
+- `65:14`
+- `65:15`
+- `65:16`
+- `65:17`
+- `65:18`
+- `65:19`
+- `65:20`
+- `65:21`
+- `65:22`
+- `65:23`
+- `65:24`
+- `65:25`
+- `66:1`
+- `66:2`
+- `66:3`
+- `66:4`
+- `66:5`
+- `66:6`
+- `66:14`
 - `66:15`
+- `66:16`
+- `66:17`
+- `66:18`
+- `66:19`
+- `66:20`
 
 ---
 
-## T42 — CFPB investigation of PEAKS program and findings regarding Vervent defendants
+## T27 — CFPB Civil Investigative Demand and findings regarding Vervent defendants
 
-**Range:** `66:22` → `68:25`
+**Range:** `66:21` → `68:17`
 
 **Evidence:**
 
+- `66:21`
+- `66:22`
+- `66:23`
+- `66:24`
+- `67:1`
 - `67:2`
+- `67:13`
+- `67:14`
+- `67:15`
+- `67:16`
 - `67:17`
+- `67:18`
+- `67:19`
+- `67:20`
+- `67:21`
+- `67:22`
+- `67:23`
+- `67:24`
+- `67:25`
+- `68:1`
+- `68:2`
+- `68:3`
+- `68:4`
+- `68:5`
+- `68:6`
+- `68:7`
+- `68:8`
+- `68:9`
+- `68:10`
+- `68:11`
+- `68:12`
 - `68:13`
-- `68:22`
+- `68:14`
+- `68:15`
+- `68:16`
+- `68:17`
 
 ---
 
-## T43 — SEC investigation into PEAKS loans and payments on behalf of borrowers
+## T28 — SEC investigation and findings regarding Vervent defendants
 
-**Range:** `69:1` → `71:11`
+**Range:** `68:18` → `71:14`
 
 **Evidence:**
 
+- `68:18`
+- `68:19`
+- `68:20`
+- `68:21`
+- `68:22`
+- `68:23`
+- `68:24`
 - `69:1`
+- `69:2`
+- `69:3`
+- `69:4`
+- `69:5`
+- `69:7`
+- `69:8`
+- `69:9`
+- `69:14`
 - `69:15`
+- `69:16`
+- `69:17`
+- `69:18`
+- `69:19`
+- `69:20`
+- `69:21`
+- `69:22`
+- `69:24`
+- `69:25`
+- `70:1`
+- `70:3`
+- `70:4`
+- `70:5`
+- `70:6`
+- `70:8`
+- `70:9`
+- `70:10`
+- `70:15`
+- `70:16`
+- `70:17`
+- `70:20`
+- `70:21`
+- `70:22`
 - `70:23`
+- `70:24`
+- `70:25`
+- `71:1`
+- `71:2`
+- `71:3`
+- `71:9`
+- `71:10`
+- `71:11`
+- `71:12`
+- `71:13`
 
 ---
 
-## T44 — CFPB lawsuit against ITT and Vervent's role as loan servicer
+## T29 — February 2014 CFPB suit against ITT over predatory loans
 
-**Range:** `71:15` → `73:25`
+**Range:** `71:15` → `71:22`
 
 **Evidence:**
 
 - `71:15`
-- `72:23`
-- `73:7`
-- `73:22`
+- `71:16`
+- `71:17`
+- `71:18`
+- `71:19`
+- `71:20`
+- `71:21`
+- `71:22`
 
 ---
 
-## T45 — State Attorneys General investigations into ITT
+## T30 — CFPB settlement and ITT/Vervent PEAKS loan program
 
-**Range:** `74:1` → `75:4`
+**Range:** `71:23` → `73:13`
 
 **Evidence:**
 
-- `74:1`
-- `74:10`
-- `74:24`
-- `75:1`
+- `71:23`
+- `71:24`
+- `72:2`
+- `72:3`
+- `72:4`
+- `72:5`
+- `72:23`
+- `72:24`
+- `73:1`
+- `73:2`
+- `73:5`
+- `73:6`
+- `73:7`
+- `73:8`
+- `73:9`
+- `73:10`
+- `73:12`
+- `73:13`
 
 ---
 
-## T46 — U.S. Department of Education findings and loan servicer oversight
+## T31 — State attorneys general and regulatory investigations into ITT and PEAKS loans
 
-**Range:** `75:5` → `75:23`
+**Range:** `73:14` → `75:4`
+
+**Evidence:**
+
+- `73:14`
+- `73:15`
+- `73:16`
+- `73:17`
+- `73:19`
+- `73:20`
+- `73:22`
+- `73:23`
+- `73:24`
+- `74:1`
+- `74:2`
+- `74:3`
+- `74:6`
+- `74:7`
+- `74:8`
+- `74:9`
+- `74:10`
+- `74:11`
+- `74:12`
+- `74:13`
+- `74:14`
+- `74:15`
+- `74:16`
+- `74:17`
+- `74:18`
+- `74:19`
+- `75:1`
+- `75:2`
+- `75:3`
+- `75:4`
+
+---
+
+## T32 — Department of Education involvement and loan servicer investigations
+
+**Range:** `75:5` → `76:5`
 
 **Evidence:**
 
 - `75:5`
+- `75:6`
+- `75:7`
 - `75:9`
+- `75:10`
+- `75:11`
+- `75:12`
 - `75:13`
+- `75:14`
+- `75:15`
+- `75:17`
+- `75:18`
+- `75:19`
 - `75:20`
+- `75:21`
+- `75:22`
+- `75:23`
 
 ---
 
-## T47 — Deponent's professional experience conducting investigations
+## T33 — Witness's professional experience and definition of investigations
 
-**Range:** `76:11` → `77:19`
+**Range:** `76:10` → `78:3`
 
 **Evidence:**
 
+- `76:11`
+- `76:12`
 - `76:14`
+- `76:15`
+- `76:16`
+- `76:17`
+- `76:18`
 - `76:19`
+- `76:20`
+- `76:21`
+- `76:22`
+- `76:23`
+- `76:24`
+- `77:3`
+- `77:4`
+- `77:5`
 - `77:6`
+- `77:7`
+- `77:8`
+- `77:9`
+- `77:10`
+- `77:11`
+- `77:12`
+- `77:13`
 - `77:15`
-
----
-
-## T48 — Significance of ITT/PEAKS investigations and impact on Vervent servicing
-
-**Range:** `77:20` → `79:11`
-
-**Evidence:**
-
+- `77:16`
+- `77:17`
+- `77:20`
 - `77:21`
+- `77:22`
+- `77:23`
+- `77:24`
+- `77:25`
+- `78:2`
+- `78:3`
+
+---
+
+## T34 — Implications of investigations regarding wrongdoing and servicing decisions
+
+**Range:** `78:4` → `79:24`
+
+**Evidence:**
+
 - `78:4`
+- `78:5`
+- `78:7`
+- `78:8`
+- `78:9`
+- `78:10`
+- `78:11`
+- `78:12`
+- `78:13`
+- `78:15`
+- `78:16`
 - `78:18`
+- `78:19`
+- `78:20`
+- `78:21`
+- `78:22`
+- `78:24`
 - `79:2`
-
----
-
-## T49 — Vervent's decision to continue servicing and collecting on PEAKS loans during investigations
-
-**Range:** `79:12` → `80:3`
-
-**Evidence:**
-
+- `79:3`
+- `79:4`
+- `79:10`
+- `79:11`
 - `79:12`
+- `79:13`
+- `79:15`
+- `79:16`
 - `79:17`
-- `80:1`
+- `79:18`
+- `79:21`
+- `79:22`
+- `79:23`
+- `79:24`
 
 ---
 
-## T50 — Functions and scope of loan servicing versus loan collection
+## T35 — Loan Servicing Functions and Responsibilities
 
-**Range:** `80:4` → `81:9`
+**Range:** `79:25` → `81:14`
 
 **Evidence:**
 
+- `79:25`
 - `80:7`
+- `80:9`
 - `80:10`
+- `80:16`
 - `80:24`
+- `81:1`
 - `81:3`
 - `81:7`
+- `81:11`
 
 ---
 
-## T51 — Legal standards and statutes regarding servicing unenforceable loans or loans under investigation
+## T36 — Enforceability of PEAKS Loans and CFPB Settlement
 
-**Range:** `81:10` → `82:6`
+**Range:** `81:15` → `83:4`
 
 **Evidence:**
 
-- `81:10`
+- `81:15`
 - `81:16`
 - `81:24`
-- `82:3`
-
----
-
-## T52 — Fall 2020 CFPB settlement and post-settlement servicing conduct
-
-**Range:** `82:7` → `82:25`
-
-**Evidence:**
-
 - `82:7`
+- `82:11`
 - `82:13`
-- `82:18`
-- `82:24`
+- `82:15`
+- `82:20`
+- `83:2`
 
 ---
 
-## T53 — Absence of pre-2020 judicial or governmental determinations of loan unenforceability
+## T37 — Timeline and Determinations of Loan Unenforceability
 
-**Range:** `83:1` → `85:14`
+**Range:** `83:5` → `87:3`
 
 **Evidence:**
 
-- `83:1`
+- `83:5`
+- `83:6`
 - `83:10`
+- `83:24`
+- `84:1`
 - `84:13`
 - `85:1`
-- `85:5`
-- `85:12`
-
----
-
-## T54 — Expert opinion on PEAKS loan unenforceability at origination versus post-origination events
-
-**Range:** `85:15` → `87:3`
-
-**Evidence:**
-
+- `85:4`
 - `85:16`
-- `85:22`
-- `86:11`
-- `86:23`
+- `86:2`
+- `86:10`
+- `86:12`
+- `86:20`
+- `87:1`
 
 ---
 
-## T55 — Hypothetical impact of Vervent refusing to service PEAKS loans
+## T38 — Review of Servicing Practices and Investigations
 
-**Range:** `87:4` → `87:10`
+**Range:** `87:4` → `88:1`
 
 **Evidence:**
 
+- `87:4`
 - `87:5`
-- `87:8`
-
----
-
-## T56 — Witness's knowledge of issues with Vervent's servicing of PEAKS loans in reviewed investigations
-
-**Range:** `87:12` → `88:3`
-
-**Evidence:**
-
-- `87:12`
+- `87:11`
+- `87:20`
 - `87:24`
-- `88:2`
 
 ---
 
-## T57 — Conclusion of deposition
+## T39 — Conclusion of Deposition
 
-**Range:** `88:4` → `88:13`
+**Range:** `88:2` → `88:13`
 
 **Evidence:**
 
 - `88:4`
 - `88:6`
+- `88:9`
 - `88:11`
-- `88:13`
 
 ---

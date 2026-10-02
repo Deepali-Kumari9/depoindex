@@ -12,35 +12,6 @@
         "new_end_ref": "55:5",
         "next_topic_start_ref": "55:6"
       }
-    ],
-    "failed_boundary_refinements": [
-      {
-        "topic_id": 2,
-        "topic": "Expert Witness Retainer and Scope of Testimony",
-        "old_start_ref": "8:24",
-        "old_end_ref": "10:15",
-        "new_start_ref": "8:24",
-        "new_end_ref": "9:18",
-        "reason": "The discussion about the expert witness retainer and the scope of testimony begins at 8:24 and concludes at 9:18, after which counsel transitions to discussing the expert report and marking it as an exhibit."
-      },
-      {
-        "topic_id": 3,
-        "topic": "Professional Background and Student Borrower Protection Center",
-        "old_start_ref": "10:16",
-        "old_end_ref": "12:6",
-        "new_start_ref": "11:2",
-        "new_end_ref": "12:6",
-        "reason": "The topic 'Professional Background and Student Borrower Protection Center' begins when counsel asks about the witness's attorney status and CV at 11:2, and continues through the discussion of the Student Borrower Protection Center and its policy agenda ending at 12:6. Lines 10:16 to 10:21 are excluded as they pertain to deposition logistics and reading instructions."
-      },
-      {
-        "topic_id": 21,
-        "topic": "California Student Loan Servicing Law review and compliance",
-        "old_start_ref": "52:7",
-        "old_end_ref": "53:9",
-        "new_start_ref": "52:21",
-        "new_end_ref": "53:9",
-        "reason": "The substantive discussion concerning the California Student Loan Servicing Law review and compliance begins at line 52:21 and concludes at 53:9, excluding the reporter interruption prior to 52:21."
-      }
     ]
   },
   "topics": [
@@ -58,34 +29,47 @@
         "8:21"
       ],
       "related_to": [],
-      "topic_id": 1
+      "topic_id": 1,
+      "source_chunk_ids": [
+        1
+      ]
     },
     {
       "topic": "Expert Witness Retainer and Scope of Testimony",
       "start_ref": "8:24",
-      "end_ref": "9:18",
+      "end_ref": "10:15",
       "evidence_refs": [
         "8:24",
         "9:1",
         "9:5",
         "9:9",
-        "9:14"
+        "9:14",
+        "10:2",
+        "10:5"
       ],
       "related_to": [],
-      "topic_id": 2
+      "topic_id": 2,
+      "source_chunk_ids": [
+        1,
+        2
+      ]
     },
     {
       "topic": "Professional Background and Student Borrower Protection Center",
-      "start_ref": "11:2",
+      "start_ref": "10:16",
       "end_ref": "12:6",
       "evidence_refs": [
+        "10:21",
         "11:2",
         "11:18",
         "11:22",
         "12:5"
       ],
       "related_to": [],
-      "topic_id": 3
+      "topic_id": 3,
+      "source_chunk_ids": [
+        3
+      ]
     },
     {
       "topic": "Policy Agenda and Advocacy Work",
@@ -104,7 +88,11 @@
         "15:5"
       ],
       "related_to": [],
-      "topic_id": 4
+      "topic_id": 4,
+      "source_chunk_ids": [
+        4,
+        5
+      ]
     },
     {
       "topic": "Witness professional background in student loans, rulemakings, legislation, and loan servicing",
@@ -124,7 +112,12 @@
         "18:17"
       ],
       "related_to": [],
-      "topic_id": 5
+      "topic_id": 5,
+      "source_chunk_ids": [
+        6,
+        7,
+        8
+      ]
     },
     {
       "topic": "National Consumer Law Center work, Congressional testimony, and experience with loan portfolio transfers",
@@ -141,9 +134,13 @@
         "21:5"
       ],
       "related_to": [
-        1
+        5
       ],
-      "topic_id": 6
+      "topic_id": 6,
+      "source_chunk_ids": [
+        8,
+        9
+      ]
     },
     {
       "topic": "Mechanics, data transfer processes, and risks associated with student loan servicing transfers",
@@ -160,9 +157,13 @@
         "23:7"
       ],
       "related_to": [
-        2
+        6
       ],
-      "topic_id": 7
+      "topic_id": 7,
+      "source_chunk_ids": [
+        9,
+        10
+      ]
     },
     {
       "topic": "State laws and data transfer regulations regarding student loans",
@@ -176,7 +177,10 @@
         "24:9"
       ],
       "related_to": [],
-      "topic_id": 8
+      "topic_id": 8,
+      "source_chunk_ids": [
+        11
+      ]
     },
     {
       "topic": "Witness professional experience in criminal law",
@@ -190,7 +194,11 @@
         "25:5"
       ],
       "related_to": [],
-      "topic_id": 9
+      "topic_id": 9,
+      "source_chunk_ids": [
+        11,
+        12
+      ]
     },
     {
       "topic": "Familiarity and experience with the RICO statute in student loan cases",
@@ -204,7 +212,10 @@
         "26:9"
       ],
       "related_to": [],
-      "topic_id": 10
+      "topic_id": 10,
+      "source_chunk_ids": [
+        12
+      ]
     },
     {
       "topic": "Expert report formatting and structure",
@@ -216,7 +227,11 @@
         "26:22"
       ],
       "related_to": [],
-      "topic_id": 11
+      "topic_id": 11,
+      "source_chunk_ids": [
+        12,
+        13
+      ]
     },
     {
       "topic": "For-profit colleges, ITT overview, and student debt outcomes",
@@ -235,7 +250,12 @@
         "31:1"
       ],
       "related_to": [],
-      "topic_id": 12
+      "topic_id": 12,
+      "source_chunk_ids": [
+        13,
+        14,
+        15
+      ]
     },
     {
       "topic": "Evaluating ITT student outcomes and institutional quality",
@@ -255,7 +275,11 @@
         "34:1"
       ],
       "related_to": [],
-      "topic_id": 13
+      "topic_id": 13,
+      "source_chunk_ids": [
+        16,
+        17
+      ]
     },
     {
       "topic": "ITT misrepresentations and Vervent defendants' awareness",
@@ -277,7 +301,12 @@
         "36:23"
       ],
       "related_to": [],
-      "topic_id": 14
+      "topic_id": 14,
+      "source_chunk_ids": [
+        17,
+        18,
+        19
+      ]
     },
     {
       "topic": "Hypothetical student financial outcomes and outlier status",
@@ -295,9 +324,13 @@
         "39:16"
       ],
       "related_to": [
-        1
+        13
       ],
-      "topic_id": 15
+      "topic_id": 15,
+      "source_chunk_ids": [
+        19,
+        20
+      ]
     },
     {
       "topic": "ITT graduate salary and outlier analysis",
@@ -335,7 +368,11 @@
         "42:2"
       ],
       "related_to": [],
-      "topic_id": 16
+      "topic_id": 16,
+      "source_chunk_ids": [
+        21,
+        22
+      ]
     },
     {
       "topic": "Vervent defendants' involvement with PEAKS loans and origination timeline",
@@ -370,7 +407,11 @@
         "44:11"
       ],
       "related_to": [],
-      "topic_id": 17
+      "topic_id": 17,
+      "source_chunk_ids": [
+        22,
+        23
+      ]
     },
     {
       "topic": "Enforceability and legal determinations regarding PEAKS loans",
@@ -421,7 +462,11 @@
         "47:17"
       ],
       "related_to": [],
-      "topic_id": 18
+      "topic_id": 18,
+      "source_chunk_ids": [
+        24,
+        25
+      ]
     },
     {
       "topic": "Enforceability and material defects of PEAKS loan documents",
@@ -437,7 +482,11 @@
         "49:12"
       ],
       "related_to": [],
-      "topic_id": 19
+      "topic_id": 19,
+      "source_chunk_ids": [
+        26,
+        27
+      ]
     },
     {
       "topic": "Scope of expert report regarding loan enforceability and missing Truth in Lending Act disclosures",
@@ -453,13 +502,17 @@
         "51:13"
       ],
       "related_to": [
-        1
+        19
       ],
-      "topic_id": 20
+      "topic_id": 20,
+      "source_chunk_ids": [
+        27,
+        28
+      ]
     },
     {
       "topic": "California Student Loan Servicing Law review and compliance",
-      "start_ref": "52:21",
+      "start_ref": "52:7",
       "end_ref": "53:9",
       "evidence_refs": [
         "52:21",
@@ -470,7 +523,11 @@
         "53:9"
       ],
       "related_to": [],
-      "topic_id": 21
+      "topic_id": 21,
+      "source_chunk_ids": [
+        28,
+        29
+      ]
     },
     {
       "topic": "Definitive proof of loan enforceability and Vervent's access to loan records and interest rates",
@@ -485,10 +542,14 @@
         "55:5"
       ],
       "related_to": [
-        1,
-        2
+        19,
+        20
       ],
-      "topic_id": 22
+      "topic_id": 22,
+      "source_chunk_ids": [
+        29,
+        30
+      ]
     },
     {
       "topic": "Right to cancel loans and effect of missing disclosures",
@@ -552,7 +613,12 @@
         "58:22"
       ],
       "related_to": [],
-      "topic_id": 23
+      "topic_id": 23,
+      "source_chunk_ids": [
+        30,
+        31,
+        32
+      ]
     },
     {
       "topic": "Loan enforceability and post-origination events including CFPB settlement",
@@ -622,9 +688,14 @@
         "62:5"
       ],
       "related_to": [
-        1
+        23
       ],
-      "topic_id": 24
+      "topic_id": 24,
+      "source_chunk_ids": [
+        32,
+        33,
+        34
+      ]
     },
     {
       "topic": "ITT recruiting practices, public reports, and government student loan programs",
@@ -666,7 +737,10 @@
         "63:20"
       ],
       "related_to": [],
-      "topic_id": 25
+      "topic_id": 25,
+      "source_chunk_ids": [
+        35
+      ]
     },
     {
       "topic": "Federal government student loans and ITT's industry reputation",
@@ -725,7 +799,11 @@
         "66:20"
       ],
       "related_to": [],
-      "topic_id": 26
+      "topic_id": 26,
+      "source_chunk_ids": [
+        36,
+        37
+      ]
     },
     {
       "topic": "CFPB Civil Investigative Demand and findings regarding Vervent defendants",
@@ -770,7 +848,11 @@
         "68:17"
       ],
       "related_to": [],
-      "topic_id": 27
+      "topic_id": 27,
+      "source_chunk_ids": [
+        37,
+        38
+      ]
     },
     {
       "topic": "SEC investigation and findings regarding Vervent defendants",
@@ -830,7 +912,11 @@
         "71:13"
       ],
       "related_to": [],
-      "topic_id": 28
+      "topic_id": 28,
+      "source_chunk_ids": [
+        39,
+        40
+      ]
     },
     {
       "topic": "February 2014 CFPB suit against ITT over predatory loans",
@@ -847,9 +933,12 @@
         "71:22"
       ],
       "related_to": [
-        2
+        27
       ],
-      "topic_id": 29
+      "topic_id": 29,
+      "source_chunk_ids": [
+        40
+      ]
     },
     {
       "topic": "CFPB settlement and ITT/Vervent PEAKS loan program",
@@ -876,7 +965,10 @@
         "73:13"
       ],
       "related_to": [],
-      "topic_id": 30
+      "topic_id": 30,
+      "source_chunk_ids": [
+        41
+      ]
     },
     {
       "topic": "State attorneys general and regulatory investigations into ITT and PEAKS loans",
@@ -915,7 +1007,11 @@
         "75:4"
       ],
       "related_to": [],
-      "topic_id": 31
+      "topic_id": 31,
+      "source_chunk_ids": [
+        42,
+        43
+      ]
     },
     {
       "topic": "Department of Education involvement and loan servicer investigations",
@@ -941,9 +1037,12 @@
         "75:23"
       ],
       "related_to": [
-        1
+        30
       ],
-      "topic_id": 32
+      "topic_id": 32,
+      "source_chunk_ids": [
+        43
+      ]
     },
     {
       "topic": "Witness's professional experience and definition of investigations",
@@ -987,7 +1086,11 @@
         "78:3"
       ],
       "related_to": [],
-      "topic_id": 33
+      "topic_id": 33,
+      "source_chunk_ids": [
+        43,
+        44
+      ]
     },
     {
       "topic": "Implications of investigations regarding wrongdoing and servicing decisions",
@@ -1028,9 +1131,13 @@
         "79:24"
       ],
       "related_to": [
-        3
+        32
       ],
-      "topic_id": 34
+      "topic_id": 34,
+      "source_chunk_ids": [
+        44,
+        45
+      ]
     },
     {
       "topic": "Loan Servicing Functions and Responsibilities",
@@ -1049,7 +1156,10 @@
         "81:11"
       ],
       "related_to": [],
-      "topic_id": 35
+      "topic_id": 35,
+      "source_chunk_ids": [
+        46
+      ]
     },
     {
       "topic": "Enforceability of PEAKS Loans and CFPB Settlement",
@@ -1067,7 +1177,10 @@
         "83:2"
       ],
       "related_to": [],
-      "topic_id": 36
+      "topic_id": 36,
+      "source_chunk_ids": [
+        47
+      ]
     },
     {
       "topic": "Timeline and Determinations of Loan Unenforceability",
@@ -1090,9 +1203,14 @@
         "87:1"
       ],
       "related_to": [
-        2
+        36
       ],
-      "topic_id": 37
+      "topic_id": 37,
+      "source_chunk_ids": [
+        48,
+        49,
+        50
+      ]
     },
     {
       "topic": "Review of Servicing Practices and Investigations",
@@ -1106,9 +1224,12 @@
         "87:24"
       ],
       "related_to": [
-        1
+        35
       ],
-      "topic_id": 38
+      "topic_id": 38,
+      "source_chunk_ids": [
+        50
+      ]
     },
     {
       "topic": "Conclusion of Deposition",
@@ -1121,7 +1242,10 @@
         "88:11"
       ],
       "related_to": [],
-      "topic_id": 39
+      "topic_id": 39,
+      "source_chunk_ids": [
+        51
+      ]
     }
   ]
 }

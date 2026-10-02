@@ -19,34 +19,47 @@
         "8:18",
         "8:21"
       ],
-      "source_chunk_ids": []
+      "related_to": [],
+      "source_chunk_ids": [
+        1
+      ]
     },
     {
       "topic_id": "T02",
       "topic": "Expert Witness Retainer and Scope of Testimony",
       "start_ref": "8:24",
-      "end_ref": "9:18",
+      "end_ref": "10:15",
       "evidence_refs": [
         "8:24",
         "9:1",
         "9:5",
         "9:9",
-        "9:14"
+        "9:14",
+        "10:2",
+        "10:5"
       ],
-      "source_chunk_ids": []
+      "related_to": [],
+      "source_chunk_ids": [
+        1,
+        2
+      ]
     },
     {
       "topic_id": "T03",
       "topic": "Professional Background and Student Borrower Protection Center",
-      "start_ref": "11:2",
+      "start_ref": "10:16",
       "end_ref": "12:6",
       "evidence_refs": [
+        "10:21",
         "11:2",
         "11:18",
         "11:22",
         "12:5"
       ],
-      "source_chunk_ids": []
+      "related_to": [],
+      "source_chunk_ids": [
+        3
+      ]
     },
     {
       "topic_id": "T04",
@@ -65,7 +78,11 @@
         "15:2",
         "15:5"
       ],
-      "source_chunk_ids": []
+      "related_to": [],
+      "source_chunk_ids": [
+        4,
+        5
+      ]
     },
     {
       "topic_id": "T05",
@@ -85,7 +102,12 @@
         "18:14",
         "18:17"
       ],
-      "source_chunk_ids": []
+      "related_to": [],
+      "source_chunk_ids": [
+        6,
+        7,
+        8
+      ]
     },
     {
       "topic_id": "T06",
@@ -102,7 +124,13 @@
         "20:22",
         "21:5"
       ],
-      "source_chunk_ids": []
+      "related_to": [
+        5
+      ],
+      "source_chunk_ids": [
+        8,
+        9
+      ]
     },
     {
       "topic_id": "T07",
@@ -119,7 +147,13 @@
         "23:1",
         "23:7"
       ],
-      "source_chunk_ids": []
+      "related_to": [
+        6
+      ],
+      "source_chunk_ids": [
+        9,
+        10
+      ]
     },
     {
       "topic_id": "T08",
@@ -133,7 +167,10 @@
         "24:6",
         "24:9"
       ],
-      "source_chunk_ids": []
+      "related_to": [],
+      "source_chunk_ids": [
+        11
+      ]
     },
     {
       "topic_id": "T09",
@@ -147,7 +184,11 @@
         "24:23",
         "25:5"
       ],
-      "source_chunk_ids": []
+      "related_to": [],
+      "source_chunk_ids": [
+        11,
+        12
+      ]
     },
     {
       "topic_id": "T10",
@@ -161,7 +202,10 @@
         "26:6",
         "26:9"
       ],
-      "source_chunk_ids": []
+      "related_to": [],
+      "source_chunk_ids": [
+        12
+      ]
     },
     {
       "topic_id": "T11",
@@ -173,7 +217,11 @@
         "26:18",
         "26:22"
       ],
-      "source_chunk_ids": []
+      "related_to": [],
+      "source_chunk_ids": [
+        12,
+        13
+      ]
     },
     {
       "topic_id": "T12",
@@ -192,7 +240,12 @@
         "30:16",
         "31:1"
       ],
-      "source_chunk_ids": []
+      "related_to": [],
+      "source_chunk_ids": [
+        13,
+        14,
+        15
+      ]
     },
     {
       "topic_id": "T13",
@@ -212,7 +265,11 @@
         "33:24",
         "34:1"
       ],
-      "source_chunk_ids": []
+      "related_to": [],
+      "source_chunk_ids": [
+        16,
+        17
+      ]
     },
     {
       "topic_id": "T14",
@@ -234,7 +291,12 @@
         "36:14",
         "36:23"
       ],
-      "source_chunk_ids": []
+      "related_to": [],
+      "source_chunk_ids": [
+        17,
+        18,
+        19
+      ]
     },
     {
       "topic_id": "T15",
@@ -252,7 +314,13 @@
         "39:5",
         "39:16"
       ],
-      "source_chunk_ids": []
+      "related_to": [
+        13
+      ],
+      "source_chunk_ids": [
+        19,
+        20
+      ]
     },
     {
       "topic_id": "T16",
@@ -290,7 +358,11 @@
         "42:1",
         "42:2"
       ],
-      "source_chunk_ids": []
+      "related_to": [],
+      "source_chunk_ids": [
+        21,
+        22
+      ]
     },
     {
       "topic_id": "T17",
@@ -325,7 +397,11 @@
         "44:8",
         "44:11"
       ],
-      "source_chunk_ids": []
+      "related_to": [],
+      "source_chunk_ids": [
+        22,
+        23
+      ]
     },
     {
       "topic_id": "T18",
@@ -376,7 +452,11 @@
         "47:16",
         "47:17"
       ],
-      "source_chunk_ids": []
+      "related_to": [],
+      "source_chunk_ids": [
+        24,
+        25
+      ]
     },
     {
       "topic_id": "T19",
@@ -392,7 +472,11 @@
         "49:6",
         "49:12"
       ],
-      "source_chunk_ids": []
+      "related_to": [],
+      "source_chunk_ids": [
+        26,
+        27
+      ]
     },
     {
       "topic_id": "T20",
@@ -408,12 +492,18 @@
         "51:11",
         "51:13"
       ],
-      "source_chunk_ids": []
+      "related_to": [
+        19
+      ],
+      "source_chunk_ids": [
+        27,
+        28
+      ]
     },
     {
       "topic_id": "T21",
       "topic": "California Student Loan Servicing Law review and compliance",
-      "start_ref": "52:21",
+      "start_ref": "52:7",
       "end_ref": "53:9",
       "evidence_refs": [
         "52:21",
@@ -423,7 +513,11 @@
         "53:4",
         "53:9"
       ],
-      "source_chunk_ids": []
+      "related_to": [],
+      "source_chunk_ids": [
+        28,
+        29
+      ]
     },
     {
       "topic_id": "T22",
@@ -438,7 +532,14 @@
         "55:2",
         "55:5"
       ],
-      "source_chunk_ids": []
+      "related_to": [
+        19,
+        20
+      ],
+      "source_chunk_ids": [
+        29,
+        30
+      ]
     },
     {
       "topic_id": "T23",
@@ -502,7 +603,12 @@
         "58:21",
         "58:22"
       ],
-      "source_chunk_ids": []
+      "related_to": [],
+      "source_chunk_ids": [
+        30,
+        31,
+        32
+      ]
     },
     {
       "topic_id": "T24",
@@ -572,7 +678,14 @@
         "62:4",
         "62:5"
       ],
-      "source_chunk_ids": []
+      "related_to": [
+        23
+      ],
+      "source_chunk_ids": [
+        32,
+        33,
+        34
+      ]
     },
     {
       "topic_id": "T25",
@@ -614,7 +727,10 @@
         "63:19",
         "63:20"
       ],
-      "source_chunk_ids": []
+      "related_to": [],
+      "source_chunk_ids": [
+        35
+      ]
     },
     {
       "topic_id": "T26",
@@ -673,7 +789,11 @@
         "66:19",
         "66:20"
       ],
-      "source_chunk_ids": []
+      "related_to": [],
+      "source_chunk_ids": [
+        36,
+        37
+      ]
     },
     {
       "topic_id": "T27",
@@ -718,7 +838,11 @@
         "68:16",
         "68:17"
       ],
-      "source_chunk_ids": []
+      "related_to": [],
+      "source_chunk_ids": [
+        37,
+        38
+      ]
     },
     {
       "topic_id": "T28",
@@ -778,7 +902,11 @@
         "71:12",
         "71:13"
       ],
-      "source_chunk_ids": []
+      "related_to": [],
+      "source_chunk_ids": [
+        39,
+        40
+      ]
     },
     {
       "topic_id": "T29",
@@ -795,7 +923,12 @@
         "71:21",
         "71:22"
       ],
-      "source_chunk_ids": []
+      "related_to": [
+        27
+      ],
+      "source_chunk_ids": [
+        40
+      ]
     },
     {
       "topic_id": "T30",
@@ -822,7 +955,10 @@
         "73:12",
         "73:13"
       ],
-      "source_chunk_ids": []
+      "related_to": [],
+      "source_chunk_ids": [
+        41
+      ]
     },
     {
       "topic_id": "T31",
@@ -861,7 +997,11 @@
         "75:3",
         "75:4"
       ],
-      "source_chunk_ids": []
+      "related_to": [],
+      "source_chunk_ids": [
+        42,
+        43
+      ]
     },
     {
       "topic_id": "T32",
@@ -887,7 +1027,12 @@
         "75:22",
         "75:23"
       ],
-      "source_chunk_ids": []
+      "related_to": [
+        30
+      ],
+      "source_chunk_ids": [
+        43
+      ]
     },
     {
       "topic_id": "T33",
@@ -931,7 +1076,11 @@
         "78:2",
         "78:3"
       ],
-      "source_chunk_ids": []
+      "related_to": [],
+      "source_chunk_ids": [
+        43,
+        44
+      ]
     },
     {
       "topic_id": "T34",
@@ -972,7 +1121,13 @@
         "79:23",
         "79:24"
       ],
-      "source_chunk_ids": []
+      "related_to": [
+        32
+      ],
+      "source_chunk_ids": [
+        44,
+        45
+      ]
     },
     {
       "topic_id": "T35",
@@ -991,7 +1146,10 @@
         "81:7",
         "81:11"
       ],
-      "source_chunk_ids": []
+      "related_to": [],
+      "source_chunk_ids": [
+        46
+      ]
     },
     {
       "topic_id": "T36",
@@ -1009,7 +1167,10 @@
         "82:20",
         "83:2"
       ],
-      "source_chunk_ids": []
+      "related_to": [],
+      "source_chunk_ids": [
+        47
+      ]
     },
     {
       "topic_id": "T37",
@@ -1032,7 +1193,14 @@
         "86:20",
         "87:1"
       ],
-      "source_chunk_ids": []
+      "related_to": [
+        36
+      ],
+      "source_chunk_ids": [
+        48,
+        49,
+        50
+      ]
     },
     {
       "topic_id": "T38",
@@ -1046,7 +1214,12 @@
         "87:20",
         "87:24"
       ],
-      "source_chunk_ids": []
+      "related_to": [
+        35
+      ],
+      "source_chunk_ids": [
+        50
+      ]
     },
     {
       "topic_id": "T39",
@@ -1059,7 +1232,10 @@
         "88:9",
         "88:11"
       ],
-      "source_chunk_ids": []
+      "related_to": [],
+      "source_chunk_ids": [
+        51
+      ]
     }
   ],
   "validation_errors": []
