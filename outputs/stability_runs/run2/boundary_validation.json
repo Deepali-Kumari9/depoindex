@@ -1,0 +1,434 @@
+{
+  "metadata": {
+    "topic_count": 42,
+    "validated_topics": 42,
+    "model": "gemini-3.5-flash-lite",
+    "context_size": 5,
+    "batch_size": 5,
+    "structural_error_count": 0,
+    "overlap_count": 0
+  },
+  "structural_errors": [],
+  "results": [
+    {
+      "topic_id": 1,
+      "topic": "Deposition Preliminaries and Instructions",
+      "start_ref": "7:11",
+      "end_ref": "8:23",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The start and end correctly capture the preliminary statements and health check at the beginning of the deposition."
+    },
+    {
+      "topic_id": 2,
+      "topic": "Expert Scope of Testimony",
+      "start_ref": "8:24",
+      "end_ref": "10:1",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The topic properly begins when the expert's retention and scope are introduced and concludes cleanly near the reporter's interjection."
+    },
+    {
+      "topic_id": 3,
+      "topic": "Witness Background and Student Borrower Protection Center Overview",
+      "start_ref": "11:2",
+      "end_ref": "12:6",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The segment accurately covers the witness's CV and background before transitioning directly into asking about the policy agenda."
+    },
+    {
+      "topic_id": 4,
+      "topic": "Policy Agenda and Advocacy Work",
+      "start_ref": "12:7",
+      "end_ref": "15:11",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The boundaries effectively capture the discussion regarding advocacy work and the policy agenda until the reporter asks the witness to slow down."
+    },
+    {
+      "topic_id": 5,
+      "topic": "Witness's background in rulemaking, legislation, and student loan policy",
+      "start_ref": "15:13",
+      "end_ref": "16:11",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The start and end correctly frame the witness's prior background in rulemaking, legislation, and student loan policy."
+    },
+    {
+      "topic_id": 6,
+      "topic": "Work and comments concerning student loan servicers",
+      "start_ref": "16:16",
+      "end_ref": "18:13",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The boundaries cleanly capture the discussion regarding work and comments concerning student loan servicers."
+    },
+    {
+      "topic_id": 7,
+      "topic": "Experience researching loan servicers and testifying before Congress",
+      "start_ref": "18:14",
+      "end_ref": "19:14",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The start and end correctly frame the witness's experience researching loan servicers and testifying before Congress."
+    },
+    {
+      "topic_id": 8,
+      "topic": "Experience with student loan portfolio transfers between servicers",
+      "start_ref": "19:15",
+      "end_ref": "21:4",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The segment accurately captures the discussion on student loan portfolio transfers between servicers."
+    },
+    {
+      "topic_id": 9,
+      "topic": "Understanding of data transfer processes and risks during servicing transitions",
+      "start_ref": "21:5",
+      "end_ref": "23:11",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The boundaries appropriately enclose the questions and answers regarding data transfer processes and risks."
+    },
+    {
+      "topic_id": 10,
+      "topic": "State laws and regulations regarding data transfer in student loan servicing",
+      "start_ref": "23:12",
+      "end_ref": "24:13",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The section accurately reflects the discussion concerning state laws and regulations regarding data transfers."
+    },
+    {
+      "topic_id": 11,
+      "topic": "Witness professional experience in criminal law",
+      "start_ref": "24:14",
+      "end_ref": "25:7",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The start and end references accurately capture the witness's professional experience in criminal law."
+    },
+    {
+      "topic_id": 12,
+      "topic": "Knowledge and experience regarding the RICO statute and student loans",
+      "start_ref": "25:8",
+      "end_ref": "26:14",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The boundaries properly encompass the discussion regarding the RICO statute."
+    },
+    {
+      "topic_id": 13,
+      "topic": "Expert report structure and formatting",
+      "start_ref": "26:15",
+      "end_ref": "27:1",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The start and end points accurately cover questions about the expert report structure and paragraph numbering."
+    },
+    {
+      "topic_id": 14,
+      "topic": "Overview of for-profit colleges and analysis of ITT Educational Services",
+      "start_ref": "27:2",
+      "end_ref": "31:11",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The boundaries correctly span the overview of for-profit colleges and the analysis of ITT Educational Services."
+    },
+    {
+      "topic_id": 15,
+      "topic": "Evaluating ITT degree quality, default rates, and student outcomes",
+      "start_ref": "31:12",
+      "end_ref": "34:6",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The start and end references appropriately capture the evaluation of ITT degree quality, default rates, and student outcomes."
+    },
+    {
+      "topic_id": 16,
+      "topic": "Discussion of atypical outcomes and outlier experiences for ITT students",
+      "start_ref": "34:7",
+      "end_ref": "36:2",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The start and end references accurately capture the discussion defining and exploring outlier experiences and atypical outcomes for ITT students."
+    },
+    {
+      "topic_id": 17,
+      "topic": "Sources of evidence regarding ITT misrepresentations and Vervent's access to information",
+      "start_ref": "36:3",
+      "end_ref": "37:1",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The boundaries properly encompass the questioning regarding evidence of ITT misrepresentations and Vervent's access to information."
+    },
+    {
+      "topic_id": 18,
+      "topic": "Hypothetical scenarios regarding ITT student salary increases and outlier benefits",
+      "start_ref": "37:23",
+      "end_ref": "39:16",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The segment correctly frames the beginning and continuation of the hypothetical scenario regarding salary increases and benefits."
+    },
+    {
+      "topic_id": 19,
+      "topic": "Borrower Salary and Outlier Analysis",
+      "start_ref": "39:17",
+      "end_ref": "42:4",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The start and end points accurately cover the borrower salary and outlier analysis discussion."
+    },
+    {
+      "topic_id": 20,
+      "topic": "Vervent Defendants' Involvement in PEAKS Loans and ITT Recruiting",
+      "start_ref": "42:5",
+      "end_ref": "44:12",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The boundaries accurately capture the transition to big-picture issues concerning PEAKS loans and servicer roles."
+    },
+    {
+      "topic_id": 21,
+      "topic": "Enforceability and Legal Status of PEAKS Loans",
+      "start_ref": "44:13",
+      "end_ref": "47:17",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The start and end points appropriately capture the discussion regarding the review and general status of PEAKS loans before transitioning to material defects."
+    },
+    {
+      "topic_id": 22,
+      "topic": "Enforceability and Material Defects of PEAKS Loan Documents",
+      "start_ref": "47:18",
+      "end_ref": "50:23",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The topic accurately covers the discussion of material defects in the PEAKS loan documents from start to finish."
+    },
+    {
+      "topic_id": 23,
+      "topic": "Access Group Disclosures and California Student Loan Servicing Law",
+      "start_ref": "50:24",
+      "end_ref": "53:9",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The boundary appropriately encloses the examination of loan existence, enforceability issues, and related disclosures."
+    },
+    {
+      "topic_id": 24,
+      "topic": "Vervent's Access to Loan Information and Documentation",
+      "start_ref": "53:13",
+      "end_ref": "55:5",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The start and end lines properly isolate the testimony regarding Vervent's access to loan documentation and interest rate information."
+    },
+    {
+      "topic_id": 25,
+      "topic": "Right to cancel loans and effect of missing disclosures",
+      "start_ref": "55:6",
+      "end_ref": "58:2",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The section correctly captures the discussion concerning borrower requests for loan documentation and the legal effect of missing disclosures."
+    },
+    {
+      "topic_id": 26,
+      "topic": "Enforceability of PEAKS loans and missing disclosure impacts",
+      "start_ref": "58:8",
+      "end_ref": "61:24",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The start and end references accurately capture the discussion regarding the enforceability of PEAKS loans and missing disclosures."
+    },
+    {
+      "topic_id": 27,
+      "topic": "CFPB settlement and Vervent defendants' liability",
+      "start_ref": "61:25",
+      "end_ref": "62:7",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The boundaries properly capture the questions and answers regarding the CFPB settlement and Vervent defendants' liability."
+    },
+    {
+      "topic_id": 28,
+      "topic": "ITT recruiting practices, government oversight, and Title IV funding",
+      "start_ref": "62:8",
+      "end_ref": "63:20",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The start and end correctly isolate the discussion on ITT recruiting practices, government oversight, and Title IV funding."
+    },
+    {
+      "topic_id": 29,
+      "topic": "Federal government student loans and ITT Tech practices",
+      "start_ref": "63:21",
+      "end_ref": "66:21",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The boundaries encompass the line of questioning about federal student loans and ITT Tech practices appropriately."
+    },
+    {
+      "topic_id": 30,
+      "topic": "Consumer Financial Protection Bureau (CFPB) investigation and PEAKS loans",
+      "start_ref": "66:22",
+      "end_ref": "68:17",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The start and end points accurately frame the discussion on the CFPB investigation and PEAKS loans."
+    },
+    {
+      "topic_id": 31,
+      "topic": "SEC investigation and findings regarding Vervent defendants",
+      "start_ref": "69:1",
+      "end_ref": "71:14",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The start and end references accurately capture the discussion regarding the SEC investigation and findings."
+    },
+    {
+      "topic_id": 32,
+      "topic": "February 2014 CFPB suit against ITT",
+      "start_ref": "71:15",
+      "end_ref": "71:22",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The boundaries correctly encompass the introduction of the February 2014 CFPB suit against ITT."
+    },
+    {
+      "topic_id": 33,
+      "topic": "CFPB settlement and investigation regarding ITT and PEAKS loan program",
+      "start_ref": "72:2",
+      "end_ref": "73:13",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The start and end points accurately cover the questions and answers regarding the CFPB suit and PEAKS loan program."
+    },
+    {
+      "topic_id": 34,
+      "topic": "State attorneys general investigations into ITT and Vervent's role",
+      "start_ref": "73:14",
+      "end_ref": "75:4",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The boundaries properly cover the discussion of investigations and CIDs related to ITT and Vervent."
+    },
+    {
+      "topic_id": 35,
+      "topic": "U.S. Department of Education involvement with ITT loans and servicers",
+      "start_ref": "75:5",
+      "end_ref": "76:5",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The segment correctly starts with the Department of Education findings and ends cleanly right before the deposition break."
+    },
+    {
+      "topic_id": 36,
+      "topic": "Witness professional experience regarding investigations",
+      "start_ref": "76:14",
+      "end_ref": "78:3",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The start and end references accurately capture the witness's professional experience regarding investigations."
+    },
+    {
+      "topic_id": 37,
+      "topic": "Significance of investigations regarding findings of wrongdoing and servicing duties",
+      "start_ref": "78:4",
+      "end_ref": "79:24",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The boundaries correctly encompass the discussion regarding findings of wrongdoing and investigations."
+    },
+    {
+      "topic_id": 38,
+      "topic": "Functions of loan servicers regarding PEAKS loans",
+      "start_ref": "79:25",
+      "end_ref": "81:9",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The start and end points properly frame the discussion on loan servicer functions for PEAKS loans."
+    },
+    {
+      "topic_id": 39,
+      "topic": "Legal regulations and practices concerning servicing loans under investigation",
+      "start_ref": "81:10",
+      "end_ref": "83:5",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The boundaries effectively capture the questions and answers regarding regulations and practices for servicing loans under investigation."
+    },
+    {
+      "topic_id": 40,
+      "topic": "Expert opinions and public determinations regarding loan enforceability",
+      "start_ref": "83:6",
+      "end_ref": "87:3",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The start and end references accurately cover the expert opinions on loan enforceability and evidence."
+    },
+    {
+      "topic_id": 41,
+      "topic": "Vervent defendants' servicing activities and investigations",
+      "start_ref": "87:4",
+      "end_ref": "88:1",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The start and end references accurately capture the discussion regarding Vervent's servicing activities and related investigations."
+    },
+    {
+      "topic_id": 42,
+      "topic": "Conclusion of deposition",
+      "start_ref": "88:2",
+      "end_ref": "88:13",
+      "boundary_result": "PASS",
+      "start_result": "PASS",
+      "end_result": "PASS",
+      "reason": "The boundaries correctly encompass the concluding remarks and going off the record to end the deposition."
+    }
+  ]
+}

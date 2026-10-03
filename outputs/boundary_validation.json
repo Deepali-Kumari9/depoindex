@@ -18,7 +18,7 @@
       "boundary_result": "PASS",
       "start_result": "PASS",
       "end_result": "PASS",
-      "reason": "The start and end correctly capture the preliminary statements and standard deposition instructions given by counsel."
+      "reason": "The start and end correctly capture the deposition preliminaries and standard witness health check."
     },
     {
       "topic_id": 2,
@@ -28,7 +28,7 @@
       "boundary_result": "PASS",
       "start_result": "PASS",
       "end_result": "PASS",
-      "reason": "The segment appropriately covers the expert retainer and the defined scope of testimony."
+      "reason": "The boundaries cleanly encompass the discussion regarding the expert retainer and scope of testimony."
     },
     {
       "topic_id": 3,
@@ -38,7 +38,7 @@
       "boundary_result": "PASS",
       "start_result": "PASS",
       "end_result": "PASS",
-      "reason": "The bounds accurately encompass the beginning of the witness's professional background and CV review."
+      "reason": "The section accurately captures the introduction of the witness's CV and professional background."
     },
     {
       "topic_id": 4,
@@ -48,7 +48,7 @@
       "boundary_result": "PASS",
       "start_result": "PASS",
       "end_result": "PASS",
-      "reason": "The discussion covers the policy agenda and advocacy work of the organization appropriately within the start and end bounds."
+      "reason": "The start and end accurately reflect the discussion on policy agenda and advocacy work."
     },
     {
       "topic_id": 5,
@@ -58,7 +58,7 @@
       "boundary_result": "PASS",
       "start_result": "PASS",
       "end_result": "PASS",
-      "reason": "The section accurately reflects the witness's professional background, rulemakings, and experience in student loans."
+      "reason": "The boundaries properly cover the witness's background in rulemakings, legislation, and loan servicing."
     },
     {
       "topic_id": 6,
@@ -68,7 +68,7 @@
       "boundary_result": "PASS",
       "start_result": "PASS",
       "end_result": "PASS",
-      "reason": "The start and end references accurately capture the discussion regarding NCLC work and portfolio transfers."
+      "reason": "The start and end references accurately capture the discussion on NCLC work and portfolio transfers."
     },
     {
       "topic_id": 7,
@@ -78,7 +78,7 @@
       "boundary_result": "PASS",
       "start_result": "PASS",
       "end_result": "PASS",
-      "reason": "The boundaries correctly encompass the mechanics and risks of loan servicing transfers."
+      "reason": "The boundaries appropriately frame the witness testimony regarding loan servicing transfer mechanics and risks."
     },
     {
       "topic_id": 8,
@@ -88,7 +88,7 @@
       "boundary_result": "PASS",
       "start_result": "PASS",
       "end_result": "PASS",
-      "reason": "The boundaries properly cover state laws and regulations concerning data transfers."
+      "reason": "The start and end points correctly capture the conversation about state laws and regulations regarding transfers."
     },
     {
       "topic_id": 9,
@@ -98,7 +98,7 @@
       "boundary_result": "PASS",
       "start_result": "PASS",
       "end_result": "PASS",
-      "reason": "The start and end points accurately frame the short discussion on criminal law experience."
+      "reason": "The boundaries properly isolate the brief line of questioning regarding the witness's experience in criminal law."
     },
     {
       "topic_id": 10,
@@ -108,7 +108,7 @@
       "boundary_result": "PASS",
       "start_result": "PASS",
       "end_result": "PASS",
-      "reason": "The boundaries properly capture the questions and answers regarding familiarity with the RICO statute."
+      "reason": "The start and end references accurately enclose the discussion about familiarity with the RICO statute."
     },
     {
       "topic_id": 11,
@@ -138,7 +138,7 @@
       "boundary_result": "PASS",
       "start_result": "PASS",
       "end_result": "PASS",
-      "reason": "The topic of evaluating institutional quality and metrics like retention and default rates is properly bounded."
+      "reason": "The start and end points properly capture the evaluation of ITT student outcomes, retention rates, and institutional quality."
     },
     {
       "topic_id": 14,
@@ -148,7 +148,7 @@
       "boundary_result": "PASS",
       "start_result": "PASS",
       "end_result": "PASS",
-      "reason": "The segment correctly captures the discussion on ITT's outlier status and Vervent defendants' access to evidence."
+      "reason": "The boundaries correctly isolate the discussion on ITT's outlier status and the Vervent defendants' awareness."
     },
     {
       "topic_id": 15,
@@ -158,7 +158,7 @@
       "boundary_result": "PASS",
       "start_result": "PASS",
       "end_result": "PASS",
-      "reason": "The start and end points properly frame the questioning around hypothetical student financial outcomes."
+      "reason": "The start and end references appropriately frame the questioning regarding hypothetical student financial outcomes."
     },
     {
       "topic_id": 16,
@@ -168,7 +168,7 @@
       "boundary_result": "PASS",
       "start_result": "PASS",
       "end_result": "PASS",
-      "reason": "The start and end references accurately capture the discussion concerning ITT graduate salaries and outliers."
+      "reason": "The start and end references accurately capture the discussion concerning ITT graduate salary outliers and typical experiences."
     },
     {
       "topic_id": 17,
@@ -178,7 +178,7 @@
       "boundary_result": "PASS",
       "start_result": "PASS",
       "end_result": "PASS",
-      "reason": "The boundaries correctly encompass the questioning regarding PEAKS loan timelines and servicer roles."
+      "reason": "The segment correctly captures the questioning about PEAKS loan timelines and the role of servicers."
     },
     {
       "topic_id": 18,
@@ -188,7 +188,7 @@
       "boundary_result": "PASS",
       "start_result": "PASS",
       "end_result": "PASS",
-      "reason": "The start and end points properly frame the review of materials and legal enforceability questions."
+      "reason": "The boundaries properly encompass the witness's review of PEAKS loan materials up to the discussion of legal enforceability."
     },
     {
       "topic_id": 19,
@@ -198,7 +198,7 @@
       "boundary_result": "PASS",
       "start_result": "PASS",
       "end_result": "PASS",
-      "reason": "The section accurately covers the expert's statements regarding material defects in loan documents."
+      "reason": "The start and end references accurately reflect the witness addressing material defects in PEAKS loan documents."
     },
     {
       "topic_id": 20,
@@ -208,7 +208,7 @@
       "boundary_result": "PASS",
       "start_result": "PASS",
       "end_result": "PASS",
-      "reason": "The boundaries appropriately capture the discussion defining the scope of the expert report and related laws."
+      "reason": "The boundaries correctly capture the questioning regarding the scope of the expert report on loan enforceability."
     },
     {
       "topic_id": 21,
@@ -218,7 +218,7 @@
       "boundary_result": "PASS",
       "start_result": "PASS",
       "end_result": "PASS",
-      "reason": "The boundaries accurately capture the discussion concerning the California Student Loan Servicing Law."
+      "reason": "The boundaries cleanly encompass the discussion regarding the California Student Loan Servicing Law."
     },
     {
       "topic_id": 22,
@@ -228,7 +228,7 @@
       "boundary_result": "PASS",
       "start_result": "PASS",
       "end_result": "PASS",
-      "reason": "The start and end references appropriately frame the examination of loan enforceability and record access."
+      "reason": "The start and end points accurately capture the testimony on loan enforceability and record access."
     },
     {
       "topic_id": 23,
@@ -238,17 +238,17 @@
       "boundary_result": "PASS",
       "start_result": "PASS",
       "end_result": "PASS",
-      "reason": "The context appropriately covers the right to cancel loans and the implications of missing disclosures."
+      "reason": "The section appropriately tracks the discussion on loan cancellation rights and missing disclosures."
     },
     {
       "topic_id": 24,
       "topic": "Loan enforceability and post-origination events including CFPB settlement",
       "start_ref": "58:23",
-      "end_ref": "62:5",
+      "end_ref": "62:7",
       "boundary_result": "PASS",
       "start_result": "PASS",
       "end_result": "PASS",
-      "reason": "The boundaries properly isolate the discussion on loan enforceability and post-origination events including the CFPB settlement."
+      "reason": "The boundaries correctly frame the questions regarding loan enforceability and the CFPB settlement."
     },
     {
       "topic_id": 25,
@@ -258,7 +258,7 @@
       "boundary_result": "PASS",
       "start_result": "PASS",
       "end_result": "PASS",
-      "reason": "The start and end points accurately capture the testimony regarding ITT recruiting practices and government loan programs."
+      "reason": "The excerpt correctly captures the focus on report page 11 regarding recruiting practices and government programs."
     },
     {
       "topic_id": 26,
@@ -268,7 +268,7 @@
       "boundary_result": "PASS",
       "start_result": "PASS",
       "end_result": "PASS",
-      "reason": "The start and end references accurately capture the discussion regarding federal student loans and ITT's industry reputation as reflected in the witness's report."
+      "reason": "The start and end references accurately capture the discussion regarding federal student loans and the purpose of the report's information on ITT's reputation."
     },
     {
       "topic_id": 27,
@@ -278,7 +278,7 @@
       "boundary_result": "PASS",
       "start_result": "PASS",
       "end_result": "PASS",
-      "reason": "The boundaries correctly encapsulate the questioning about the CFPB investigation and findings regarding the Vervent defendants."
+      "reason": "The boundaries correctly encompass the questioning regarding the CFPB Civil Investigative Demand and investigations into the PEAKS program."
     },
     {
       "topic_id": 28,
@@ -288,7 +288,7 @@
       "boundary_result": "PASS",
       "start_result": "PASS",
       "end_result": "PASS",
-      "reason": "The start and end points correctly frame the examination concerning the SEC investigation and findings regarding the Vervent defendants."
+      "reason": "The start and end points accurately frame the discussion on the SEC investigation and findings regarding the Vervent defendants."
     },
     {
       "topic_id": 29,
@@ -298,7 +298,7 @@
       "boundary_result": "PASS",
       "start_result": "PASS",
       "end_result": "PASS",
-      "reason": "The segment correctly identifies the introduction of the February 2014 CFPB suit against ITT."
+      "reason": "The boundaries correctly isolate the introduction and initial identification of the February 2014 CFPB suit against ITT."
     },
     {
       "topic_id": 30,
@@ -308,7 +308,7 @@
       "boundary_result": "PASS",
       "start_result": "PASS",
       "end_result": "PASS",
-      "reason": "The proposed boundaries accurately cover the discussion regarding the CFPB matters and the PEAKS loan program timeline relative to Vervent."
+      "reason": "The start and end references accurately capture the discussion concerning the CFPB settlement and the timeline of ITT and Vervent's PEAKS loan program."
     },
     {
       "topic_id": 31,
@@ -318,7 +318,7 @@
       "boundary_result": "PASS",
       "start_result": "PASS",
       "end_result": "PASS",
-      "reason": "The boundaries correctly capture the discussion regarding regulatory investigations, though the text predominantly covers the CFPB rather than state attorneys general specifically, it fits the broader scope."
+      "reason": "The boundaries correctly capture the discussion regarding regulatory investigations, though the text slightly broadens to general investigations before transitioning to the Department of Education."
     },
     {
       "topic_id": 32,
@@ -328,7 +328,7 @@
       "boundary_result": "PASS",
       "start_result": "PASS",
       "end_result": "PASS",
-      "reason": "Starts cleanly with the Department of Education question and ends right before the deposition break."
+      "reason": "Starts cleanly with the Department of Education question and ends appropriately right before the deposition break."
     },
     {
       "topic_id": 33,
@@ -338,7 +338,7 @@
       "boundary_result": "PASS",
       "start_result": "PASS",
       "end_result": "PASS",
-      "reason": "Accurately captures the resumption of the deposition and questions regarding the witness's professional experience and role in investigations."
+      "reason": "Accurately captures the resumption of the deposition after the break and covers the witness's professional experience and lack of personal role in investigations."
     },
     {
       "topic_id": 34,
@@ -348,7 +348,7 @@
       "boundary_result": "PASS",
       "start_result": "PASS",
       "end_result": "PASS",
-      "reason": "Starts appropriately with the question about the implications of an investigation and ends with the discussion on loan enforceability."
+      "reason": "The start and end references accurately frame the discussion on the implications of investigations and whether wrongdoing is proven by them."
     },
     {
       "topic_id": 35,
@@ -358,7 +358,7 @@
       "boundary_result": "PASS",
       "start_result": "PASS",
       "end_result": "PASS",
-      "reason": "Captures the continuation of collection decisions and subsequent questions regarding regulations and loan servicing responsibilities."
+      "reason": "Captures the continuation of the discussion regarding collection choices and servicer obligations in relation to investigations."
     },
     {
       "topic_id": 36,
@@ -378,7 +378,7 @@
       "boundary_result": "PASS",
       "start_result": "PASS",
       "end_result": "PASS",
-      "reason": "The boundaries properly encompass the timeline and opinions regarding loan unenforceability."
+      "reason": "The boundaries properly cover the timeline and determinations of loan unenforceability."
     },
     {
       "topic_id": 38,
@@ -388,7 +388,7 @@
       "boundary_result": "PASS",
       "start_result": "PASS",
       "end_result": "PASS",
-      "reason": "The start and end references appropriately cover the questioning on servicing practices and investigations."
+      "reason": "The start and end points align well with the questions regarding servicing practices and investigations."
     },
     {
       "topic_id": 39,
@@ -398,7 +398,7 @@
       "boundary_result": "PASS",
       "start_result": "PASS",
       "end_result": "PASS",
-      "reason": "The boundaries correctly capture the conclusion of the deposition and going off the record."
+      "reason": "The boundaries accurately capture the conclusion and going off the record at the end of the deposition."
     }
   ]
 }

@@ -505,7 +505,7 @@ Total topics: **39**
 
 ## T24 — Loan enforceability and post-origination events including CFPB settlement
 
-**Range:** `58:23` → `62:5`
+**Range:** `58:23` → `62:7`
 
 **Evidence:**
 
@@ -570,6 +570,8 @@ Total topics: **39**
 - `62:3`
 - `62:4`
 - `62:5`
+- `62:6`
+- `62:7`
 
 ---
 

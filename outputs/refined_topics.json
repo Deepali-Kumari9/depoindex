@@ -12,6 +12,17 @@
         "new_end_ref": "55:5",
         "next_topic_start_ref": "55:6"
       }
+    ],
+    "failed_boundary_refinements": [
+      {
+        "topic_id": 3,
+        "topic": "Professional Background and Student Borrower Protection Center",
+        "old_start_ref": "10:16",
+        "old_end_ref": "12:6",
+        "new_start_ref": "11:2",
+        "new_end_ref": "12:6",
+        "reason": "The topic 'Professional Background and Student Borrower Protection Center' begins when counsel starts discussing the witness's CV and professional background (attorney status, deputy executive director role) and extends through the discussion of the Student Borrower Protection Center's policy agenda."
+      }
     ]
   },
   "topics": [
@@ -37,15 +48,13 @@
     {
       "topic": "Expert Witness Retainer and Scope of Testimony",
       "start_ref": "8:24",
-      "end_ref": "10:15",
+      "end_ref": "9:18",
       "evidence_refs": [
         "8:24",
         "9:1",
         "9:5",
         "9:9",
-        "9:14",
-        "10:2",
-        "10:5"
+        "9:14"
       ],
       "related_to": [],
       "topic_id": 2,
@@ -56,10 +65,9 @@
     },
     {
       "topic": "Professional Background and Student Borrower Protection Center",
-      "start_ref": "10:16",
+      "start_ref": "11:2",
       "end_ref": "12:6",
       "evidence_refs": [
-        "10:21",
         "11:2",
         "11:18",
         "11:22",
@@ -512,7 +520,7 @@
     },
     {
       "topic": "California Student Loan Servicing Law review and compliance",
-      "start_ref": "52:7",
+      "start_ref": "52:21",
       "end_ref": "53:9",
       "evidence_refs": [
         "52:21",
@@ -623,7 +631,7 @@
     {
       "topic": "Loan enforceability and post-origination events including CFPB settlement",
       "start_ref": "58:23",
-      "end_ref": "62:5",
+      "end_ref": "62:7",
       "evidence_refs": [
         "58:23",
         "58:24",
@@ -685,7 +693,9 @@
         "62:2",
         "62:3",
         "62:4",
-        "62:5"
+        "62:5",
+        "62:6",
+        "62:7"
       ],
       "related_to": [
         23
