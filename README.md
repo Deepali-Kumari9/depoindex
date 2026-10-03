@@ -16,13 +16,15 @@ Deposition transcripts contain long discussions that move between subjects, retu
 
 The goal of DepoIndex is to:
 
-- Identify meaningful deposition topics and transitions.
-- Preserve exact page:line references for every topic.
-- Maintain provenance through extraction, preprocessing, chunking, LLM processing, and validation.
-- Produce a structured topic index for review.
-- Ground LLM-generated topics in the original transcript evidence.
-- Evaluate topic quality manually.
-- Measure segmentation stability across repeated LLM runs.
+* Identify meaningful deposition topics and transitions.
+* Preserve exact page:line references for every topic.
+* Maintain provenance through extraction, preprocessing, chunking, LLM processing, and validation.
+* Produce a structured topic index for review.
+* Ground LLM-generated topics in the original transcript evidence.
+* Evaluate topic quality manually.
+* Measure segmentation stability across repeated LLM runs.
+* Detect and document adversarial semantic-grounding failures.
+* Verify that the final topic index does not leave substantive transcript ranges uncovered.
 
 ## Pipeline
 
@@ -36,6 +38,7 @@ PDF
 -> Boundary Refinement
 -> Provenance Validation
 -> Semantic Grounding Validation
+-> Coverage Validation
 -> Topic Index Generation
 -> Streamlit Interface
 ```
@@ -43,8 +46,13 @@ PDF
 Validation:
 
 ```text
-Manual Evaluation + Provenance Validation + Boundary Validation
-+ Semantic Grounding Validation + Stability Evaluation + Failure Analysis
+Manual Evaluation
++ Provenance Validation
++ Boundary Validation
++ Semantic Grounding Validation
++ Coverage Validation
++ Stability Evaluation
++ Adversarial Failure Analysis
 ```
 
 ## Architecture
@@ -55,15 +63,17 @@ The deposition PDF is converted into canonical transcript records.
 
 Each record contains:
 
-- PDF page index
-- Printed page number
-- Line number
-- Original transcript text
-- Exact `page:line` source reference
+* PDF page index
+* Printed page number
+* Line number
+* Original transcript text
+* Exact `page:line` source reference
 
 The canonical transcript contains **2,027 records**, beginning at `7:11` and ending at `88:13`.
 
 The canonical transcript is treated as the source of truth for downstream provenance validation.
+
+The endpoint at `88:13` is intentional. The substantive deposition testimony concludes before the later reporter/videographer closing material; the post-testimony material around `88:17` is therefore not included in the canonical testimony range.
 
 ### 2. Transcript Cleaning
 
@@ -71,11 +81,15 @@ Non-substantive procedural transcript records are removed from semantic processi
 
 This includes procedural records such as:
 
-- Simultaneous speakers
-- Record read
-- Brief recesses
+* Simultaneous speakers
+* Record read
+* Brief recesses
+* Reporter interruptions
+* Other procedural-only records
 
 The cleaning stage preserves the original source references so that the underlying testimony can still be traced back to the canonical transcript.
+
+The cleaned transcript contains **2,012 records**, with **15 procedural-only records excluded** from semantic processing.
 
 ### 3. Semantic Preprocessing
 
@@ -83,8 +97,8 @@ A separate semantic representation of each transcript record is created before L
 
 The preprocessing currently performs lightweight NLP normalization:
 
-- Whitespace normalization
-- Removal of `Q` / `A` speaker labels from the semantic copy
+* Whitespace normalization
+* Removal of `Q` / `A` speaker labels from the semantic copy
 
 The original transcript text is never overwritten.
 
@@ -104,8 +118,8 @@ This allows the LLM to work with a cleaner semantic representation while preserv
 
 The cleaned transcript is divided into manageable chunks while retaining the original page-and-line references.
 
-- The full transcript produces **51 chunks** using a chunk size of **40 transcript records**.
-- Each chunk retains the source references required to map LLM output back to the original deposition.
+* The full transcript produces **51 chunks** using a chunk size of **40 transcript records**.
+* Each chunk retains the source references required to map LLM output back to the original deposition.
 
 For LLM requests, chunk metadata such as chunk ID, transcript range, printed-page range, and record count is supplied alongside the transcript records. This helps control context and reference location without replacing transcript evidence with metadata.
 
@@ -115,16 +129,16 @@ Google Gemini is used to identify meaningful topics from groups of transcript ch
 
 The implementation processes **up to five chunks per request** to reduce API usage while keeping the LLM context manageable.
 
-The final extraction pipeline produced **39 topic candidates**.
+The final submitted extraction pipeline produced **39 topic candidates**.
 
 Each candidate contains structured information such as:
 
-- Topic label
-- Start reference
-- End reference
-- Evidence references
-- Source chunk IDs
-- Related-topic information where available
+* Topic label
+* Start reference
+* End reference
+* Evidence references
+* Source chunk IDs
+* Related-topic information where available
 
 The LLM is responsible for the semantic task of identifying candidate topics and evidence. Deterministic Python code is responsible for organizing and validating the results.
 
@@ -134,11 +148,19 @@ LLM results are refined and globally ordered using the original transcript refer
 
 Topic source chunks are derived deterministically from the final page-and-line boundaries. Batch-local `related_to` references are converted to global topic IDs before the final index is generated.
 
-Overlapping or semantically misplaced topic boundaries are then refined using transcript context. Failed boundary checks are automatically re-evaluated against the canonical transcript, and the selected start/end references are constrained to valid transcript records.
+Overlapping or semantically misplaced topic boundaries are then refined using transcript context. Failed boundary checks are automatically re-evaluated against the canonical transcript, and the selected start/end references are constrained to valid source references.
+
+Three failed semantic boundaries were automatically refined:
+
+| Topic | Original boundary | Revised boundary |
+| ----- | ----------------- | ---------------- |
+| T02   | `8:24 -> 10:15`   | `8:24 -> 9:18`   |
+| T03   | `10:16 -> 12:6`   | `11:2 -> 12:6`   |
+| T21   | `52:7 -> 53:9`    | `52:21 -> 53:9`  |
+
+These corrections removed procedural material from the topic boundaries while preserving the substantive testimony.
 
 The final refined topic output contains **39 topics**.
-
-The latest refinement pass corrected **3 failed semantic boundaries** automatically and preserved valid evidence references within the corrected boundaries.
 
 ### 7. Provenance Validation
 
@@ -146,22 +168,22 @@ Every final topic is checked against the canonical transcript.
 
 Validation verifies that:
 
-- `start_ref` exists.
-- `end_ref` exists.
-- Every evidence reference exists.
-- The start reference occurs before or at the end reference.
-- Evidence references fall within the topic boundaries.
+* `start_ref` exists.
+* `end_ref` exists.
+* Every evidence reference exists.
+* The start reference occurs before or at the end reference.
+* Evidence references fall within the topic boundaries.
 
 The validator does not silently repair invalid references. Invalid references are treated as validation failures.
 
 Current final validation result:
 
-| Check | Result |
-|---|---|
-| Canonical transcript records | 2,027 |
-| Topics checked | 39 |
-| Errors found | 0 |
-| Validation | **PASSED** |
+| Check                        | Result     |
+| ---------------------------- | ---------- |
+| Canonical transcript records | 2,027      |
+| Topics checked               | 39         |
+| Errors found                 | 0          |
+| Validation                   | **PASSED** |
 
 ### 8. Semantic Grounding Validation
 
@@ -171,11 +193,11 @@ DepoIndex therefore performs a second validation step using Gemini. For each top
 
 The final validation result was:
 
-| Check | Result |
-|---|---|
-| Topics validated | 39 |
-| Passed | 39 |
-| Failed | 0 |
+| Check            | Result |
+| ---------------- | ------ |
+| Topics validated | 39     |
+| Passed           | 39     |
+| Failed           | 0      |
 
 Therefore, **39/39 final topics passed semantic grounding validation**.
 
@@ -187,15 +209,60 @@ A separate boundary validator checks whether each topic begins and ends at seman
 
 Final result:
 
-| Check | Result |
-|---|---|
-| Topics validated | 39 |
-| LLM boundary checks passed | 39 |
-| LLM boundary checks failed | 0 |
-| Structural boundary errors | 0 |
-| Topic overlaps | 0 |
+| Check                      | Result |
+| -------------------------- | ------ |
+| Topics validated           | 39     |
+| LLM boundary checks passed | 39     |
+| LLM boundary checks failed | 0      |
+| Structural boundary errors | 0      |
+| Topic overlaps             | 0      |
 
 When semantic boundary checks fail, `src/validation/refine_failed_boundaries.py` automatically re-evaluates the affected topic using surrounding canonical transcript context and updates the boundary only to valid source references.
+
+## Coverage Validation
+
+A separate coverage audit checks whether the final 39-topic index leaves any cleaned transcript ranges uncovered or overlapping.
+
+Final coverage result:
+
+| Check                        | Result |
+| ---------------------------- | ------ |
+| Cleaned transcript records   | 2,012  |
+| Topics                       | 39     |
+| Uncovered cleaned records    | 63     |
+| Uncovered substantive ranges | **0**  |
+| Topic overlaps               | 0      |
+| Invalid boundaries           | 0      |
+
+The uncovered records were manually reviewed and classified as procedural, reporter, exhibit, transition, or other non-substantive material.
+
+Therefore, **no substantive cleaned transcript range was left uncovered by the final topic index**.
+
+The detailed audit is documented in:
+
+`docs/coverage_audit.md`
+
+## Adversarial Semantic Grounding Tests
+
+The repository includes three adversarial semantic-grounding cases using real transcript spans with valid provenance references but unsupported or materially overstated claims.
+
+The test cases include:
+
+1. An incorrect factual claim about a student-loan cancellation amount.
+2. A materially overstated claim that Ms. Yu personally wrote CARES Act legislation.
+3. An unsupported conclusion about the absence of defects in PEAKS loans.
+
+All three cases were rejected by the semantic grounding validator.
+
+Run the test with:
+
+```bash
+python tests/test_adversarial_semantic_grounding.py
+```
+
+Results are stored in:
+
+`outputs/adversarial_semantic_grounding_results.json`
 
 ## Output
 
@@ -203,26 +270,29 @@ The final validated topic index contains **39 topics**.
 
 Each topic includes:
 
-- Topic ID
-- Topic label
-- Start page:line
-- End page:line
-- Evidence references
-- Source chunk IDs
+* Topic ID
+* Topic label
+* Start page:line
+* End page:line
+* Evidence references
+* Source chunk IDs
+* Related-topic information where available
 
 Example:
 
 ```text
 Topic: Deposition ground rules and introductory instructions
+
 Start: 7:11
 End: 8:23
 ```
 
 Output files:
 
-- Validated topic index: `outputs/validated_topic_index.json`
-- Semantic grounding validation report: `outputs/semantic_grounding_validation.json`
-- Human-readable topic index: `outputs/deposition_topic_index.md`
+* Validated topic index: `outputs/validated_topic_index.json`
+* Semantic grounding validation report: `outputs/semantic_grounding_validation.json`
+* Boundary validation report: `outputs/boundary_validation.json`
+* Human-readable topic index: `outputs/deposition_topic_index.md`
 
 ## Evaluation
 
@@ -230,70 +300,67 @@ Output files:
 
 The first 20 topic entries were manually reviewed using:
 
-- Location accuracy
-- Topic relevance
-- Boundary quality
-- Coverage
-- Redundancy
+* Location accuracy
+* Topic relevance
+* Boundary quality
+* Coverage
+* Redundancy
 
 Results:
 
-| Metric | Result |
-|---|---|
+| Metric            | Result       |
+| ----------------- | ------------ |
 | Location accuracy | 20/20 (100%) |
-| Topic relevance | 20/20 (100%) |
-| Boundary quality | 17/20 (85%) |
-| Coverage | 20/20 (100%) |
-| Redundancy | 19/20 (95%) |
+| Topic relevance   | 20/20 (100%) |
+| Boundary quality  | 17/20 (85%)  |
+| Coverage          | 20/20 (100%) |
+| Redundancy        | 19/20 (95%)  |
 
 The main boundary observations involved reporter interruptions, topic transitions, and broad topics containing potential subthemes.
 
 ### Stability Evaluation
 
-An earlier complete-deposition stability experiment processed the same deposition three times using the same transcript, chunking configuration, batch size, and extraction pipeline.
+The final pipeline was executed **three complete times from the same code revision** to measure variation in topic segmentation.
 
-Each run processed:
+The runs produced:
 
-- 2,027 canonical transcript records
-- Printed pages 7-88
-- 51 transcript chunks
-- Batch size of 5 chunks per LLM request
+| Run   | Topics |
+| ----- | -----: |
+| Run 1 |     41 |
+| Run 2 |     42 |
+| Run 3 |     42 |
 
-Results from that evaluation were:
+The comparison examined:
 
-| Run | Topics | Provenance |
-|---|---:|---|
-| Run 1 | 43 | Valid |
-| Run 2 | 42 | Valid |
-| Run 3 | 45 | Valid |
+* Topic labels
+* Start and end boundaries
+* Evidence references
+* `related_to` relationships
 
-Topic counts varied across runs, showing that LLM-based segmentation is not fully deterministic.
+The comparison showed that LLM-based segmentation is not fully deterministic. Topic counts and exact boundaries varied between runs even though the same underlying transcript and pipeline configuration were used.
 
-Under a strict comparison of topic label, start reference, and end reference, **one topic was identical across all three runs**.
+Pairwise comparison:
 
-Pairwise exact matches:
+| Comparison     | Topics compared | Exact boundary matches | Split/merge cases |
+| -------------- | --------------: | ---------------------: | ----------------: |
+| Run 1 vs Run 2 |              41 |                     14 |                12 |
+| Run 2 vs Run 3 |              42 |                     18 |                 8 |
+| Run 1 vs Run 3 |              41 |                     29 |                 5 |
 
-| Comparison | Exact matches |
-|---|---:|
-| Run 1 vs Run 2 | 8 |
-| Run 1 vs Run 3 | 3 |
-| Run 2 vs Run 3 | 4 |
+The final submitted 39-topic artifact is **not replaced by these stability runs**. The stability runs are evaluation evidence demonstrating expected LLM segmentation variability.
 
-Despite segmentation variation, all three runs had valid provenance:
+Committed stability artifacts:
 
-- Run 1: 0 invalid boundary references, 0 invalid evidence references
-- Run 2: 0 invalid boundary references, 0 invalid evidence references
-- Run 3: 0 invalid boundary references, 0 invalid evidence references
+```text
+outputs/stability_runs/run1/
+outputs/stability_runs/run2/
+outputs/stability_runs/run3/
+outputs/stability_runs/stability_comparison.md
+```
 
-This experiment demonstrates that LLM segmentation can vary in topic granularity and boundary selection even when the underlying source addressing remains valid.
+Detailed implementation-review evidence is documented in:
 
-Detailed failure analysis is documented in [`docs/segmentation_failure_cases.md`](docs/segmentation_failure_cases.md).
-
-The stability report is stored in:
-
-`outputs/stability_report.json`
-
-> **Note:** the three-run stability experiment is an earlier evaluation artifact and is not presented as a new post-preprocessing stability measurement.
+`docs/reviewer_verification.md`
 
 ## Streamlit Interface
 
@@ -301,13 +368,13 @@ DepoIndex includes an attorney-facing Streamlit interface for exploring the vali
 
 The interface provides:
 
-- Topic search
-- Topic start/end references
-- Evidence references
-- Source chunk information
-- Transcript evidence lines
-- Page-and-line transcript navigation
-- Configurable transcript context
+* Topic search
+* Topic start/end references
+* Evidence references
+* Source chunk information
+* Transcript evidence lines
+* Page-and-line transcript navigation
+* Configurable transcript context
 
 The current validated topic index contains **39 topics**.
 
@@ -335,11 +402,16 @@ The feature directly supports the auditability requirement of the topic index.
 
 ## Submission Artifacts
 
-- [Validation Report](docs/validation_report.md)
-- [5-Slide Presentation](docs/DepoIndex_Presentation.pdf)
-- [Human-Readable Topic Index](outputs/deposition_topic_index.md)
-- [Validated Topic Index JSON](outputs/validated_topic_index.json)
-- [Semantic Grounding Validation](outputs/semantic_grounding_validation.json)
+* [Validation Report](docs/validation_report.md)
+* [Coverage Audit](docs/coverage_audit.md)
+* [Reviewer Verification](docs/reviewer_verification.md)
+* [5-Slide Presentation](docs/DepoIndex_Presentation.pdf)
+* [Human-Readable Topic Index](outputs/deposition_topic_index.md)
+* [Validated Topic Index JSON](outputs/validated_topic_index.json)
+* [Semantic Grounding Validation](outputs/semantic_grounding_validation.json)
+* [Boundary Validation](outputs/boundary_validation.json)
+* [Adversarial Semantic Grounding Results](outputs/adversarial_semantic_grounding_results.json)
+* [Three-Run Stability Comparison](outputs/stability_runs/stability_comparison.md)
 
 ## Project Structure
 
@@ -352,7 +424,9 @@ depoindex/
 |-- docs/
 |   |-- DepoIndex_Presentation.pdf
 |   |-- segmentation_failure_cases.md
-|   `-- validation_report.md
+|   |-- validation_report.md
+|   |-- coverage_audit.md
+|   `-- reviewer_verification.md
 |-- evaluation/
 |   |-- evaluate_baseline.py
 |   |-- evaluate_manual.py
@@ -369,10 +443,12 @@ depoindex/
 |   |-- semantic_grounding_validation.json
 |   |-- boundary_validation.json
 |   |-- deposition_topic_index.md
-|   |-- stability_run_1.json
-|   |-- stability_run_2.json
-|   |-- stability_run_3.json
-|   `-- stability_report.json
+|   |-- adversarial_semantic_grounding_results.json
+|   `-- stability_runs/
+|       |-- run1/
+|       |-- run2/
+|       |-- run3/
+|       `-- stability_comparison.md
 |-- src/
 |   |-- extraction/
 |   |-- nlp/
@@ -385,7 +461,10 @@ depoindex/
 |       |-- validate_semantic_grounding.py
 |       |-- validate_boundaries.py
 |       |-- refine_failed_boundaries.py
+|       |-- validate_coverage.py
 |       `-- generate_markdown_index.py
+|-- tests/
+|   `-- test_adversarial_semantic_grounding.py
 |-- .gitignore
 |-- llm_usage.md
 |-- methodology.md
@@ -397,9 +476,9 @@ depoindex/
 
 ### Requirements
 
-- Python 3.10+ (tested with Python 3.11)
-- Google Gemini API key
-- Dependencies listed in `requirements.txt`
+* Python 3.10+ (tested with Python 3.11)
+* Google Gemini API key
+* Dependencies listed in `requirements.txt`
 
 Create and activate a virtual environment:
 
@@ -483,21 +562,29 @@ python src/validation/refine_failed_boundaries.py
 #    Requires GEMINI_API_KEY in .env
 python src/validation/validate_semantic_grounding.py
 
-# 10. Build the validated topic index for the application
+# 10. Verify coverage and detect uncovered substantive ranges
+python src/validation/validate_coverage.py
+
+# 11. Build the validated topic index for the application
 python src/validation/build_topic_index.py
 
-# 11. Generate the human-readable Markdown topic index
+# 12. Generate the human-readable Markdown topic index
 python src/validation/generate_markdown_index.py
+
+# 13. Run adversarial semantic-grounding failure cases
+python tests/test_adversarial_semantic_grounding.py
 ```
 
-The manual evaluation and stability results included in this repository are evaluation artifacts from the completed validation process.
+The manual evaluation, coverage audit, adversarial tests, and stability results included in this repository are evaluation artifacts from the completed validation process.
 
 They are documented in:
 
-- [`docs/validation_report.md`](docs/validation_report.md)
-- [`docs/segmentation_failure_cases.md`](docs/segmentation_failure_cases.md)
+* [`docs/validation_report.md`](docs/validation_report.md)
+* [`docs/segmentation_failure_cases.md`](docs/segmentation_failure_cases.md)
+* [`docs/coverage_audit.md`](docs/coverage_audit.md)
+* [`docs/reviewer_verification.md`](docs/reviewer_verification.md)
 
-The full pipeline requires a valid Gemini API key for the LLM extraction and semantic grounding stages.
+The full extraction pipeline requires a valid Gemini API key for the LLM extraction, boundary validation/refinement, and semantic grounding stages.
 
 ## Reproducibility
 
@@ -505,12 +592,12 @@ A fresh-clone reproducibility test was previously performed from the GitHub repo
 
 The test verified:
 
-- Repository cloning
-- Fresh virtual environment creation
-- Dependency installation
-- Dependency consistency using `pip check`
-- Provenance validation against the canonical transcript
-- Streamlit application startup
+* Repository cloning
+* Fresh virtual environment creation
+* Dependency installation
+* Dependency consistency using `pip check`
+* Provenance validation against the canonical transcript
+* Streamlit application startup
 
 The fresh-clone environment successfully installed all dependencies declared in `requirements.txt`.
 
@@ -544,14 +631,14 @@ AI-assisted development is documented in:
 
 The document records:
 
-- AI tools used
-- AI-generated suggestions
-- Implementation decisions
-- Changes made to suggestions
-- Validation performed
-- Baseline experiments
-- Batched LLM processing
-- API errors and their handling
+* AI tools used
+* AI-generated suggestions
+* Implementation decisions
+* Changes made to suggestions
+* Validation performed
+* Baseline experiments
+* Batched LLM processing
+* API errors and their handling
 
 No fabricated successful results were used from failed API experiments.
 
@@ -563,18 +650,42 @@ The overall technical methodology is documented in:
 
 It covers:
 
-- Transcript extraction
-- Transcript cleaning
-- Semantic preprocessing
-- Provenance preservation
-- Chunking
-- Topic segmentation
-- Boundary refinement
-- Provenance validation
-- Semantic grounding validation
-- Manual evaluation
-- Stability testing
-- Failure analysis
+* Transcript extraction
+* Transcript cleaning
+* Semantic preprocessing
+* Provenance preservation
+* Chunking
+* Topic segmentation
+* Boundary refinement
+* Provenance validation
+* Semantic grounding validation
+* Coverage validation
+* Manual evaluation
+* Stability testing
+* Adversarial failure analysis
+* Failure analysis
+
+## Implementation Review Verification
+
+The complete evidence prepared for implementation review is documented in:
+
+`docs/reviewer_verification.md`
+
+It covers:
+
+* Three adversarial semantic-grounding cases using real transcript spans
+* Automatic refinement of three failed semantic boundaries
+* Three complete pipeline runs from the same code revision
+* Topic, boundary, evidence-reference, and `related_to` stability comparisons
+* Final 39-topic coverage audit
+* Uncovered procedural ranges and substantive-coverage verification
+* Canonical transcript endpoint rationale
+* Exact reproduction commands
+* Generated artifacts
+* Manual intervention disclosure
+* Final provenance, boundary, and semantic-grounding validation
+
+The repository history contains the implementation commits and the subsequent documentation/evidence commits used to prepare the final submission.
 
 ## Git Engineering History
 
@@ -607,69 +718,60 @@ ec70767 feat: add semantic grounding validation
 d8d6bb8 fix: refresh validated topic index
 ```
 
-### Latest Commit
+Later implementation-review work added:
 
 ```text
-e446ac2 Finalize validated topic extraction pipeline
+5aaf0c4 finalize: validate and document 39-topic index
+463b2a5 test: add three-run stability comparison
+6083546 docs: add implementation review verification
 ```
 
-This commit added the final batched extraction, boundary validation/refinement, refreshed validation artifacts, and updated the final topic outputs.
-
-### Meaningful Earlier Commit
-
-Earlier validation milestone:
-
-```text
-9e4f7a5 test: measure three-run pipeline stability
-```
-
-This commit is meaningful because it established an empirical finding that LLM topic segmentation varied across repeated runs and motivated treating LLM output as non-deterministic rather than assuming identical results.
-
-The stability experiment was subsequently expanded and corrected to cover the complete deposition, with the complete-deposition evaluation captured in:
-
-```text
-d889052 test: update complete-deposition stability evaluation
-```
+These commits document the progression from the validated implementation to the stability evidence and reviewer-specific verification artifacts.
 
 ## Latest Project State
 
-The latest repository state includes:
+The current project state includes:
 
-- Lightweight semantic transcript preprocessing
-- Metadata-controlled, provenance-preserving chunking
-- Batched Gemini topic extraction
-- Strict provenance validation
-- Automatic boundary refinement
-- Boundary validation against transcript context
-- Semantic grounding validation
-- 39-topic validated index
-- Updated Streamlit output
+* Lightweight semantic transcript preprocessing
+* Metadata-controlled, provenance-preserving chunking
+* Batched Gemini topic extraction
+* Strict provenance validation
+* Automatic boundary refinement
+* Boundary validation against transcript context
+* Semantic grounding validation
+* Coverage validation
+* Three-run stability evaluation
+* Adversarial semantic-grounding tests
+* 39-topic validated index
+* Coverage audit with no uncovered substantive ranges
+* Updated Streamlit output
+* Reviewer verification documentation
 
-Latest commit:
+The final repository state should be identified using:
 
-```text
-e446ac2 Finalize validated topic extraction pipeline
+```bash
+git rev-parse HEAD
 ```
 
-The latest changes were pushed to `origin/main`.
+The resulting SHA is the final submission SHA for the current repository state.
 
 ## Limitations
 
-- LLM topic segmentation can vary between runs.
-- Topic boundaries may occasionally be broader or narrower than ideal.
-- Manual evaluation was performed on a 20-topic sample rather than the complete 39-topic index.
-- The current system has been evaluated on a single deposition.
-- Topic re-entry and closely related topics may require further refinement.
-- The current semantic preprocessing is lightweight NLP normalization rather than a full NLP pipeline.
-- The application is intended as a working technical prototype rather than a production legal system.
+* LLM topic segmentation can vary between runs.
+* Topic boundaries may occasionally be broader or narrower than ideal.
+* Manual evaluation was performed on a 20-topic sample rather than the complete 39-topic index.
+* The current system has been evaluated on a single deposition.
+* Topic re-entry and closely related topics may require further refinement.
+* The current semantic preprocessing is lightweight NLP normalization rather than a full NLP pipeline.
+* The application is intended as a working technical prototype rather than a production legal system.
 
 ## Future Improvements
 
-- More systematic topic-boundary scoring
-- Better detection of topic re-entry
-- Hierarchical parent/child topic relationships
-- Semantic relationships between related topics
-- Larger-scale evaluation across depositions
-- More advanced source navigation
-- Improved attorney-facing search and review workflows
-- More comprehensive automated boundary-quality evaluation
+* More systematic topic-boundary scoring
+* Better detection of topic re-entry
+* Hierarchical parent/child topic relationships
+* Semantic relationships between related topics
+* Larger-scale evaluation across depositions
+* More advanced source navigation
+* Improved attorney-facing search and review workflows
+* More comprehensive automated boundary-quality evaluation
