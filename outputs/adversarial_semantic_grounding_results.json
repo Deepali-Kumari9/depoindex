@@ -1,0 +1,62 @@
+{
+  "metadata": {
+    "test_type": "adversarial semantic grounding",
+    "validator": "src/validation/validate_semantic_grounding.py",
+    "canonical_transcript": "outputs/canonical_transcript.json",
+    "cases": 3,
+    "adversarial_tests_passed": 3,
+    "adversarial_tests_failed": 0
+  },
+  "results": [
+    {
+      "case_id": "ADV-01",
+      "failure_type": "incorrect factual detail",
+      "claim": "President Biden's program cancelled $50,000 of federal student loans for borrowers.",
+      "start_ref": "13:8",
+      "end_ref": "13:10",
+      "evidence_refs": [
+        "13:8",
+        "13:9",
+        "13:10"
+      ],
+      "expected_result": "FAIL",
+      "actual_result": "FAIL",
+      "validator_reason": "The evidence states the program cancelled up to $20,000, not $50,000.",
+      "passed_adversarial_test": true
+    },
+    {
+      "case_id": "ADV-02",
+      "failure_type": "materially overstated claim",
+      "claim": "Ms. Yu personally wrote the CARES Act legislation.",
+      "start_ref": "16:7",
+      "end_ref": "16:10",
+      "evidence_refs": [
+        "16:7",
+        "16:8",
+        "16:9",
+        "16:10"
+      ],
+      "expected_result": "FAIL",
+      "actual_result": "FAIL",
+      "validator_reason": "The evidence shows she worked on legislation during the passage of the CARES Act, but does not state she personally wrote the legislation.",
+      "passed_adversarial_test": true
+    },
+    {
+      "case_id": "ADV-03",
+      "failure_type": "unsupported conclusion",
+      "claim": "Ms. Yu concluded that the PEAKS loans contained no defects.",
+      "start_ref": "9:15",
+      "end_ref": "9:18",
+      "evidence_refs": [
+        "9:15",
+        "9:16",
+        "9:17",
+        "9:18"
+      ],
+      "expected_result": "FAIL",
+      "actual_result": "FAIL",
+      "validator_reason": "The evidence discusses opining on whether defects would be clearly discernible, not that she concluded there were no defects.",
+      "passed_adversarial_test": true
+    }
+  ]
+}
